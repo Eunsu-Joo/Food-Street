@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, GlobalStyles } from "@mui/material";
+import Header from "./components/_common/Header";
+import CouponList from "./components/coupon/CouponList";
+import BottomBar from "./components/_common/BottomBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container style={{ border: "1px solid black" }} maxWidth={"lg"}>
+        <Header />
+        <CouponList />
+        <BottomBar />
+      </Container>
     </div>
   );
 }
