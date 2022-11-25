@@ -7,6 +7,7 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import theme from "./style/style";
+import {BrowserRouter} from "react-router-dom";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -15,7 +16,9 @@ root.render(
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+          <BrowserRouter>
+              <App />
+          </BrowserRouter>
       </ThemeProvider>
     </StyledEngineProvider>
   </React.StrictMode>

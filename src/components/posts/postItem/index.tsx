@@ -8,23 +8,25 @@ import {
   CardMedia,
   Grid,
   IconButton,
+  Skeleton,
   styled,
   Typography,
 } from "@mui/material";
-import { IMAGE_URL } from "../../constants";
+import { IMAGE_URL } from "../../../constants";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import React, { useState } from "react";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import PostItemLoad from "./PostItemLoad";
 const CustomGrid = styled(Grid)(({ theme }) => ({
   py: 4,
   [theme.breakpoints.down("md")]: {
     py: 0,
   },
 }));
-const Coupon = () => {
+const PostItem = ({ item }: { item: any }) => {
   const [isLike, setIsLike] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = !!anchorEl;
@@ -34,43 +36,33 @@ const Coupon = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const { attributes } = item;
   return (
     <CustomGrid item xs={10} sm={10} md={4}>
+      {/*<PostItemLoad />*/}
       <Card sx={{ mb: 2 }}>
         <CardHeader
           avatar={<Avatar src={IMAGE_URL} aria-label={"recipe"} />}
-          title={"Shrimp and Chorizo Paella"}
-          subheader="September 14, 2016"
+          title={attributes.name}
+          subheader={attributes.createdAt}
         />
         <CardMedia
           component={"img"}
-          src={IMAGE_URL}
+          src={attributes.image.data.attributes.url}
           height={192}
           alt={"이미지"}
         />
         <CardContent>
           <Typography variant={"body2"} color={"text.secondary"}>
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {attributes.contents}
           </Typography>
-        </CardContent>
-        <CardContent sx={{ py: 1 }}>
-          <Button
-            variant="contained"
-            size={"small"}
-            startIcon={<VolunteerActivismOutlinedIcon />}
-          >
-            사용하기
-          </Button>
         </CardContent>
         <CardActions disableSpacing={true}>
           <IconButton
             aria-label="add to favorites"
             onClick={() => setIsLike(!isLike)}
           >
-            <FavoriteIcon color={isLike ? "action" : "secondary"} />
+            <FavoriteIcon color={isLike ? "error" : "action"} />
           </IconButton>
           <IconButton
             aria-label={"share"}
@@ -80,7 +72,7 @@ const Coupon = () => {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
           >
-            <ShareIcon color={"secondary"} />
+            <ShareIcon color={"action"} />
           </IconButton>
           <Menu
             id="basic-menu"
@@ -99,4 +91,4 @@ const Coupon = () => {
     </CustomGrid>
   );
 };
-export default Coupon;
+export default PostItem;

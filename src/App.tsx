@@ -1,18 +1,36 @@
 import React from "react";
 import { Container, GlobalStyles } from "@mui/material";
-import Header from "./components/_common/Header";
-import CouponList from "./components/coupon/CouponList";
+import PostList from "./components/posts/PostList";
 import BottomBar from "./components/_common/BottomBar";
+import Header from "./components/_common/header";
+import { Route, Routes } from "react-router-dom";
+import AddPost from "./components/addPost";
+import Login from "./components/account/login";
+import Signup from "./components/account/signup";
+import ForgotPassword from "./components/account/forgotPassword";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <div className="App">
-      <Container style={{ border: "1px solid black" }} maxWidth={"lg"}>
+    <QueryClientProvider client={queryClient}>
+      <Container
+        sx={{ pt: 10, minHeight: "calc(100vh - 56px)", pb: 10 }}
+        maxWidth={"lg"}
+      >
         <Header />
-        <CouponList />
+        <Routes>
+          <Route path={"/"} element={<PostList />} />
+          <Route path={"/add_post"} element={<AddPost />} />
+          <Route path={"/login"} element={<Login />} />
+          <Route path={"/sign_up"} element={<Signup />} />
+          <Route path={"/forgot_password"} element={<ForgotPassword />} />
+        </Routes>
         <BottomBar />
       </Container>
-    </div>
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
   );
 }
 

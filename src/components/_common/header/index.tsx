@@ -5,9 +5,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material";
 import { InputBase } from "@mui/material";
-import { IMAGE_URL } from "../../constants";
-
+import Nav from "./Nav";
+import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 const Header = () => {
+  const [isToggle, setIsToggle] = useState(false);
+  const onToggle = () => {
+    setIsToggle(!isToggle);
+  };
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -53,38 +58,42 @@ const Header = () => {
     },
   }));
   return (
-    <Box sx={{ flexGrow: 1, color: "#fff" }}>
-      <AppBar position={"static"}>
-        <Toolbar>
-          <IconButton
-            size={"large"}
-            edge={"start"}
-            color={"inherit"}
-            aria-label={"open drawer"}
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Coupons
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="검색어를 입력해 주세요…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1, color: "#fff" }}>
+        <AppBar position={"fixed"}>
+          <Toolbar>
+            <IconButton
+              size={"large"}
+              edge={"start"}
+              color={"inherit"}
+              aria-label={"open drawer"}
+              sx={{ mr: 2 }}
+              onClick={onToggle}
+            >
+              {isToggle ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              맛집을 자랑해 봅시다
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="검색어를 입력해 주세요…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Nav isToggle={isToggle} onToggle={onToggle} />
+    </>
   );
 };
 export default Header;
