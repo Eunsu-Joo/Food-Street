@@ -12,21 +12,24 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { IMAGE_URL } from "../../../constants";
+import { IMAGE_URL } from "../../../../../constants";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PostItemLoad from "./PostItemLoad";
+type PostItemProps = {
+  item: any;
+};
 const CustomGrid = styled(Grid)(({ theme }) => ({
   py: 4,
   [theme.breakpoints.down("md")]: {
     py: 0,
   },
 }));
-const PostItem = ({ item }: { item: any }) => {
+const PostItem = ({ item }: PostItemProps) => {
   const [isLike, setIsLike] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = !!anchorEl;
@@ -37,9 +40,9 @@ const PostItem = ({ item }: { item: any }) => {
     setAnchorEl(null);
   };
   const { attributes } = item;
+
   return (
     <CustomGrid item xs={10} sm={10} md={4}>
-      {/*<PostItemLoad />*/}
       <Card sx={{ mb: 2 }}>
         <CardHeader
           avatar={<Avatar src={IMAGE_URL} aria-label={"recipe"} />}
@@ -48,7 +51,7 @@ const PostItem = ({ item }: { item: any }) => {
         />
         <CardMedia
           component={"img"}
-          src={attributes.image.data.attributes.url}
+          src={attributes.image.data?.attributes.url ?? IMAGE_URL}
           height={192}
           alt={"이미지"}
         />

@@ -89,7 +89,6 @@ const useValidator = (inputs: ObjType) => {
   };
   const validateEmail = () => {
     const { email } = inputs;
-    console.log(inputs);
     if (email) {
       if (!RegExp.email.test(email)) {
         console.log(error);

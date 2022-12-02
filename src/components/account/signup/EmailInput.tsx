@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import emailList from "../../../data/emailList";
+import { emailList } from "../../../data";
 const EmailInputBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "end",

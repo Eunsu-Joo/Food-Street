@@ -1,42 +1,69 @@
+import PAGE from "../constants/page";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import STATUS from "../constants/status";
 
-const httpModules = {
-  instance: axios.create({
+type fetcherObj = {
+  [key: string]: any;
+};
+
+type FetcherProps = {
+  url: string;
+  method: "get" | "post" | "put" | "delete";
+  params?: fetcherObj;
+  body?: fetcherObj;
+  jwt?: string;
+};
+
+const fetcher = async ({ url, method, params, body, jwt }: FetcherProps) => {
+  let instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
       "Content-Type": "application/json",
     },
-  }),
-  transform: {
-    onFulfilled: (response: AxiosResponse): AxiosResponse => {
+  });
+  instance.interceptors.response.use(
+    (response: AxiosResponse): AxiosResponse => {
       response.data = {
-        status: response.status,
-        data: response.data,
-        error: false,
+        data: response.status === STATUS.OK ? response.data.data : null,
+        pagination: response.data?.meta?.pagination ?? null,
       };
       return response;
     },
-    onReject: (error: AxiosError): AxiosResponse => {
+    (error: AxiosError): AxiosResponse => {
       if (!error.response) throw error;
       error.response.data = {
-        status: error.response.status,
-        error: true,
+        pagination: null,
         data: null,
       };
       return error.response;
-    },
-  },
+    }
+  );
 
-  get posts() {
-    const { onFulfilled, onReject } = this.transform;
-    this.instance.interceptors.response.use(onFulfilled, onReject);
-    return {
-      getPosts: async () => {
-        const { data } = await this.instance.get("/store-posts?populate=*");
-        return data;
+  if (params) {
+    instance.defaults.params = params;
+  }
+  if (body) {
+    instance.defaults.data = body;
+  }
+  if (jwt) {
+    instance.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+  }
+  const { data } = await instance[method](url);
+  return data;
+};
+
+const httpModules = {
+  getPosts: (page: number) =>
+    fetcher({
+      params: {
+        populate: "*",
+        pagination: {
+          page,
+          pageSize: PAGE.MAX_PAGE,
+        },
       },
-    };
-  },
+      url: "store-posts",
+      method: "get",
+    }),
 };
 export default httpModules;
