@@ -1,16 +1,16 @@
-import { Route, Routes } from "react-router-dom";
-import Main from "../main";
-import AddPost from "../addPost";
-import Login from "../account/login";
-import Signup from "../account/signup";
-import ForgotPassword from "../account/forgotPassword";
+import { Route, Routes as ReactRoutes } from "react-router-dom";
+import Main from "../../main";
+import AddPost from "../../addPost";
+import Login from "../../account/login";
+import Signup from "../../account/signup";
+import ForgotPassword from "../../account/forgotPassword";
 import React from "react";
-import MainInfiniteScroll from "../main/mainInfiniteScroll";
-import MainPrefetch from "../main/mainPrefetch";
+import MainInfiniteScroll from "../../main/mainInfiniteScroll";
+import MainPrefetch from "../../main/mainPrefetch";
 
-const CustomRoutes = () => {
+const Routes = () => {
   return (
-    <Routes>
+    <ReactRoutes>
       <Route path={"/"} element={<Main />} />
       <Route path={"/main/prefetch"} element={<MainPrefetch />} />
       <Route path={"/main/infinite-scroll"} element={<MainInfiniteScroll />} />
@@ -18,7 +18,7 @@ const CustomRoutes = () => {
       <Route path={"/login"} element={<Login />} />
       <Route path={"/sign_up"} element={<Signup />} />
       <Route path={"/forgot_password"} element={<ForgotPassword />} />
-    </Routes>
+    </ReactRoutes>
   );
 };
-export default CustomRoutes;
+export default Routes;

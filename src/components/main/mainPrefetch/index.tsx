@@ -1,19 +1,19 @@
-import Layout from "../_common/Layout";
+import Layout from "../_common/layout";
 import PostList from "../_common/postList";
 import { Pagination, Stack } from "@mui/material";
 import PAGE from "../../../constants/page";
-import { useState } from "react";
-import Loading from "../../_common/Loading";
-import usePrefetchPosts from "../../../hooks/usePrefetchPosts";
+import React, { useState } from "react";
+import Index from "../../_common/loading";
+import usePosts from "../../../hooks/usePosts";
 
 const MainPrefetch = () => {
   const [currentPage, setCurrentPage] = useState(PAGE.START);
-  const { data, isLoading } = usePrefetchPosts(currentPage);
+  const { data, isLoading } = usePosts({ currentPage, isPrefetch: true });
 
   const handlePagination = (event: any, page: number) => {
     setCurrentPage(page);
   };
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Index />;
   return (
     <Layout>
       <PostList data={data.data} />
@@ -29,4 +29,4 @@ const MainPrefetch = () => {
     </Layout>
   );
 };
-export default MainPrefetch;
+export default React.memo(MainPrefetch);

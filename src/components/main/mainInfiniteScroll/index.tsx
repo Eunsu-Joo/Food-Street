@@ -1,14 +1,13 @@
 import { useInfiniteQuery } from "react-query";
 import PAGE from "../../../constants/page";
-import httpModules from "../../../utils/httpModules";
 import InfiniteScroll from "react-infinite-scroller";
 import PostList from "../_common/postList";
-import Layout from "../_common/Layout";
-
+import Layout from "../_common/layout";
+import { getPosts } from "../../../utils/httpModules";
 const MainInfiniteScroll = () => {
   const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery(
     "infinite-posts",
-    ({ pageParam = PAGE.START }) => httpModules.getPosts(pageParam),
+    ({ pageParam = PAGE.START }) => getPosts(pageParam),
     {
       // TODO : 이 부분 리턴 걸어야 함.
       staleTime: 0,

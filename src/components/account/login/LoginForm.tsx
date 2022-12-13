@@ -5,8 +5,8 @@ import useValidator from "../../../hooks/useValidator";
 
 const LoginForm = () => {
   const [inputs, setInputs] = useState({
-    identifier: "",
-    password: "",
+    identifier: "holicholicpop@gmail.com",
+    password: "ghgh1212!!",
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

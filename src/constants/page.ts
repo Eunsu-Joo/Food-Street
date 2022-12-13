@@ -1,5 +1,5 @@
 const PAGE = {
-  MAX_PAGE: 9,
+  MAX_PAGE: 3,
   START: 1,
   PAGINATION_MAX: 5,
 };

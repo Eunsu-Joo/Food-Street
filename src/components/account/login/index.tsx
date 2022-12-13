@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 
 import LoginForm from "./LoginForm";
 import LoginLayout from "../_common/LoginLayout";
+import Modal from "../../modal";
 
 const Login = () => {
   return (

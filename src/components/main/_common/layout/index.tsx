@@ -1,6 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-import { links } from "../../../data";
+import { links } from "../../../../data";
 import { ReactNode } from "react";
 type ButtonColorProps = "primary" | "secondary" | "success";
 const Layout = ({ children }: { children: ReactNode }) => {

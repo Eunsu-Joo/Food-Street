@@ -1,6 +1,8 @@
+import React, { useState } from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import {
   Avatar,
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -8,18 +10,12 @@ import {
   CardMedia,
   Grid,
   IconButton,
-  Skeleton,
   styled,
   Typography,
 } from "@mui/material";
-import { IMAGE_URL } from "../../../../../constants";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import React, { Suspense, useState } from "react";
-import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import PostItemLoad from "./PostItemLoad";
+
 type PostItemProps = {
   item: any;
 };
@@ -45,13 +41,18 @@ const PostItem = ({ item }: PostItemProps) => {
     <CustomGrid item xs={10} sm={10} md={4}>
       <Card sx={{ mb: 2 }}>
         <CardHeader
-          avatar={<Avatar src={IMAGE_URL} aria-label={"recipe"} />}
+          avatar={
+            <Avatar
+              src={attributes.image.data?.attributes.url}
+              aria-label={"recipe"}
+            />
+          }
           title={attributes.name}
           subheader={attributes.createdAt}
         />
         <CardMedia
           component={"img"}
-          src={attributes.image.data?.attributes.url ?? IMAGE_URL}
+          src={attributes.image.data?.attributes.url}
           height={192}
           alt={"이미지"}
         />

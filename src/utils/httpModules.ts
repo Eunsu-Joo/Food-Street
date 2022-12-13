@@ -21,23 +21,6 @@ const fetcher = async ({ url, method, params, body, jwt }: FetcherProps) => {
       "Content-Type": "application/json",
     },
   });
-  instance.interceptors.response.use(
-    (response: AxiosResponse): AxiosResponse => {
-      response.data = {
-        data: response.status === STATUS.OK ? response.data.data : null,
-        pagination: response.data?.meta?.pagination ?? null,
-      };
-      return response;
-    },
-    (error: AxiosError): AxiosResponse => {
-      if (!error.response) throw error;
-      error.response.data = {
-        pagination: null,
-        data: null,
-      };
-      return error.response;
-    }
-  );
 
   if (params) {
     instance.defaults.params = params;
@@ -52,18 +35,22 @@ const fetcher = async ({ url, method, params, body, jwt }: FetcherProps) => {
   return data;
 };
 
-const httpModules = {
-  getPosts: (page: number) =>
-    fetcher({
-      params: {
-        populate: "*",
-        pagination: {
-          page,
-          pageSize: PAGE.MAX_PAGE,
-        },
+const getPosts = (page: number) =>
+  fetcher({
+    params: {
+      populate: "*",
+      pagination: {
+        page,
+        pageSize: PAGE.MAX_PAGE,
       },
-      url: "store-posts",
-      method: "get",
-    }),
-};
-export default httpModules;
+    },
+    url: "/store-posts",
+    method: "get",
+  });
+
+const getUser = (userId: number) =>
+  fetcher({
+    url: `/users/${userId}`,
+    method: "get",
+  });
+export { getPosts, getUser };

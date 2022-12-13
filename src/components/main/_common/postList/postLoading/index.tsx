@@ -1,6 +1,6 @@
 import { Skeleton, Stack } from "@mui/material";
 
-const PostItemLoad = () => {
+const PostLoading = () => {
   return (
     <Stack spacing={1} mb={2}>
       <Stack direction={"row"}>
@@ -16,4 +16,4 @@ const PostItemLoad = () => {
     </Stack>
   );
 };
-export default PostItemLoad;
+export default PostLoading;
