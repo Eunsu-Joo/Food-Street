@@ -15,6 +15,7 @@ const StyledNav = styled("div")<NavStyledProps>(({ theme, isToggle }) => ({
   zIndex: 10,
   transition: "left 0.5s ",
   boxShadow: theme.shadows[2],
-  backgroundColor: "#fff",
+  backgroundColor: "#fff"
 }));
+
 export { StyledNav };

@@ -6,30 +6,50 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
-const BOTTOM_APP_LIST = [
-  { label: "Login", path: "/login", icon: <AccountCircleIcon /> },
-  { label: "Home", path: "/", icon: <HomeIcon /> },
-  { label: "Add Post", path: "/add_post", icon: <ControlPointIcon /> },
-];
+import LogoutIcon from "@mui/icons-material/Logout";
+import useUser from "../../../hooks/useUser";
+import useModal from "../../../hooks/useModal";
+import LogoutModal from "../modal/logoutModal";
+import PATH from "../../../constants/path";
+
 const BottomBar = () => {
   const navigate = useNavigate();
-
+  const { user } = useUser();
+  const { isOpen, controller } = useModal();
   return (
-    <Paper
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-      elevation={3}
-    >
-      <BottomNavigation showLabels>
-        {BOTTOM_APP_LIST.map((item, index) => (
+    <>
+      <Paper
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        elevation={3}
+      >
+        <BottomNavigation showLabels>
+          {user ? (
+            <BottomNavigationAction
+              label={"Logout"}
+              onClick={controller}
+              icon={<LogoutIcon />}
+            />
+          ) : (
+            <BottomNavigationAction
+              label={"Login"}
+              onClick={() => navigate(PATH.LOGIN)}
+              icon={<AccountCircleIcon />}
+            />
+          )}
           <BottomNavigationAction
-            label={item.label}
-            onClick={() => navigate(item.path)}
-            icon={item.icon}
-            key={index}
+            label={"Home"}
+            onClick={() => navigate("/")}
+            icon={<HomeIcon />}
           />
-        ))}
-      </BottomNavigation>
-    </Paper>
+          <BottomNavigationAction
+            label={"Add Post"}
+            onClick={() => navigate(PATH.ADD_POST)}
+            icon={<ControlPointIcon />}
+          />
+        </BottomNavigation>
+      </Paper>
+      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+    </>
   );
 };
 export default BottomBar;
