@@ -1,7 +1,8 @@
 import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import SignupForm from "./SignupForm";
+import SignupForm from "./signupForm";
 import LoginLayout from "../_common/LoginLayout";
+import PATH from "../../../constants/path";
 
 const Signup = () => {
   return (
@@ -9,7 +10,7 @@ const Signup = () => {
       <Typography variant="body2" align="center" mb={4}>
         {"이미 가입했는데 잘못 누르셨다구요?? "}
         <Link
-          href="/login"
+          href={PATH.LOGIN}
           align="center"
           underline="always"
           color={"primary"}

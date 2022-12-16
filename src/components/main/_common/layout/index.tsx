@@ -1,7 +1,7 @@
 import { Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { links } from "../../../../data";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 type ButtonColorProps = "primary" | "secondary" | "success";
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -23,4 +23,4 @@ const Layout = ({ children }: { children: ReactNode }) => {
     </>
   );
 };
-export default Layout;
+export default React.memo(Layout);
