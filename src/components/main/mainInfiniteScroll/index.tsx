@@ -3,24 +3,17 @@ import PAGE from "../../../constants/page";
 import InfiniteScroll from "react-infinite-scroller";
 import PostList from "../_common/postList";
 import Layout from "../_common/layout";
-import { getPosts } from "../../../utils/httpModules";
+import { getPosts } from "../../../utils/fetcher";
 const MainInfiniteScroll = () => {
-  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery(
-    "infinite-posts",
-    ({ pageParam = PAGE.START }) => getPosts(pageParam),
-    {
-      // TODO : 이 부분 리턴 걸어야 함.
-      staleTime: 0,
-      getNextPageParam: (lastPage: any) => {
-        let maxCount = Math.ceil(lastPage.pagination.total / PAGE.MAX_PAGE);
-        console.log(lastPage.pagination.page, maxCount);
-        return lastPage.pagination.page < maxCount
-          ? lastPage.pagination.page + 1
-          : undefined;
-      },
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery("infinite-posts", ({ pageParam = PAGE.START }) => getPosts(pageParam), {
+    // TODO : 이 부분 리턴 걸어야 함.
+    staleTime: 0,
+    getNextPageParam: (lastPage: any) => {
+      let maxCount = Math.ceil(lastPage.pagination.total / PAGE.MAX_PAGE);
+      return lastPage.pagination.page < maxCount ? lastPage.pagination.page + 1 : undefined;
     }
-  );
-  if (isLoading) return <div>Loading...</div>;
+  });
+
   // return <InfiniteScroll loadMore={fetchNextPage}></InfiniteScroll>;
   return (
     <Layout>
