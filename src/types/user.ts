@@ -11,3 +11,7 @@ export interface User extends CreatedDateType {
   confirmed: boolean;
   blocked: boolean;
 }
+export type UserType = {
+  jwt: string;
+  user: User;
+};
