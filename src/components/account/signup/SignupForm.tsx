@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Box from "@mui/material/Box";
 import { Button, TextField } from "@mui/material";
-import EmailInput from "./emailInput";
+import EmailInput from "../_common/emailInput";
 import useValidator from "../../../hooks/useValidator";
 import { useMutation } from "react-query";
 import useUser from "../../../hooks/useUser";
@@ -69,13 +69,13 @@ const SignupForm = () => {
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
       <TextField variant="standard" fullWidth={true} value={inputs.username} label={"닉네임"} id={"username"} autoComplete={"off"} name={"username"} sx={{ mb: 2 }} onChange={onChangeInputs} error={!!validateError.message["username"]} autoFocus={true} helperText={!!validateError.message["username"] ? validateError.message["username"] : null} />
-      <EmailInput onChange={onChangeEmail} error={!!validateError.message["email"]} message={!!validateError.message["email"] ? validateError.message["email"] : ""} />
+      <EmailInput value={inputs.email} onChange={onChangeEmail} error={!!validateError.message["email"]} message={!!validateError.message["email"] ? validateError.message["email"] : ""} />
       <TextField
         value={inputs.password}
         variant="standard"
         fullWidth={true}
         label={"비밀번호"}
-        id={"username"}
+        id={"password"}
         autoComplete={"off"}
         name={"password"}
         type={"password"}

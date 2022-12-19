@@ -9,7 +9,8 @@ import MainInfiniteScroll from "../../main/mainInfiniteScroll";
 import MainPrefetch from "../../main/mainPrefetch";
 import PATH from "../../../constants/path";
 import Error from "../error";
-import useUser from "../../../hooks/useUser";
+import Profile from "../../account/profile";
+import ResetPassword from "../../account/resetPassword";
 
 const Routes = () => {
   return (
@@ -22,6 +23,8 @@ const Routes = () => {
       <Route path={PATH.LOGIN} element={<Login />} />
       <Route path={PATH.SIGNUP} element={<Signup />} />
       <Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />
+      <Route path={PATH.RESET_PW} element={<ResetPassword />} />
+      <Route path={PATH.PROFILE} element={<Profile />} />
     </ReactRoutes>
   );
 };

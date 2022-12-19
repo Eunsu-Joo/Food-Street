@@ -8,22 +8,20 @@ interface InitValuesTypes {
   message: ObjType;
 }
 const RegExp = {
-  email:
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+  email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
   password: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/,
-  trim: /\s/g,
+  trim: /\s/g
 };
 
 const initValues: InitValuesTypes = {
   isError: false,
-  message: {},
+  message: {}
 };
 
 const useValidator = (inputs: ObjType) => {
   const [error, setError] = useState(initValues);
   let isError = false;
   let message: ObjType = {};
-
   const validateLogin = () => {
     if (inputs.identifier) {
       if (!RegExp.email.test(inputs.identifier)) {
@@ -71,8 +69,7 @@ const useValidator = (inputs: ObjType) => {
     if (password) {
       if (!RegExp.password.test(password)) {
         isError = true;
-        message["password"] =
-          "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
+        message["password"] = "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
       }
     }
     //passwordCheck
@@ -87,6 +84,7 @@ const useValidator = (inputs: ObjType) => {
     setError({ isError, message });
     return !isError;
   };
+
   const validateEmail = () => {
     const { email } = inputs;
     if (email) {
@@ -102,6 +100,7 @@ const useValidator = (inputs: ObjType) => {
     setError({ isError, message });
     return !isError;
   };
+
   useEffect(() => {
     return () => {
       setError(initValues);

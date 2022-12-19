@@ -5,7 +5,8 @@ const PATH = {
   LOGIN: "/account/login",
   SIGNUP: "/account/sign_up",
   FORGOT_PW: "/account/forgot_password",
-  USER_INFO: "/account/user_info",
+  PROFILE: "/account/profile",
+  RESET_PW: "/account/reset_password",
   ERROR: "/error"
 };
 export default PATH;

@@ -1,12 +1,12 @@
 import Link from "@mui/material/Link";
 import { Typography } from "@mui/material";
 import LoginForm from "./LoginForm";
-import LoginLayout from "../_common/LoginLayout";
+import AccountLayout from "../_common/accountLayout";
 import PATH from "../../../constants/path";
 
 const Login = () => {
   return (
-    <LoginLayout title={"Login"}>
+    <AccountLayout title={"Login"}>
       <Typography variant="body2" align="center" mb={4}>
         {"아직 가입을 안하셨다구요?? "}
         <Link href={PATH.SIGNUP} align="center" underline="always" color={"primary"}>
@@ -20,7 +20,7 @@ const Login = () => {
           Forgot your password
         </Link>
       </Typography>
-    </LoginLayout>
+    </AccountLayout>
   );
 };
 export default Login;

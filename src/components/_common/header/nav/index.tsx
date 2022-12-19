@@ -23,15 +23,15 @@ const Nav = ({ isToggle, onToggle }: NavProps) => {
     navigate(path);
   };
   const { user } = useUser();
-  const { isOpen, controller } = useModal();
+
   const NAV_LIST = [
     {
-      label: "Home",
+      label: "홈",
       icon: <HomeIcon />,
       path: PATH.HOME
     },
     {
-      label: "Add Post",
+      label: "글쓰기",
       icon: <LoupeIcon />,
       path: PATH.ADD_POST
     }
@@ -43,39 +43,19 @@ const Nav = ({ isToggle, onToggle }: NavProps) => {
           <div key={index}>
             <ListItem button onClick={() => onClick(item.path)} sx={{ display: "flex", alignItems: "center" }}>
               {item.icon}
-              <ListItemText primary={item.label} sx={{ pl: 2 }} />
+              <ListItemText primary={item.label} sx={{ pl: 2, fontWeight: 600 }} />
             </ListItem>
             <Divider />
           </div>
         ))}
-        {user ? (
-          <>
-            <div>
-              <ListItem button onClick={() => onClick(PATH.USER_INFO)} sx={{ display: "flex", alignItems: "center" }}>
-                <InfoIcon />
-                <ListItemText primary={"User Info"} sx={{ pl: 2 }} />
-              </ListItem>
-              <Divider />
-            </div>
-            <div>
-              <ListItem button onClick={controller} sx={{ display: "flex", alignItems: "center" }}>
-                <LogoutIcon />
-                <ListItemText primary={"Logout"} sx={{ pl: 2 }} />
-              </ListItem>
-              <Divider />
-            </div>
-          </>
-        ) : (
-          <div>
-            <ListItem button onClick={() => onClick(PATH.LOGIN)} sx={{ display: "flex", alignItems: "center" }}>
-              <PersonIcon />
-              <ListItemText primary={"Login"} sx={{ pl: 2 }} />
-            </ListItem>
-            <Divider />
-          </div>
-        )}
+        <div>
+          <ListItem button onClick={() => (user ? onClick(PATH.PROFILE) : onClick(PATH.LOGIN))} sx={{ display: "flex", alignItems: "center" }}>
+            {user ? <InfoIcon /> : <PersonIcon />}
+            <ListItemText primary={user ? "프로필" : "로그인"} sx={{ pl: 2 }} />
+          </ListItem>
+          <Divider />
+        </div>
       </List>
-      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
     </StyledNav>
   );
 };
