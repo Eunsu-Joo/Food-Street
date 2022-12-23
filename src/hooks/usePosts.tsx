@@ -1,13 +1,27 @@
 import { useQuery, useQueryClient } from "react-query";
 import { useEffect, useRef } from "react";
 import QUERY_KEYS from "../constants/querykeys";
-import { getPosts } from "../utils/fetcher";
+import fetcher from "../utils/fetcher";
+import PAGE from "../constants/page";
 
 interface UsePostsProps {
   currentPage: number;
   isPrefetch: boolean;
 }
-
+const getPosts = async (currentPage: number) => {
+  const { data } = await fetcher({
+    url: "/store-posts",
+    method: "get",
+    params: {
+      populate: "*",
+      pagination: {
+        page: currentPage,
+        pageSize: PAGE.MAX_PAGE
+      }
+    }
+  });
+  return data;
+};
 const usePosts = ({ currentPage, isPrefetch }: UsePostsProps) => {
   const queryClient = useQueryClient();
   const maxCount = useRef<null | number>(null);

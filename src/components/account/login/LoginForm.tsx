@@ -3,21 +3,16 @@ import { Button, TextField } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import useValidator from "../../../hooks/useValidator";
 import useUser from "../../../hooks/useUser";
-import { useMutation } from "react-query";
-import { AxiosError } from "axios";
 import { Navigate } from "react-router-dom";
-import { loginUser } from "../../../utils/fetcher";
-import { CustomErrorType } from "../../../types/error";
-import ERROR_MSG from "../../../constants/errorMsg";
-import STATUS from "../../../constants/status";
+import useLogin from "../../../hooks/useLogin";
 
 const LoginForm = () => {
-  const { user, updateUser } = useUser();
   const [inputs, setInputs] = useState({
-    identifier: "dmstn0557@naver.com",
+    identifier: "holicholicpop@gmail.com",
     password: "ghgh1212!!"
   });
 
+  const { identifier, password } = inputs;
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setInputs({
@@ -27,26 +22,12 @@ const LoginForm = () => {
   };
 
   const { validateLogin, error: validateError, setError } = useValidator(inputs);
-  const { mutate: login } = useMutation(() => loginUser({ identifier: inputs.identifier, password: inputs.password }), {
-    onError: (error: AxiosError<CustomErrorType>) => {
-      if (!error.response) throw error;
-      let { status, message } = error.response.data;
-      if (message === ERROR_MSG.INVALID) message = "아이디와 비밀번호를 다시 확인해주세요.";
-      if (status === STATUS.NOT_ALLOWED || status === STATUS.INTERVAL) message = "서버애러가 발생했습니다. 관리자에게 문의해주세요.";
-      setError({
-        isError: status !== 200,
-        message: { identifier: "", password: message }
-      });
-    },
-    onSuccess: (data) => {
-      updateUser(data);
-    }
-  });
-
+  const { user } = useUser();
+  const { login } = useLogin({ setError });
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValid = validateLogin();
-    if (isValid) return login();
+    if (isValid) return login({ identifier, password });
   };
 
   return (

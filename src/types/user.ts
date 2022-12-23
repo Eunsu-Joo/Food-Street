@@ -1,17 +1,14 @@
-interface CreatedDateType {
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface User extends CreatedDateType {
+interface UserDataType {
   id: number;
   username: string;
   email: string;
   provider: string;
-  confirmed: boolean;
-  blocked: boolean;
+  profile_image: null | string;
+  store_posts: Array<any>;
+  createdAt: string;
+  updatedAt: string;
 }
 export type UserType = {
   jwt: string;
-  user: User;
+  user: UserDataType;
 };

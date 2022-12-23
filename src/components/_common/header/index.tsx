@@ -25,6 +25,7 @@ const Header = () => {
     setIsToggle(!isToggle);
   };
   const { user } = useUser();
+
   const { isOpen, controller } = useModal();
   const handleClose = () => setAnchorEl(null);
   const handleProfile = () => {
@@ -39,6 +40,7 @@ const Header = () => {
     handleClose();
     controller();
   };
+
   return (
     <>
       <Box sx={{ flexGrow: 1, color: "#fff" }}>
@@ -63,9 +65,8 @@ const Header = () => {
                       fontWeight: 600,
                       mr: 2
                     }}
-                  >
-                    {user.user.username.charAt(0).toUpperCase()}
-                  </Avatar>
+                    src={user.user.profile_image ?? undefined}
+                  />
                   WELCOME, {user.user.username}
                 </Button>
                 <Menu

@@ -3,7 +3,21 @@ import PAGE from "../../../constants/page";
 import InfiniteScroll from "react-infinite-scroller";
 import PostList from "../_common/postList";
 import Layout from "../_common/layout";
-import { getPosts } from "../../../utils/fetcher";
+import fetcher from "../../../utils/fetcher";
+const getPosts = async (currentPage: number) => {
+  const { data } = await fetcher({
+    url: "/store-posts",
+    method: "get",
+    params: {
+      populate: "*",
+      pagination: {
+        page: currentPage,
+        pageSize: PAGE.MAX_PAGE
+      }
+    }
+  });
+  return data;
+};
 const MainInfiniteScroll = () => {
   const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery("infinite-posts", ({ pageParam = PAGE.START }) => getPosts(pageParam), {
     // TODO : 이 부분 리턴 걸어야 함.
