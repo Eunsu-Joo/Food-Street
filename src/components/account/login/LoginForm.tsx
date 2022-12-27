@@ -27,9 +27,8 @@ const LoginForm = () => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValid = validateLogin();
-    if (isValid) return login({ identifier, password });
+    if (isValid) return login({ identifier, password }); //로그인
   };
-
   return (
     <Box component={"form"} onSubmit={onSubmit}>
       <TextField autoFocus={true} id={"email"} sx={{ mb: 4, mt: 2 }} autoComplete="off" fullWidth={true} label="이메일" value={inputs.identifier} onChange={handleChange} name={"identifier"} error={!!validateError.message["identifier"]} helperText={!!validateError.message["identifier"] ? validateError.message["identifier"] : null} />

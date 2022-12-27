@@ -1,11 +1,12 @@
-import fetcher, { getUser, uploadImage } from "../utils/fetcher";
+import fetcher from "../utils/fetcher";
 import { useMutation, useQueryClient } from "react-query";
 import { AxiosError } from "axios/index";
 import useUser from "./useUser";
 import STATUS from "../constants/status";
-import type { ObjType, SignupUserProps, UseSignupProps } from "../types/hooks";
+import type { HooksDefaultProps, ObjType, SignupUserProps, UseSignupProps } from "../types/hooks";
 import type { CustomErrorType } from "../types/error";
 import { UserType } from "../types/user";
+import QUERY_KEYS from "../constants/querykeys";
 
 const signupUser = async ({ email, username, password }: SignupUserProps) => {
   const { data } = await fetcher({
@@ -20,10 +21,11 @@ const signupUser = async ({ email, username, password }: SignupUserProps) => {
   return data;
 };
 
-const useSignup = ({ setError, username, password, email }: UseSignupProps) => {
+const useSignup = ({ setError }: HooksDefaultProps) => {
+  const queryClient = useQueryClient();
   const { updateUser } = useUser();
-  const { mutate: register } = useMutation(
-    () => {
+  const { mutate: register, isError } = useMutation(
+    ({ username, password, email }: UseSignupProps) => {
       return signupUser({
         email,
         username,
@@ -34,27 +36,27 @@ const useSignup = ({ setError, username, password, email }: UseSignupProps) => {
       onError: (error: AxiosError<CustomErrorType>) => {
         if (!error.response) throw error;
         let message: ObjType = {};
-        if (error.response.data.status === STATUS.BAD_REQUEST) message["email"] = "이미 존재하는 이메일 / 닉네임 입니다.";
-        if (error.response.data.status === STATUS.NOT_ALLOWED || error.response.data.status === STATUS.INTERVAL) message["passwordCheck"] = "서버애러가 발생했습니다. 관리자에게 문의해주세요.";
+        const { status } = error.response.data;
+        if (status === STATUS.BAD_REQUEST)
+          message = {
+            username: "중복된 이메일 혹은 닉네임입니다.",
+            email: "중복된 이메일 혹은 닉네임입니다."
+          };
+        if (status === STATUS.NOT_ALLOWED || status === STATUS.INTERVAL)
+          message = {
+            passwordCheck: "예상치못한 애러가 발생했습니다. 관리자에게 문의해주세요."
+          };
         setError({
-          isError: error.response.data.status !== 200,
+          isError: status !== STATUS.OK,
           message
         });
       },
       onSuccess: async (data: UserType) => {
-        const jwt = data.jwt;
-        const newUser = await getUser(data);
-        if (!newUser)
-          setError({
-            isError: true,
-            message: {
-              passwordCheck: "예상치못한 애러가 발생했습니다."
-            }
-          });
-        updateUser({
-          jwt,
-          user: newUser.user
-        });
+        updateUser(data);
+      },
+      onSettled: async () => {
+        if (isError) return;
+        await queryClient.refetchQueries([QUERY_KEYS.USER]);
       }
     }
   );

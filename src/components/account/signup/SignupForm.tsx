@@ -7,7 +7,7 @@ import useUser from "../../../hooks/useUser";
 import useModal from "../../../hooks/useModal";
 import { Navigate } from "react-router-dom";
 import useSignup from "../../../hooks/useSignup";
-import ProfileImage from "../_common/profileImage";
+import TextModal from "../../_common/modal/TextModal";
 
 const SignupForm = () => {
   const [inputs, setInputs] = useState({
@@ -16,12 +16,11 @@ const SignupForm = () => {
     password: "ghgh1212!!",
     passwordCheck: "ghgh1212!!"
   });
-  const [image, setImage] = useState<null | File>(null);
   const { email, password, username } = inputs;
   const { error: validateError, validateSignup, setError } = useValidator(inputs);
   const { user } = useUser();
   const { isOpen, controller } = useModal();
-  const { register } = useSignup({ email, username, password, setError });
+  const { register } = useSignup({ setError });
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
@@ -33,7 +32,10 @@ const SignupForm = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValid = validateSignup();
-    if (isValid) return register();
+    if (isValid) {
+      register({ username, password, email });
+      controller();
+    }
   };
 
   return (
@@ -58,6 +60,11 @@ const SignupForm = () => {
       <Button type="submit" variant={"contained"} fullWidth={true} size={"large"} sx={{ mt: 6 }}>
         회원가입
       </Button>
+      {isOpen && (
+        <TextModal onToggle={controller} isOpen={isOpen}>
+          {user?.user.username}님 방갑습니다!
+        </TextModal>
+      )}
       {user && !isOpen && <Navigate to={"/"} />}
     </Box>
   );
