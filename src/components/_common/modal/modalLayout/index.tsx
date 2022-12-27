@@ -4,23 +4,18 @@ import Box from "@mui/material/Box";
 import ModalDefaultProps from "../modal.interface";
 import type { ReactNode } from "react";
 
-const style = {
+const styles = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  width: "auto"
 };
 
-const ModalLayout = ({
-  children,
-  isOpen,
-  onToggle,
-}: ModalDefaultProps & { children: ReactNode }) => {
+const ModalLayout = ({ children, isOpen, onToggle }: ModalDefaultProps & { children: ReactNode }) => {
   return (
     <ModalContainer
       aria-labelledby="transition-modal-title"
@@ -30,12 +25,12 @@ const ModalLayout = ({
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
-        timeout: 300,
+        timeout: 300
       }}
     >
       <Fade in={isOpen}>
-        <Box sx={style}>
-          <Typography variant="h6" textAlign={"center"}>
+        <Box sx={{ ...styles, p: { xs: 2, sm: 4 } }}>
+          <Typography variant="h6" textAlign={"center"} sx={{ wordBreak: "keep-all" }}>
             {children}
           </Typography>
         </Box>

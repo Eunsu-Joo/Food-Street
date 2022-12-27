@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "@mui/material";
 import BottomBar from "./components/_common/bottombar";
 import Header from "./components/_common/header";
@@ -16,15 +16,15 @@ function App() {
         retry: 1,
         cacheTime: 1000 * 60 * 10,
         refetchOnReconnect: false,
-        retryOnMount: true,
+        retryOnMount: false,
         refetchOnWindowFocus: false
       }
     }
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <Container sx={{ pt: 10, minHeight: "calc(100vh - 56px)", pb: 10 }} maxWidth={"lg"}>
-        <Header />
+      <Header />
+      <Container sx={{ pt: 3 }} maxWidth={"xl"}>
         <Loading />
         <Routes />
         <BottomBar />

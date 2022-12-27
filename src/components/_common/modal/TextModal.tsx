@@ -11,7 +11,10 @@ const TextModal = (props: ModalDefaultProps & { children: ReactNode }) => {
   return (
     <ModalLayout {...rest}>
       {children}
-      <Button onClick={() => navigator(PATH.HOME)}>홈으로</Button>
+
+      <Button fullWidth={true} sx={{ mt: 2 }} onClick={() => navigator(PATH.HOME)}>
+        홈으로
+      </Button>
     </ModalLayout>
   );
 };

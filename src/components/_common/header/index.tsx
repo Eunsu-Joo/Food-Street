@@ -1,108 +1,64 @@
-import Box from "@mui/material/Box";
-import { AppBar, Avatar, Button, IconButton, Stack, Toolbar } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import { Typography, Menu, MenuItem } from "@mui/material";
+import { AppBar, Button, Container, Stack, Toolbar, Typography, Box } from "@mui/material";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Search, SearchIconWrapper, StyledInputBase } from "./header.style";
-import Nav from "./nav";
-import React, { useState, MouseEvent } from "react";
-import CloseIcon from "@mui/icons-material/Close";
-import { green } from "@mui/material/colors";
-import { Link, useNavigate } from "react-router-dom";
+import RamenDiningIcon from "@mui/icons-material/RamenDining";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
 import useUser from "../../../hooks/useUser";
 import PATH from "../../../constants/path";
-import useModal from "../../../hooks/useModal";
-import LogoutModal from "../modal/logoutModal";
+import UserToggle from "./userToggle";
+
 const Header = () => {
-  const [isToggle, setIsToggle] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = !!anchorEl;
   const navigator = useNavigate();
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const onToggle = () => {
-    setIsToggle(!isToggle);
-  };
+  const { pathname } = useLocation();
   const { user } = useUser();
 
-  const { isOpen, controller } = useModal();
-  const handleClose = () => setAnchorEl(null);
-  const handleProfile = () => {
-    handleClose();
-    navigator(PATH.PROFILE);
+  const handleLogin = () => {
+    navigator(PATH.LOGIN);
   };
-  const handleChangePw = () => {
-    handleClose();
-    navigator(PATH.RESET_PW);
-  };
-  const handleLogout = () => {
-    handleClose();
-    controller();
-  };
+
+  const currentLinkStyle = (path: string) => ({
+    fontWeight: pathname === path ? 700 : 400,
+    textDecoration: pathname === path ? "underline" : "initial"
+  });
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, color: "#fff" }}>
-        <AppBar position={"fixed"}>
-          <Toolbar>
-            <IconButton size={"large"} edge={"start"} color={"inherit"} aria-label={"open drawer"} sx={{ mr: 2 }} onClick={onToggle}>
-              {isToggle ? <CloseIcon /> : <MenuIcon />}
-            </IconButton>
-            <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-              <Link to={PATH.HOME} style={{ textDecoration: "initial", color: "inherit" }}>
-                맛집을 자랑해 봅시다
-              </Link>
-            </Typography>
-            {user && (
-              <div>
-                <Button sx={{ color: "#fff", fontSize: 18 }} id="basic-button" aria-controls={open ? "basic-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>
-                  <Avatar
-                    sx={{
-                      width: 36,
-                      height: 36,
-                      bgcolor: green[500],
-                      fontWeight: 600,
-                      mr: 2
-                    }}
-                    src={user.user.profile_image ?? undefined}
-                  />
-                  WELCOME, {user.user.username}
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button"
-                  }}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center"
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "center"
-                  }}
-                >
-                  <MenuItem onClick={handleProfile}>프로필💕</MenuItem>
-                  <MenuItem onClick={handleChangePw}>비밀번호 변경🤡</MenuItem>
-                  <MenuItem onClick={handleLogout}>로그아웃💨</MenuItem>
-                </Menu>
-              </div>
-            )}
+      <AppBar position={"static"} sx={{ color: "#fff" }}>
+        <Container maxWidth={"xl"}>
+          <Toolbar sx={{ padding: { sm: 0 } }}>
+            <Box flexGrow={1} alignItems={"center"} sx={{ display: { xs: "none", md: "flex" } }}>
+              <Typography variant="h4" fontWeight={600} fontFamily={"poppins"} noWrap component="div">
+                <Link to={PATH.HOME} style={{ display: "inline-flex", alignItems: "center" }}>
+                  Food Street
+                  <RamenDiningIcon sx={{ ml: 1 }} fontSize={"medium"} />
+                </Link>
+              </Typography>
+              <Stack flexDirection={"row"} fontSize={22} ml={3}>
+                <Link to={PATH.HOME} style={currentLinkStyle(PATH.HOME)}>
+                  홈
+                </Link>
+                <Link to={PATH.ADD_POST} style={{ ...currentLinkStyle(PATH.ADD_POST), marginLeft: "16px" }}>
+                  글쓰기
+                </Link>
+              </Stack>
+            </Box>
             <Search>
               <SearchIconWrapper>
-                <SearchIcon />
+                <SearchIcon fontSize={"medium"} />
               </SearchIconWrapper>
               <StyledInputBase placeholder="검색어를 입력해 주세요…" inputProps={{ "aria-label": "search" }} />
             </Search>
+            {user ? (
+              <UserToggle user={user} />
+            ) : (
+              <Button onClick={handleLogin} variant={"outlined"} sx={{ ml: 2, display: { xs: "none", sm: "inline-flex" } }} color={"inherit"} startIcon={<AccountCircleIcon />} size={"large"}>
+                로그인
+              </Button>
+            )}
           </Toolbar>
-        </AppBar>
-      </Box>
-      <Nav isToggle={isToggle} onToggle={onToggle} />
-      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+        </Container>
+      </AppBar>
     </>
   );
 };
