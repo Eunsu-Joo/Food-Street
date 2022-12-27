@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import UploadBox from "../_common/UploadBox";
+import UploadBox from "./UploadBox";
 import { ChangeEvent, useState } from "react";
 import { Typography } from "@mui/material";
 type ImageUploadProps = {
@@ -26,12 +26,12 @@ const ImageUpload = ({ setImage }: ImageUploadProps) => {
           <Box
             sx={(theme) => ({
               width: "100%",
-              height: "200px",
+              height: "330px",
               backgroundColor: "#fafafa",
               cursor: "pointer",
               "&:hover": {
-                backgroundColor: theme.palette.grey[100],
-              },
+                backgroundColor: theme.palette.grey[100]
+              }
             })}
             display={"flex"}
             justifyContent={"center"}
@@ -39,25 +39,13 @@ const ImageUpload = ({ setImage }: ImageUploadProps) => {
             borderRadius={"4px"}
             overflow={"hidden"}
           >
-            <img
-              src={imgPreview}
-              style={{ objectFit: "contain" }}
-              alt=""
-              width={"inherit"}
-            />
+            <img src={imgPreview} style={{ objectFit: "contain" }} alt="" width={"inherit"} />
           </Box>
         ) : (
-          <UploadBox title={"파일업로드"} />
+          <UploadBox />
         )}
       </label>
-      <input
-        type="file"
-        style={{ display: "none" }}
-        name={"image"}
-        id={"fileUpload"}
-        onChange={onChangeImage}
-        accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG"
-      />
+      <input type="file" style={{ display: "none" }} name={"image"} id={"fileUpload"} onChange={onChangeImage} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" />
     </Box>
   );
 };

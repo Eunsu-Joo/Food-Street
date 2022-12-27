@@ -1,9 +1,9 @@
-import { styled, Typography } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-const StyledImage = styled("div")(({ theme }) => ({
+const StyledUploadBox = styled(Box)(({ theme }) => ({
   boxShadow: theme.shadows[2],
-  height: "200px",
+  height: "330px",
   borderRadius: "4px",
   backgroundColor: theme.palette.grey[50],
   cursor: "pointer",
@@ -13,24 +13,16 @@ const StyledImage = styled("div")(({ theme }) => ({
   justifyContent: "center",
   flexDirection: "column",
   "&:hover": {
-    backgroundColor: theme.palette.grey[100],
-  },
+    backgroundColor: theme.palette.grey[100]
+  }
 }));
 
-const UploadBox = ({
-  title,
-  onClick,
-}: {
-  title: string;
-  onClick?: () => void;
-}) => {
+const UploadBox = () => {
   return (
-    <StyledImage onClick={onClick ?? undefined}>
+    <StyledUploadBox>
       <CloudUploadIcon fontSize={"large"} color="primary" />
-      <Typography color={(theme) => theme.palette.primary.main}>
-        {title}
-      </Typography>
-    </StyledImage>
+      <Typography color={(theme) => theme.palette.primary.main}>"파일업로드"</Typography>
+    </StyledUploadBox>
   );
 };
 export default UploadBox;
