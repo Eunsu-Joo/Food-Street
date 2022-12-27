@@ -17,7 +17,7 @@ export interface UploadImageProps {
   image: File;
   user: UserType;
 }
-export interface UseSignupProps extends HooksDefaultProps {
+export interface UseSignupProps {
   email: string;
   username: string;
   password: string;

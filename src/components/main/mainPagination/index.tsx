@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Pagination, Stack } from "@mui/material";
 import PAGE from "../../../constants/page";
 import usePosts from "../../../hooks/usePosts";
-import Layout from "../_common/layout";
+import MainLayout from "../_common/mainLayout";
 
 const MainPagination = () => {
   const [currentPage, setCurrentPage] = useState(PAGE.START);
@@ -13,12 +13,12 @@ const MainPagination = () => {
   };
 
   return (
-    <Layout>
+    <MainLayout>
       <PostList data={data.data} />
       <Stack direction={"row"} justifyContent={"center"}>
         {!isLoading && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
       </Stack>
-    </Layout>
+    </MainLayout>
   );
 };
 export default React.memo(MainPagination);

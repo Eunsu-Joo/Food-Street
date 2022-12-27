@@ -3,7 +3,7 @@ import PostList from "../_common/postList";
 import { Pagination, Stack } from "@mui/material";
 import usePosts from "../../../hooks/usePosts";
 import PAGE from "../../../constants/page";
-import Layout from "../_common/layout";
+import MainLayout from "../_common/mainLayout";
 import type { MouseEvent } from "react";
 
 const MainPrefetch = () => {
@@ -14,12 +14,12 @@ const MainPrefetch = () => {
     setCurrentPage(page);
   };
   return (
-    <Layout>
+    <MainLayout>
       <PostList data={data.data} />
       <Stack direction={"row"} justifyContent={"center"}>
         {!isLoading && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
       </Stack>
-    </Layout>
+    </MainLayout>
   );
 };
 export default React.memo(MainPrefetch);

@@ -2,7 +2,7 @@ import { useInfiniteQuery } from "react-query";
 import PAGE from "../../../constants/page";
 import InfiniteScroll from "react-infinite-scroller";
 import PostList from "../_common/postList";
-import Layout from "../_common/layout";
+import MainLayout from "../_common/mainLayout";
 import fetcher from "../../../utils/fetcher";
 const getPosts = async (currentPage: number) => {
   const { data } = await fetcher({
@@ -30,13 +30,13 @@ const MainInfiniteScroll = () => {
 
   // return <InfiniteScroll loadMore={fetchNextPage}></InfiniteScroll>;
   return (
-    <Layout>
+    <MainLayout>
       <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
         {data?.pages.map((posts: any, index) => {
           return <PostList data={posts.data} key={index} />;
         })}
       </InfiniteScroll>
-    </Layout>
+    </MainLayout>
   );
 };
 export default MainInfiniteScroll;

@@ -5,20 +5,13 @@ type PostListProps = {
   data: Array<any>;
 };
 
-const CustomGrid = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down("md")]: {
-    border: "1px solid black",
-    justifyContent: "center",
-  },
-}));
-
 const PostList = ({ data }: PostListProps) => {
   return (
-    <CustomGrid container={true} sx={{ py: 4 }} spacing={2}>
+    <Grid container={true} justifyContent={{ xs: "center", md: "flex-start" }} my={{ xs: 2, sm: 4 }} spacing={2}>
       {data.map((item: any, index: number) => (
         <PostItem key={index} item={item} />
       ))}
-    </CustomGrid>
+    </Grid>
   );
 };
 export default PostList;
