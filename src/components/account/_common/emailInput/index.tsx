@@ -19,8 +19,8 @@ const EmailInput = ({ onChange, error, message, value }: EmailInputProps) => {
   }, [email, emailAddress]);
   return (
     <>
-      <EmailInputBox sx={{ mb: 2 }}>
-        <TextField id={"email"} autoComplete={"off"} value={email} onChange={onChangeEmail} variant={"standard"} error={error} label={"이메일"} />
+      <EmailInputBox>
+        <TextField margin={"normal"} autoComplete={"off"} value={email} onChange={onChangeEmail} variant={"standard"} error={error} label={"이메일"} />
         <Typography component={"span"} fontSize={20} mx={2} className={"font"}>
           @
         </Typography>
@@ -41,11 +41,7 @@ const EmailInput = ({ onChange, error, message, value }: EmailInputProps) => {
           </Select>
         </FormControl>
       </EmailInputBox>
-      {error && (
-        <FormHelperText error={true} sx={{ mt: -1 }}>
-          {message}
-        </FormHelperText>
-      )}
+      {error && <FormHelperText error={true}>{message}</FormHelperText>}
     </>
   );
 };

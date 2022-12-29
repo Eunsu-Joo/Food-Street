@@ -1,23 +1,26 @@
-import PostList from "../_common/postList";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Pagination, Stack } from "@mui/material";
-import PAGE from "../../../constants/page";
+import PostList from "../_common/postList";
 import usePosts from "../../../hooks/usePosts";
+import PAGE from "../../../constants/page";
 import MainLayout from "../_common/mainLayout";
 
 const MainPagination = () => {
   const [currentPage, setCurrentPage] = useState(PAGE.START);
   const { data, isLoading } = usePosts({ currentPage, isPrefetch: false });
-  const handlePagination = (event: any, page: number) => {
+
+  const handlePagination = (event: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
   return (
     <MainLayout>
       <PostList data={data.data} />
-      <Stack direction={"row"} justifyContent={"center"}>
-        {!isLoading && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
-      </Stack>
+      {!isLoading && data.data.length > 0 && (
+        <Stack direction={"row"} justifyContent={"center"}>
+          <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />
+        </Stack>
+      )}
     </MainLayout>
   );
 };

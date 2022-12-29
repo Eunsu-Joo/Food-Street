@@ -21,7 +21,7 @@ const UploadBox = () => {
   return (
     <StyledUploadBox>
       <CloudUploadIcon fontSize={"large"} color="primary" />
-      <Typography color={(theme) => theme.palette.primary.main}>"파일업로드"</Typography>
+      <Typography color={(theme) => theme.palette.primary.main}>파일업로드</Typography>
     </StyledUploadBox>
   );
 };

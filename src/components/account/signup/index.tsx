@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import PATH from "../../../constants/path";
 import AccountLayout from "../_common/accountLayout";
-import SignupForm from "./SignupForm";
+import SignupForm from "./signupForm";
 
 const Signup = () => {
   return (

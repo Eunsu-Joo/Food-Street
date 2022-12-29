@@ -14,7 +14,7 @@ const useUser = () => {
     },
     {
       initialData: getSessionUser(),
-      staleTime: 1000 * 60,
+      staleTime: 1000 * 60 * 20,
       cacheTime: 1000 * 60 * 60,
       onSuccess: (received: UserType | null) => {
         return !received ? clearSessionUser() : updateSessionUser(received);

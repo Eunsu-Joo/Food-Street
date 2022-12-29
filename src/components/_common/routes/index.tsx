@@ -1,16 +1,15 @@
 import { Route, Routes as ReactRoutes } from "react-router-dom";
-import Main from "../../main";
 import AddPost from "../../addPost";
 import Login from "../../account/login";
 import Signup from "../../account/signup";
-import ForgotPassword from "../../account/forgotPassword";
 import React from "react";
 import MainInfiniteScroll from "../../main/mainInfiniteScroll";
-import MainPrefetch from "../../main/mainPrefetch";
-import PATH from "../../../constants/path";
 import Error from "../error";
 import Profile from "../../account/profile";
-import ResetPassword from "../../account/resetPassword";
+import ChangePassword from "../../account/changePassword";
+import Main from "../../main";
+import MainPrefetch from "../../main/mainPrefetch";
+import PATH from "../../../constants/path";
 
 const Routes = () => {
   return (
@@ -22,8 +21,9 @@ const Routes = () => {
       <Route path={PATH.ADD_POST} element={<AddPost />} />
       <Route path={PATH.LOGIN} element={<Login />} />
       <Route path={PATH.SIGNUP} element={<Signup />} />
-      <Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />
-      <Route path={PATH.RESET_PW} element={<ResetPassword />} />
+      <Route path={PATH.CHANGE_PW} element={<ChangePassword />} />
+      {/*<Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />*/}
+      {/*<Route path={PATH.RESET_PW} element={<ResetPassword />} />*/}
       <Route path={PATH.PROFILE} element={<Profile />} />
     </ReactRoutes>
   );

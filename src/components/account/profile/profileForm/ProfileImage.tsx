@@ -1,9 +1,14 @@
 import { Avatar, Stack, Typography } from "@mui/material";
 import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import checkImage from "../../../../utils/checkImage";
+interface ProfileImageProps {
+  onChange: Dispatch<SetStateAction<File | null>>;
+  error: boolean;
+  defaultImage: undefined | string;
+}
 
-const ProfileImage = ({ onChange, error }: { onChange: Dispatch<SetStateAction<File | null>>; error: boolean }) => {
-  const [preview, setPreview] = useState<null | string>(null);
+const ProfileImage = ({ onChange, error, defaultImage }: ProfileImageProps) => {
+  const [preview, setPreview] = useState<undefined | string>(defaultImage);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const selectImage = (event: ChangeEvent<HTMLInputElement>) => {
     const files: FileList | null = event.target.files;
@@ -23,7 +28,7 @@ const ProfileImage = ({ onChange, error }: { onChange: Dispatch<SetStateAction<F
       <input type="file" id={"profileImage"} ref={fileInputRef} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" onChange={selectImage} style={{ display: "none" }} />
       <label htmlFor="profileImage">
         <Stack direction={"column"} alignItems={"center"}>
-          <Avatar sx={{ width: 100, height: 100, cursor: "pointer" }} src={preview ?? undefined} />
+          <Avatar sx={{ width: 100, height: 100, cursor: "pointer" }} src={preview} />
           <Typography fontSize={18} mt={1} color={error ? "error" : "inherit"}>
             프로필 설정
           </Typography>

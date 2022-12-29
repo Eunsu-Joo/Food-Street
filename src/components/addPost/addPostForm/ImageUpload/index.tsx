@@ -24,10 +24,10 @@ const ImageUpload = ({ setImage }: ImageUploadProps) => {
       <label htmlFor="fileUpload">
         {imgPreview ? (
           <Box
+            width={"100%"}
+            height={{ xs: 250, md: 330 }}
+            bgcolor={"#fafafa"}
             sx={(theme) => ({
-              width: "100%",
-              height: "330px",
-              backgroundColor: "#fafafa",
               cursor: "pointer",
               "&:hover": {
                 backgroundColor: theme.palette.grey[100]

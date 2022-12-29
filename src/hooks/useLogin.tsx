@@ -1,12 +1,13 @@
 import fetcher from "../utils/fetcher";
 import { useMutation, useQueryClient } from "react-query";
-import { AxiosError } from "axios/index";
-import { CustomErrorType } from "../types/error";
+import QUERY_KEYS from "../constants/querykeys";
 import STATUS from "../constants/status";
 import useUser from "./useUser";
+import type { AxiosError } from "axios/index";
+import type { ObjType } from "../types";
+import type { CustomErrorType } from "../types/error";
 import type { UserType } from "../types/user";
-import type { HooksDefaultProps, ObjType, LoginUserProps } from "../types/hooks";
-import QUERY_KEYS from "../constants/querykeys";
+import type { HooksDefaultProps, LoginUserProps } from "../types/hooks";
 
 const loginUser = async ({ identifier, password }: LoginUserProps) => {
   const { data } = await fetcher({
@@ -39,8 +40,7 @@ const useLogin = ({ setError }: HooksDefaultProps) => {
       updateUser(data); //데이터 업데이트
     },
     onSettled: async () => {
-      if (isError) return;
-      await queryClient.refetchQueries([QUERY_KEYS.USER]);
+      await queryClient.refetchQueries([QUERY_KEYS.USER]); // 쿼리 리패치
     }
   });
   return { login };

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useUser from "../../../hooks/useUser";
 import useModal from "../../../hooks/useModal";
-import LogoutModal from "../modal/logoutModal";
+import Index from "../modal/logoutModal";
 import PATH from "../../../constants/path";
 
 const BottomBar = () => {
@@ -17,13 +17,13 @@ const BottomBar = () => {
   const { user } = useUser();
   const { isOpen, controller } = useModal();
   return (
-    <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, display: { sx: "block", md: "none" } }} elevation={3}>
+    <Paper sx={{ display: { sx: "block", md: "none" }, position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
       <BottomNavigation showLabels>
         {user ? <BottomNavigationAction label={"Logout"} onClick={controller} icon={<LogoutIcon />} /> : <BottomNavigationAction label={"Login"} onClick={() => navigate(PATH.LOGIN)} icon={<AccountCircleIcon />} />}
         <BottomNavigationAction label={"Home"} onClick={() => navigate("/")} icon={<HomeIcon />} />
         <BottomNavigationAction label={"Add Post"} onClick={() => navigate(PATH.ADD_POST)} icon={<ControlPointIcon />} />
       </BottomNavigation>
-      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+      {isOpen && <Index onToggle={controller} isOpen={isOpen} />}
     </Paper>
   );
 };

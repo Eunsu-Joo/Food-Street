@@ -1,10 +1,10 @@
-import ModalLayout from "./modalLayout";
-import ModalDefaultProps from "./modal.interface";
+import ModalLayout from "../_common/modalLayout";
+import ModalDefaultProps from "../modal.interface";
 import { Button } from "@mui/material";
-import useUser from "../../../hooks/useUser";
+import useUser from "../../../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 
-const LogoutModal = (props: ModalDefaultProps) => {
+const Index = (props: ModalDefaultProps) => {
   const { clearUser } = useUser();
   const navigator = useNavigate();
   const logout = () => {
@@ -21,4 +21,4 @@ const LogoutModal = (props: ModalDefaultProps) => {
     </ModalLayout>
   );
 };
-export default LogoutModal;
+export default Index;

@@ -12,7 +12,7 @@ const AddPost = () => {
       <Typography fontWeight={700} component={"h1"} fontSize={{ xs: 22, sm: 28 }} color={"primary"} mb={{ xs: 2, sm: 4 }}>
         Food Street! 맛집을 등록해봅시다.
       </Typography>
-      <AddPostForm />
+      <AddPostForm user={user} />
     </Box>
   );
 };

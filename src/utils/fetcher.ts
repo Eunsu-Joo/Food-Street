@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { UserType } from "../types/user";
-import { UploadImageProps } from "../types/hooks";
+import { ChangePasswordProps, UploadImageProps } from "../types/hooks";
 import getJWTHeader from "./getJWTHeader";
+import useUser from "../hooks/useUser";
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,

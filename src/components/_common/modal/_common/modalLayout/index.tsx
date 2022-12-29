@@ -1,7 +1,7 @@
 import { Fade, Modal as ModalContainer, Typography } from "@mui/material";
 import { Backdrop } from "@mui/material";
 import Box from "@mui/material/Box";
-import ModalDefaultProps from "../modal.interface";
+import ModalDefaultProps from "../../modal.interface";
 import type { ReactNode } from "react";
 
 const styles = {

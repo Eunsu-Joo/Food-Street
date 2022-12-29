@@ -1,37 +1,39 @@
 import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useModal from "../../../../hooks/useModal";
+import Index from "../../modal/logoutModal";
 import PATH from "../../../../constants/path";
 import { Avatar, Button, Menu, MenuItem, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
-import LogoutModal from "../../modal/logoutModal";
-import { UserType } from "../../../../types/user";
+import type { UserType } from "../../../../types/user";
 
-type UserToggleProps = {
-  user: UserType;
-};
-
-const UserToggle = ({ user }: UserToggleProps) => {
+const UserToggle = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = !!anchorEl;
   const navigator = useNavigate();
+  const { isOpen, controller } = useModal();
+
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const { isOpen, controller } = useModal();
+
   const handleClose = () => setAnchorEl(null);
+
   const handleProfile = () => {
     handleClose();
     navigator(PATH.PROFILE);
   };
+
   const handleChangePw = () => {
     handleClose();
-    navigator(PATH.RESET_PW);
+    navigator(PATH.CHANGE_PW);
   };
+
   const handleLogout = () => {
     handleClose();
     controller();
   };
+
   return (
     <div>
       <Button sx={{ color: "#fff", fontSize: 18 }} id="basic-button" aria-controls={open ? "basic-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>
@@ -43,7 +45,7 @@ const UserToggle = ({ user }: UserToggleProps) => {
             fontWeight: 600,
             mx: 1
           }}
-          src={user.user.profile_image ?? undefined}
+          src={user.user.profile_image?.url ?? undefined}
         />
         <Typography sx={{ display: { xs: "none", sm: "inline" } }}>{user.user.username}</Typography>
       </Button>
@@ -68,7 +70,7 @@ const UserToggle = ({ user }: UserToggleProps) => {
         <MenuItem onClick={handleChangePw}>비밀번호 변경🤡</MenuItem>
         <MenuItem onClick={handleLogout}>로그아웃💨</MenuItem>
       </Menu>
-      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+      {isOpen && <Index onToggle={controller} isOpen={isOpen} />}
     </div>
   );
 };

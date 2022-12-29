@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import LoginForm from "./LoginForm";
+import LoginForm from "./loginForm";
 import AccountLayout from "../_common/accountLayout";
 import PATH from "../../../constants/path";
 
@@ -16,14 +16,14 @@ const Login = () => {
         </Link>
       </Typography>
       <LoginForm />
-      <Typography variant="body2" align="center" mt={2}>
-        {"비밀번호를 잊으셨나요?? "}
-        <Link to={PATH.FORGOT_PW}>
-          <Typography component={"span"} color={"primary"} sx={{ textDecoration: "underline" }}>
-            forgot password
-          </Typography>
-        </Link>
-      </Typography>
+      {/*<Typography variant="body2" align="center" mt={2}>*/}
+      {/*  {"비밀번호를 잊으셨나요?? "}*/}
+      {/*  <Link to={PATH.FORGOT_PW}>*/}
+      {/*    <Typography component={"span"} color={"primary"} sx={{ textDecoration: "underline" }}>*/}
+      {/*      forgot password*/}
+      {/*    </Typography>*/}
+      {/*  </Link>*/}
+      {/*</Typography>*/}
     </AccountLayout>
   );
 };

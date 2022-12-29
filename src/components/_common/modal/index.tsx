@@ -1,21 +1,19 @@
-import { ReactNode } from "react";
-import ModalLayout from "./modalLayout";
-import { Button } from "@mui/material";
+import ModalLayout from "./_common/modalLayout";
 import { useNavigate } from "react-router-dom";
+import { Button, Typography } from "@mui/material";
 import PATH from "../../../constants/path";
 import type ModalDefaultProps from "./modal.interface";
 
-const TextModal = (props: ModalDefaultProps & { children: ReactNode }) => {
+const Modal = (props: ModalDefaultProps & { message: string }) => {
   const navigator = useNavigate();
-  const { children, ...rest } = props;
+  const { message, ...rest } = props;
   return (
     <ModalLayout {...rest}>
-      {children}
-
+      <Typography>{message}</Typography>
       <Button fullWidth={true} sx={{ mt: 2 }} onClick={() => navigator(PATH.HOME)}>
         홈으로
       </Button>
     </ModalLayout>
   );
 };
-export default TextModal;
+export default Modal;

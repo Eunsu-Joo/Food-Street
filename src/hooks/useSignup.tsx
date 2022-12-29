@@ -3,10 +3,11 @@ import { useMutation, useQueryClient } from "react-query";
 import { AxiosError } from "axios/index";
 import useUser from "./useUser";
 import STATUS from "../constants/status";
-import type { HooksDefaultProps, ObjType, SignupUserProps, UseSignupProps } from "../types/hooks";
-import type { CustomErrorType } from "../types/error";
-import { UserType } from "../types/user";
 import QUERY_KEYS from "../constants/querykeys";
+import type { ObjType } from "../types";
+import type { HooksDefaultProps, SignupUserProps, UseSignupProps } from "../types/hooks";
+import type { CustomErrorType } from "../types/error";
+import type { UserType } from "../types/user";
 
 const signupUser = async ({ email, username, password }: SignupUserProps) => {
   const { data } = await fetcher({
@@ -21,7 +22,7 @@ const signupUser = async ({ email, username, password }: SignupUserProps) => {
   return data;
 };
 
-const useSignup = ({ setError }: HooksDefaultProps) => {
+const useSignup = ({ setError, onSuccess }: HooksDefaultProps & { onSuccess: () => void }) => {
   const queryClient = useQueryClient();
   const { updateUser } = useUser();
   const { mutate: register, isError } = useMutation(
@@ -53,9 +54,9 @@ const useSignup = ({ setError }: HooksDefaultProps) => {
       },
       onSuccess: async (data: UserType) => {
         updateUser(data);
+        onSuccess();
       },
       onSettled: async () => {
-        if (isError) return;
         await queryClient.refetchQueries([QUERY_KEYS.USER]);
       }
     }

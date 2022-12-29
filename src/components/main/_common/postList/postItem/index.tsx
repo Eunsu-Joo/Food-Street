@@ -20,11 +20,11 @@ const PostItem = ({ item }: PostItemProps) => {
     setAnchorEl(null);
   };
   const { attributes } = item;
-
+  const writer = item.attributes?.createdBy.data.attributes.firstname ?? "Stranger";
   return (
     <Grid item xs={20} sm={8} md={4}>
       <Card sx={{ mb: 2 }}>
-        <CardHeader avatar={<Avatar src={attributes.image.data?.attributes.url} aria-label={"recipe"} />} title={attributes.name} subheader={attributes.createdAt} />
+        <CardHeader avatar={<Avatar src={attributes.image.data?.attributes.url} aria-label={"recipe"} />} title={writer} subheader={attributes.createdAt} />
         <CardMedia component={"img"} src={attributes.image.data?.attributes.url} height={220} alt={"이미지"} />
         <CardContent>
           <Typography variant={"body2"} color={"text.secondary"}>

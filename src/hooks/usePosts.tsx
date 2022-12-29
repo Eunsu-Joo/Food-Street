@@ -1,13 +1,10 @@
-import { useQuery, useQueryClient } from "react-query";
 import { useEffect, useRef } from "react";
-import QUERY_KEYS from "../constants/querykeys";
+import { useQuery, useQueryClient } from "react-query";
 import fetcher from "../utils/fetcher";
+import QUERY_KEYS from "../constants/querykeys";
 import PAGE from "../constants/page";
+import type { UsePostsProps } from "../types/hooks";
 
-interface UsePostsProps {
-  currentPage: number;
-  isPrefetch: boolean;
-}
 const getPosts = async (currentPage: number) => {
   const { data } = await fetcher({
     url: "/store-posts",
@@ -22,19 +19,23 @@ const getPosts = async (currentPage: number) => {
   });
   return data;
 };
+
 const usePosts = ({ currentPage, isPrefetch }: UsePostsProps) => {
   const queryClient = useQueryClient();
-  const maxCount = useRef<null | number>(null);
+  const maxCount = useRef<null | number>(null); //페이지네이션 count
+
   const fallback = {
     data: [],
     pagination: {}
-  };
+  }; //기본 설정
+
   const queryKey = isPrefetch ? QUERY_KEYS.PRE_POSTS : QUERY_KEYS.POSTS;
+
   const { data = fallback, isLoading } = useQuery([queryKey, currentPage], () => getPosts(currentPage), {
     select: (data) => {
       const pagination = data.meta.pagination;
       return { data: data.data, pagination };
-    }
+    } // posts data 가공
   });
 
   useEffect(() => {
