@@ -10,10 +10,10 @@ import useSignup from "../../../../hooks/useSignup";
 import Modal from "../../../_common/modal";
 import useInputs from "../../../../hooks/useInputs";
 const defaultValues = {
-  username: "Eunsu",
-  email: "holicholicpop@gmail.com",
-  password: "ghgh1212!!",
-  passwordCheck: "ghgh1212!!"
+  username: "",
+  email: "",
+  password: "",
+  passwordCheck: ""
 };
 
 const SignupForm = () => {

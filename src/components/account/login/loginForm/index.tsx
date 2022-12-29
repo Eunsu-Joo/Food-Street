@@ -8,8 +8,8 @@ import { Button, TextField } from "@mui/material";
 import useInputs from "../../../../hooks/useInputs";
 
 const defaultValues = {
-  identifier: "holicholicpop@gmail.com",
-  password: "ghgh1212!!"
+  identifier: "",
+  password: ""
 };
 
 const LoginForm = () => {

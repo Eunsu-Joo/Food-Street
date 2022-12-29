@@ -12,9 +12,9 @@ import useModal from "../../../hooks/useModal";
 import Modal from "../../_common/modal";
 
 const defaultValues = {
-  currentPassword: "ghgh1212!!",
-  password: "ghgh1212!!",
-  passwordConfirmation: "ghgh1212!!"
+  currentPassword: "",
+  password: "",
+  passwordConfirmation: ""
 };
 
 const ResetPassword = () => {
