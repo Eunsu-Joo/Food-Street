@@ -10,6 +10,8 @@ import ChangePassword from "../../account/changePassword";
 import Main from "../../main";
 import MainPrefetch from "../../main/mainPrefetch";
 import PATH from "../../../constants/path";
+import Search from "../../main/search";
+import MyList from "../../account/my_list";
 
 const Routes = () => {
   return (
@@ -25,6 +27,8 @@ const Routes = () => {
       {/*<Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />*/}
       {/*<Route path={PATH.RESET_PW} element={<ResetPassword />} />*/}
       <Route path={PATH.PROFILE} element={<Profile />} />
+      <Route path={PATH.SEARCH} element={<Search />} />
+      <Route path={PATH.MY_LIST} element={<MyList />} />
     </ReactRoutes>
   );
 };

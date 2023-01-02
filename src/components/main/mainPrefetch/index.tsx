@@ -4,6 +4,7 @@ import PostList from "../_common/postList";
 import usePosts from "../../../hooks/usePosts";
 import PAGE from "../../../constants/page";
 import MainLayout from "../_common/mainLayout";
+import NoResult from "../_common/postList/noResult";
 
 const MainPrefetch = () => {
   const [currentPage, setCurrentPage] = useState(PAGE.START);
@@ -13,14 +14,13 @@ const MainPrefetch = () => {
     setCurrentPage(page);
   };
 
+  if (!isLoading && data.data.length === 0) return <NoResult />;
   return (
     <MainLayout>
       <PostList data={data.data} />
-      {!isLoading && data.data.length > 0 && (
-        <Stack direction={"row"} justifyContent={"center"}>
-          <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />
-        </Stack>
-      )}
+      <Stack direction={"row"} justifyContent={"center"}>
+        {data.data.length > 0 && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
+      </Stack>
     </MainLayout>
   );
 };

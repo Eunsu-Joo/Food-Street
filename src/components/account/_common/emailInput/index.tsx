@@ -6,8 +6,8 @@ import EmailInputBox from "./emailInput.style";
 import type EmailInputProps from "./emailInput.interface";
 
 const EmailInput = ({ onChange, error, message, value }: EmailInputProps) => {
-  const [email, setEmail] = useState(value.split("@")[0]);
-  const [emailAddress, setEmailAddress] = useState(`@${value?.split("@")[1]}`);
+  const [email, setEmail] = useState(value?.split("@")[0] ?? "");
+  const [emailAddress, setEmailAddress] = useState(value ? `@${value.split("@")[1]}` : "");
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };

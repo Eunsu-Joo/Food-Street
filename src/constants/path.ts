@@ -8,6 +8,8 @@ const PATH = {
   PROFILE: "/account/profile",
   RESET_PW: "/account/reset_password",
   ERROR: "/error",
-  CHANGE_PW: "/account/change_password"
+  CHANGE_PW: "/account/change_password",
+  MY_LIST: "/account/my_list",
+  SEARCH: "/main/search"
 };
 export default PATH;

@@ -12,16 +12,17 @@ const MainPagination = () => {
   const handlePagination = (event: ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
-
   return (
-    <MainLayout>
-      <PostList data={data.data} />
-      {!isLoading && data.data.length > 0 && (
-        <Stack direction={"row"} justifyContent={"center"}>
-          <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />
-        </Stack>
+    <>
+      {!isLoading && (
+        <MainLayout>
+          <PostList data={data.data} />
+          <Stack direction={"row"} justifyContent={"center"}>
+            {data.data.length > 0 && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
+          </Stack>
+        </MainLayout>
       )}
-    </MainLayout>
+    </>
   );
 };
 export default React.memo(MainPagination);

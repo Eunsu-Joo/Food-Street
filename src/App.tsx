@@ -24,7 +24,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <Container sx={{ pt: 3 }} maxWidth={"xl"}>
+      <Container sx={{ pt: 3 }} maxWidth={"lg"}>
         <Loading />
         <Routes />
         <BottomBar />

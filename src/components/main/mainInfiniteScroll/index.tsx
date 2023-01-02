@@ -32,9 +32,9 @@ const MainInfiniteScroll = () => {
   return (
     <MainLayout>
       <InfiniteScroll loadMore={() => fetchNextPage()} hasMore={hasNextPage}>
-        {data?.pages.map((posts: any, index) => {
-          return <PostList data={posts.data} key={index} />;
-        })}
+        {/*{data?.pages.map((posts: any, index) => {*/}
+        {/*  return <PostList data={posts.data} key={index} />;*/}
+        {/*})}*/}
       </InfiniteScroll>
     </MainLayout>
   );

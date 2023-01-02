@@ -17,4 +17,3 @@ const PostList = ({ data }: PostListProps) => {
   );
 };
 export default PostList;
-// suspense

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useUser from "../../../hooks/useUser";
 import UserToggle from "./userToggle";
@@ -12,12 +12,12 @@ import PATH from "../../../constants/path";
 
 const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
+  const [search, setSearch] = useState("");
   const navigator = useNavigate();
   const { pathname } = useLocation();
   const { user } = useUser();
 
   const onToggleSearch = () => setIsSearch((prev) => !prev);
-
   const handleLogin = () => {
     navigator(PATH.LOGIN);
   };
@@ -26,10 +26,13 @@ const Header = () => {
     fontWeight: pathname === path ? 700 : 400,
     textDecoration: pathname === path ? "underline" : "initial"
   });
-
+  const handleSearch = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (search) navigator(`${PATH.SEARCH}?keyword=${search}`);
+  };
   return (
     <AppBar position={"static"}>
-      <Container maxWidth={"xl"}>
+      <Container maxWidth={"lg"}>
         <Toolbar sx={{ padding: { xs: 0 }, color: "#fff" }}>
           <Box flexGrow={1} alignItems={"center"} display={"flex"}>
             <Link to={PATH.HOME}>
@@ -49,9 +52,9 @@ const Header = () => {
               </Link>
             </Stack>
           </Box>
-          <Box display={"flex"} alignItems={"center"} component={"form"}>
-            {isSearch && <StyledInputBase placeholder="검색어를 입력해 주세요…" inputProps={{ "aria-label": "search" }} />}
-            <IconButton form={"submit"} color={"inherit"} aria-label="upload picture" component="label" onClick={onToggleSearch}>
+          <Box display={"flex"} alignItems={"center"} component={"form"} onSubmit={handleSearch}>
+            {isSearch && <StyledInputBase value={search} onChange={(e) => setSearch(e.target.value)} placeholder="검색어를 입력해 주세요…" inputProps={{ "aria-label": "search" }} />}
+            <IconButton color={"inherit"} aria-label="upload picture" component="label" onClick={onToggleSearch}>
               {isSearch ? <CloseIcon fontSize={"medium"} /> : <SearchIcon fontSize={"medium"} />}
             </IconButton>
           </Box>

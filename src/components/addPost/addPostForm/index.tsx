@@ -13,6 +13,9 @@ import Modal from "../../_common/modal";
 import useValidator from "../../../hooks/useValidator";
 import useAddPost from "../../../hooks/useAddPost";
 import { UserType } from "../../../types/user";
+import moment from "moment";
+import PATH from "../../../constants/path";
+import { useNavigate } from "react-router-dom";
 
 const AddPostForm = ({ user }: { user: UserType }) => {
   const [inputs, setInputs] = useState({
@@ -24,8 +27,9 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   });
   const [image, setImage] = useState<null | File>(null);
   const { isOpen, controller } = useModal();
+  const navigator = useNavigate();
   const { error: validateError, setError, validateAddPost } = useValidator(inputs);
-  const { updatePost } = useAddPost({ setError });
+  const { updatePost } = useAddPost({ setError, onSuccess: controller });
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setInputs({
@@ -45,9 +49,10 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const handleSubmit = () => {
     const isValidate = validateAddPost();
     if (isValidate) {
-      return updatePost({ ...inputs, user });
+      return updatePost({ ...inputs, image, start_time: moment(inputs.start_time, "HH:mm A").format("HH:mm:ss"), end_time: moment(inputs.start_time, "HH:mm A").format("HH:mm:ss"), user });
     }
   };
+
   return (
     <>
       <TextFieldBox label={"상호명"}>
@@ -100,14 +105,14 @@ const AddPostForm = ({ user }: { user: UserType }) => {
         </TextFieldBox>
       </Stack>
       <Box display={"flex"} justifyContent={"center"} mt={6}>
-        <Button sx={{ mr: 6, px: 6 }} variant={"outlined"} size={"large"} onClick={controller}>
+        <Button sx={{ mr: 6, px: 6 }} variant={"outlined"} size={"large"} onClick={() => navigator(PATH.HOME)}>
           취소
         </Button>
         <Button sx={{ mr: 2, px: 6 }} variant={"contained"} size={"large"} onClick={handleSubmit}>
           등록
         </Button>
       </Box>
-      {isOpen && <Modal onToggle={controller} isOpen={isOpen} message={"홈으로 이동할까요?"} />}
+      {isOpen && <Modal onToggle={controller} isOpen={isOpen} message={"성공적으로 포스팅 되었습니다. 홈으로 이동할까요?"} />}
     </>
   );
 };

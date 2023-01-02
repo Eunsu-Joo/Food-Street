@@ -17,7 +17,7 @@ export interface AddPostProps {
   start_time?: string;
   end_time?: string;
   address?: string;
-  image?: File;
+  image?: File | null;
   user: UserType;
 }
 export interface UpdateUserInfoProps {

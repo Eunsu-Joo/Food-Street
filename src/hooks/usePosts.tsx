@@ -10,7 +10,10 @@ const getPosts = async (currentPage: number) => {
     url: "/store-posts",
     method: "get",
     params: {
-      populate: "*",
+      populate: {
+        0: "users_permissions_user",
+        1: "image"
+      },
       pagination: {
         page: currentPage,
         pageSize: PAGE.MAX_PAGE
@@ -34,6 +37,7 @@ const usePosts = ({ currentPage, isPrefetch }: UsePostsProps) => {
   const { data = fallback, isLoading } = useQuery([queryKey, currentPage], () => getPosts(currentPage), {
     select: (data) => {
       const pagination = data.meta.pagination;
+      maxCount.current = data.meta.pagination.pageCount;
       return { data: data.data, pagination };
     } // posts data 가공
   });

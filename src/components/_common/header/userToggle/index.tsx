@@ -23,7 +23,10 @@ const UserToggle = ({ user }: { user: UserType }) => {
     handleClose();
     navigator(PATH.PROFILE);
   };
-
+  const handleList = () => {
+    handleClose();
+    navigator(PATH.MY_LIST);
+  };
   const handleChangePw = () => {
     handleClose();
     navigator(PATH.CHANGE_PW);
@@ -66,6 +69,7 @@ const UserToggle = ({ user }: { user: UserType }) => {
           horizontal: "center"
         }}
       >
+        <MenuItem onClick={handleList}>내가 쓴 글✨</MenuItem>
         <MenuItem onClick={handleProfile}>프로필💕</MenuItem>
         <MenuItem onClick={handleChangePw}>비밀번호 변경🤡</MenuItem>
         <MenuItem onClick={handleLogout}>로그아웃💨</MenuItem>
