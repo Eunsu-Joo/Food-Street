@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "react-query";
 import PAGE from "../../../constants/page";
 import InfiniteScroll from "react-infinite-scroller";
-import PostList from "../_common/postList";
+import PostList from "../../_common/postList";
 import MainLayout from "../_common/mainLayout";
 import fetcher from "../../../utils/fetcher";
 const getPosts = async (currentPage: number) => {

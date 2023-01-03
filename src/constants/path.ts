@@ -10,6 +10,7 @@ const PATH = {
   ERROR: "/error",
   CHANGE_PW: "/account/change_password",
   MY_LIST: "/account/my_list",
-  SEARCH: "/main/search"
+  SEARCH: "/search",
+  PREFETCH: "/prefetch"
 };
 export default PATH;

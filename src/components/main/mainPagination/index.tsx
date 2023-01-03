@@ -1,28 +1,18 @@
 import React, { ChangeEvent, useState } from "react";
-import { Pagination, Stack } from "@mui/material";
-import PostList from "../_common/postList";
+import PostList from "../../_common/postList";
 import usePosts from "../../../hooks/usePosts";
 import PAGE from "../../../constants/page";
 import MainLayout from "../_common/mainLayout";
+import Pagination from "../../_common/pagination";
 
 const MainPagination = () => {
   const [currentPage, setCurrentPage] = useState(PAGE.START);
-  const { data, isLoading } = usePosts({ currentPage, isPrefetch: false });
-
-  const handlePagination = (event: ChangeEvent<unknown>, page: number) => {
-    setCurrentPage(page);
-  };
+  const { data } = usePosts({ currentPage, isPrefetch: false });
   return (
-    <>
-      {!isLoading && (
-        <MainLayout>
-          <PostList data={data.data} />
-          <Stack direction={"row"} justifyContent={"center"}>
-            {data.data.length > 0 && <Pagination count={Math.ceil(data.pagination.total / PAGE.MAX_PAGE)} page={currentPage} color="primary" size="small" onChange={handlePagination} />}
-          </Stack>
-        </MainLayout>
-      )}
-    </>
+    <MainLayout>
+      <PostList data={data.data} />
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} count={data.pagination.total} />
+    </MainLayout>
   );
 };
 export default React.memo(MainPagination);

@@ -3,7 +3,7 @@ import { Avatar, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, Typ
 import ShareIcon from "@mui/icons-material/Share";
 import moment from "moment";
 import { red } from "@mui/material/colors";
-import noImage from "../../../../../images/noImage.png";
+import noImage from "../../../../images/noImage.png";
 type PostItemProps = {
   item: any;
 };

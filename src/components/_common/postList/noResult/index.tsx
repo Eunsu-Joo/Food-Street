@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
-import NoPosts from "../../../../../images/noPosts.png";
+import NoPosts from "../../../../images/noPosts.png";
 import { useNavigate } from "react-router-dom";
-import PATH from "../../../../../constants/path";
+import PATH from "../../../../constants/path";
 
 const NoResult = () => {
   const navigator = useNavigate();

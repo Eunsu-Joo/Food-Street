@@ -10,7 +10,7 @@ import ChangePassword from "../../account/changePassword";
 import Main from "../../main";
 import MainPrefetch from "../../main/mainPrefetch";
 import PATH from "../../../constants/path";
-import Search from "../../main/search";
+import Search from "../../search";
 import MyList from "../../account/my_list";
 
 const Routes = () => {
@@ -18,17 +18,17 @@ const Routes = () => {
     <ReactRoutes>
       <Route path={PATH.ERROR} element={<Error />} />
       <Route path={PATH.HOME} element={<Main />} />
-      <Route path={`${PATH.MAIN}/prefetch`} element={<MainPrefetch />} />
-      <Route path={`${PATH.MAIN}/infinite_scroll`} element={<MainInfiniteScroll />} />
+      <Route path={PATH.PREFETCH} element={<MainPrefetch />} />
+      {/*<Route path={`${PATH.MAIN}/infinite_scroll`} element={<MainInfiniteScroll />} />*/}
       <Route path={PATH.ADD_POST} element={<AddPost />} />
       <Route path={PATH.LOGIN} element={<Login />} />
       <Route path={PATH.SIGNUP} element={<Signup />} />
       <Route path={PATH.CHANGE_PW} element={<ChangePassword />} />
-      {/*<Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />*/}
-      {/*<Route path={PATH.RESET_PW} element={<ResetPassword />} />*/}
       <Route path={PATH.PROFILE} element={<Profile />} />
       <Route path={PATH.SEARCH} element={<Search />} />
-      <Route path={PATH.MY_LIST} element={<MyList />} />
+      {/*<Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />*/}
+      {/*<Route path={PATH.RESET_PW} element={<ResetPassword />} />*/}
+      {/*<Route path={PATH.MY_LIST} element={<MyList />} />*/}
     </ReactRoutes>
   );
 };

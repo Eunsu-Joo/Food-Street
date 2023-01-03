@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import useUser from "../../../hooks/useUser";
 import UserToggle from "./userToggle";
 import { StyledInputBase } from "./header.style";
@@ -11,25 +11,33 @@ import CloseIcon from "@mui/icons-material/Close";
 import PATH from "../../../constants/path";
 
 const Header = () => {
-  const [isSearch, setIsSearch] = useState(false);
-  const [search, setSearch] = useState("");
+  const [searchParams, _] = useSearchParams();
+  const [isSearch, setIsSearch] = useState(!!searchParams.get("keyword"));
+  const [search, setSearch] = useState(searchParams.get("keyword") ?? "");
   const navigator = useNavigate();
   const { pathname } = useLocation();
   const { user } = useUser();
 
-  const onToggleSearch = () => setIsSearch((prev) => !prev);
+  const currentLinkStyle = {
+    fontWeight: 700,
+    textDecoration: "underline"
+  };
+
+  const onToggleSearch = () => {
+    setIsSearch((prev) => !prev);
+    setSearch("");
+  };
+
   const handleLogin = () => {
     navigator(PATH.LOGIN);
   };
 
-  const currentLinkStyle = (path: string) => ({
-    fontWeight: pathname === path ? 700 : 400,
-    textDecoration: pathname === path ? "underline" : "initial"
-  });
   const handleSearch = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (search) navigator(`${PATH.SEARCH}?keyword=${search}`);
+    if (!search) return;
+    navigator(`${PATH.SEARCH}?keyword=${search}`, { preventScrollReset: true });
   };
+
   return (
     <AppBar position={"static"}>
       <Container maxWidth={"lg"}>
@@ -44,10 +52,10 @@ const Header = () => {
               </Stack>
             </Link>
             <Stack flexDirection={"row"} fontSize={22} ml={3} display={{ xs: "none", md: "flex" }}>
-              <Link to={PATH.HOME} style={currentLinkStyle(PATH.HOME)}>
+              <Link to={PATH.HOME} style={pathname === PATH.HOME || pathname === PATH.PREFETCH ? currentLinkStyle : undefined}>
                 홈
               </Link>
-              <Link to={PATH.ADD_POST} style={{ ...currentLinkStyle(PATH.ADD_POST), marginLeft: "16px" }}>
+              <Link to={PATH.ADD_POST} style={{ ...(pathname === PATH.ADD_POST ? currentLinkStyle : undefined), marginLeft: "16px" }}>
                 글쓰기
               </Link>
             </Stack>

@@ -6,6 +6,7 @@ import useLogin from "../../../../hooks/useLogin";
 import Box from "@mui/material/Box";
 import { Button, TextField } from "@mui/material";
 import useInputs from "../../../../hooks/useInputs";
+import useDebounce from "../../../../hooks/useDebounce";
 
 const defaultValues = {
   identifier: "holicholicpop@gmail.com",
@@ -18,10 +19,12 @@ const LoginForm = () => {
   const { validateLogin, error: validateError, setError } = useValidator(inputs);
   const { user } = useUser();
   const { login } = useLogin({ setError });
-
+  const { isDebounce, setIsDebounce } = useDebounce();
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValid = validateLogin();
+    if (isDebounce) return;
+    setIsDebounce(true);
     if (isValid) return login({ identifier, password }); //로그인
   };
 
