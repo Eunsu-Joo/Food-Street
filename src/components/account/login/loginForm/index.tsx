@@ -9,8 +9,8 @@ import useInputs from "../../../../hooks/useInputs";
 import useDebounce from "../../../../hooks/useDebounce";
 
 const defaultValues = {
-  identifier: "holicholicpop@gmail.com",
-  password: "ghgh1212!!"
+  identifier: "",
+  password: ""
 };
 
 const LoginForm = () => {
