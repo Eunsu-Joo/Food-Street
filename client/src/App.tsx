@@ -4,7 +4,7 @@ import BottomBar from "./components/_common/bottombar";
 import Header from "./components/_common/header";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import Routes from "./components/_common/routes";
+import Routes from "./routes";
 import Loading from "./components/_common/loading";
 
 function App() {
