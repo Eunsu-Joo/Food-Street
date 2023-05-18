@@ -43,7 +43,7 @@ const useValidator = (inputs: ObjType) => {
   };
 
   const validateSignup = () => {
-    const { username, email, password, passwordCheck } = inputs;
+    const { username, email, password, passwordCheck, questionAnswer } = inputs;
     //username
     if (!username) {
       isError = true;
@@ -82,6 +82,10 @@ const useValidator = (inputs: ObjType) => {
     if (password !== passwordCheck) {
       isError = true;
       message["passwordCheck"] = "비밀번호가 일치하지 않습니다.";
+    }
+    if (!questionAnswer) {
+      isError = true;
+      message["questionAnswer"] = "질문에 답을 해야 합니다.";
     }
     setError({ isError, message });
     return !isError;

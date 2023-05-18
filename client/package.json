@@ -1,5 +1,5 @@
 {
-  "name": "coupons",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +17,8 @@
     "@types/react-dom": "^18.0.8",
     "axios": "^1.2.0",
     "dayjs": "^1.11.6",
+    "graphql-request": "^6.0.0",
+    "graphql-tag": "^2.12.6",
     "moment": "^2.29.4",
     "prettier": "^2.7.1",
     "react": "^18.2.0",

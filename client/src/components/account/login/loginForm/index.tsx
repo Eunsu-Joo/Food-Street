@@ -25,7 +25,9 @@ const LoginForm = () => {
     const isValid = validateLogin();
     if (isDebounce) return;
     setIsDebounce(true);
-    if (isValid) return login({ identifier, password }); //로그인
+    if (isValid) {
+      console.log(identifier, password);
+    }
   };
 
   return (

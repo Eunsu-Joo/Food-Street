@@ -16,4 +16,30 @@ const links = [
   //   title: "무한스크롤",
   // },
 ];
-export { emailList, links };
+const questionList = [
+  {
+    question: "좋아하는 색깔은?",
+    index: 0
+  },
+  {
+    question: "좋아하는 영화 장르는?",
+    index: 1
+  },
+  {
+    question: "영어이름은?",
+    index: 2
+  },
+  {
+    question: "태어난 고향은?",
+    index: 3
+  },
+  {
+    question: "보물 1호는?",
+    index: 4
+  },
+  {
+    question: "감명깊게 읽은 책 이름은?",
+    index: 5
+  }
+];
+export { emailList, links, questionList };

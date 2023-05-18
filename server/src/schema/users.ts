@@ -10,7 +10,13 @@ const usersSchema = gql`
     login(email: String!, password: String!): Result!
   }
   extend type Mutation {
-    signup(email: String!, username: String!, password: String!): Result!
+    signup(
+      email: String!
+      username: String!
+      password: String!
+      questionIndex: Int!
+      questionAnswer: String!
+    ): Result!
   }
 `;
 export default usersSchema;

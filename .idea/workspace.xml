@@ -5,110 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/nodemon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/dbController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/resolvers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/resolvers/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/schema/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/schema/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/coupons.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/bottombar/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/error/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/header/header.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/header/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/header/userToggle/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/loading/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/modal/_common/modalLayout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/modal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/modal/logoutModal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/modal/modal.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/pagination/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/postList/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/postList/noResult/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/postList/postItem/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_common/routes/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/_common/accountLayout/accountLayout.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/_common/accountLayout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/_common/emailInput/emailInput.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/_common/emailInput/emailInput.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/_common/emailInput/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/changePassword/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/forgotPassword/SendSuccess.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/forgotPassword/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/login/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/login/loginForm/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/my_list/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/profile/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/profile/profileForm/ProfileImage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/profile/profileForm/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/signup/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/account/signup/signupForm/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/_common/TextFieldBox.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/ImageUpload/UploadBox.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/ImageUpload/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/addPostForm.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/kakaoMap/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/addPostForm/kakaoMap/kakaoMap.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/addPost/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/_common/mainLayout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/mainInfiniteScroll/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/mainPagination/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/mainPrefetch/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/page.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/path.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/querykeys.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/status.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/user.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useAddPost.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useChangePassword.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useDebounce.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useInputs.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useLogin.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useModal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/usePosts.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSignup.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUpdateUserInfo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useValidator.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noPosts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/error.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/hooks.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/user.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/checkImage.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/fetcher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/getJWTHeader.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/storage.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/fetcher.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/login/loginForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/login/loginForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/signup/signupForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/signup/signupForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/data/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/data/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useSignup.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/dbController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/dbController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/schema/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/react-query/food-street/server",
+    "last_opened_file_path": "D:/graphql/shopping-mall",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -146,6 +56,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\react-query\food-street" />
       <recent name="D:\react-query\food-street\server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -161,7 +72,11 @@
       <option name="presentableId" value="Default" />
       <updated>1682322095409</updated>
       <workItem from="1682322096911" duration="1061000" />
-      <workItem from="1682323171568" duration="5523000" />
+      <workItem from="1682323171568" duration="5827000" />
+      <workItem from="1682405296075" duration="2621000" />
+      <workItem from="1682474513679" duration="716000" />
+      <workItem from="1684310650569" duration="650000" />
+      <workItem from="1684393877520" duration="5366000" />
     </task>
     <servers />
   </component>

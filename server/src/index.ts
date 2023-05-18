@@ -19,6 +19,7 @@ const formatError = (err: GraphQLError) => {
     typeDefs: schema,
     resolvers,
     context: {
+      //전역으로 사용할 db
       db: {
         posts: readDB(DBFile.POSTS).reverse(),
         users: readDB(DBFile.USERS),

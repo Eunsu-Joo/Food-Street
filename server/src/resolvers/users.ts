@@ -1,6 +1,7 @@
 import { ResolverType, UserRequest } from "./types";
 import { DBFile, writeDB } from "../dbController";
 import { v4 as uuid } from "uuid";
+import { GraphQLError } from "graphql/error";
 const setJSON = (data: any[]) => writeDB(DBFile.USERS, data);
 const usersResolver: ResolverType = {
   Query: {
@@ -13,19 +14,28 @@ const usersResolver: ResolverType = {
     },
   },
   Mutation: {
-    signup: (_, { email, password, username }, { db }) => {
+    signup: (
+      _,
+      { email, password, username, questionIndex, questionAnswer },
+      { db }
+    ) => {
       const duplicatedUsername = db.users.find(
         (item) => item.username === username
       );
-      if (!!duplicatedUsername) throw new Error("사용중인 닉네임 입니다.");
+      if (!!duplicatedUsername)
+        throw new GraphQLError("중복된 닉네임 입니다.", {
+          extensions: { code: "BAD_REQUEST" },
+        });
       const duplicatedEmail = db.users.find((item) => item.email === email);
-      if (!!duplicatedEmail) throw new Error("사용중인 이메일 입니다.");
+      if (!!duplicatedEmail) throw new GraphQLError("중복된 이메일 입니다.");
       const jwt = uuid();
       const newUser = {
         email,
         password,
         username,
         jwt,
+        questionIndex,
+        questionAnswer,
       };
       db.users.push(newUser);
       setJSON(db.users);
