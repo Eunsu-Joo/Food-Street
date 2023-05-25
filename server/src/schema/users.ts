@@ -4,9 +4,19 @@ const usersSchema = gql`
   type Result {
     email: String!
     username: String!
-    jwt: String!
+    jwt: ID!
+    image: String
+  }
+  type User {
+    image: String
+    email: String!
+    username: String!
+    password: String!
   }
   extend type Query {
+    user(jwt: ID!): User
+  }
+  extend type Mutation {
     login(email: String!, password: String!): Result!
   }
   extend type Mutation {
@@ -16,6 +26,7 @@ const usersSchema = gql`
       password: String!
       questionIndex: Int!
       questionAnswer: String!
+      image: String
     ): Result!
   }
 `;
