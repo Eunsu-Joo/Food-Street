@@ -1,4 +1,4 @@
-import AccountLayout from "../_common/accountLayout";
+import AccountLayout from "../_common/AccountLayout";
 
 const MyList = () => {
   return (

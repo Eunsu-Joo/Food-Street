@@ -1,14 +1,12 @@
 import React from "react";
-import { Container } from "@mui/material";
 import BottomBar from "./components/_common/bottombar";
 import Header from "./components/_common/header";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Routes from "./routes";
-import Loading from "./components/_common/loading";
+import MainLayout from "./components/_common/mainLayout";
 
 function App() {
-  //   const navigator = useNavigate(); 이 부분 떄문에 쿼리 초기화됨.
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -21,14 +19,14 @@ function App() {
       }
     }
   });
+
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <Container sx={{ pt: 3 }} maxWidth={"lg"}>
-        <Loading />
+      <MainLayout>
         <Routes />
         <BottomBar />
-      </Container>
+      </MainLayout>
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   );

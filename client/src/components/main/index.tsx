@@ -1,3 +1,10 @@
+import MainLayout from "../_common/mainLayout";
 
-import mainInfiniteScroll from "./mainInfiniteScroll";
-export default mainInfiniteScroll
+const Main = () => {
+  return (
+    <MainLayout>
+      <p>dff</p>
+    </MainLayout>
+  );
+};
+export default Main;

@@ -2,22 +2,38 @@ import TextFieldBox from "../_common/TextFieldBox";
 import { Button, FormHelperText, Stack, TextField, Typography } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { StyledTextarea } from "./addPostForm.style";
 import Divider from "@mui/material/Divider";
 import ImageUpload from "./ImageUpload";
 import Box from "@mui/material/Box";
 import { ChangeEvent, useState } from "react";
 import KakaoMap from "./kakaoMap";
 import useModal from "../../../hooks/useModal";
-import Modal from "../../_common/modal";
+import Modal from "../../modal";
 import useValidator from "../../../hooks/useValidator";
-import useAddPost from "../../../hooks/useAddPost";
-import { UserType } from "../../../types/user";
-import moment from "moment";
 import PATH from "../../../constants/path";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
-const AddPostForm = ({ user }: { user: UserType }) => {
+const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
+  border: `1px solid ${theme.palette.grey[300]}`,
+  borderRadius: "4px",
+  paddingLeft: "8px",
+  paddingTop: "8px",
+  fontSize: "16px",
+  fontFamily: "Noto Sans KR,sans-serif",
+  "&:focus": {
+    outlineColor: theme.palette.primary.main
+  },
+  "&::placeholder": {
+    color: theme.palette.grey[400],
+    fontWeight: 400
+  },
+  "&::hover": {
+    borderColor: "#000"
+  }
+}));
+const AddPostForm = () => {
   const [inputs, setInputs] = useState({
     name: "",
     start_time: "10:30",
@@ -29,7 +45,6 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
   const { error: validateError, setError, validateAddPost } = useValidator(inputs);
-  const { updatePost } = useAddPost({ setError, onSuccess: controller });
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setInputs({
@@ -49,7 +64,6 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const handleSubmit = () => {
     const isValidate = validateAddPost();
     if (isValidate) {
-      return updatePost({ ...inputs, image, start_time: moment(inputs.start_time, "HH:mm A").format("HH:mm:ss"), end_time: moment(inputs.start_time, "HH:mm A").format("HH:mm:ss"), user });
     }
   };
 
@@ -99,13 +113,13 @@ const AddPostForm = ({ user }: { user: UserType }) => {
         <TextFieldBox label={"이미지"} sx={{ width: { xs: "100%", md: "50%" }, mb: 0 }}>
           <ImageUpload setImage={onChangeImage} />
         </TextFieldBox>
-        <TextFieldBox label={"주소 찾기"} sx={{ width: { xs: "100%", md: "50%" } }}>
+        <TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>
           <Typography>주소명 : {inputs.address}</Typography>
           <KakaoMap onChangeAddress={onChangeAddress} />
         </TextFieldBox>
       </Stack>
       <Box display={"flex"} justifyContent={"center"} mt={6}>
-        <Button sx={{ mr: 6, px: 6 }} variant={"outlined"} size={"large"} onClick={() => navigator(PATH.HOME)}>
+        <Button sx={{ mr: 2, px: 6 }} variant={"outlined"} size={"large"} onClick={() => navigator(PATH.HOME)}>
           취소
         </Button>
         <Button sx={{ mr: 2, px: 6 }} variant={"contained"} size={"large"} onClick={handleSubmit}>

@@ -1,15 +1,31 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import useUser from "../../../hooks/useUser";
-import UserToggle from "./userToggle";
-import { StyledInputBase } from "./header.style";
-import { AppBar, Button, Container, Stack, Toolbar, Typography, Box, IconButton } from "@mui/material";
+import UserToggle from "./UserToggle";
+import { AppBar, Button, Container, Stack, Toolbar, Typography, Box, IconButton, styled, InputBase } from "@mui/material";
 import RamenDiningIcon from "@mui/icons-material/RamenDining";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import PATH from "../../../constants/path";
-
+import useUser from "../../../hooks/useUser";
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& input::placeholder": {
+    fontSize: "14px",
+    fontWeight: 400
+  },
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 0.5, 0),
+    transition: theme.transitions.create("width"),
+    borderBottom: "1px solid white",
+    [theme.breakpoints.up("sm")]: {
+      width: "26ch",
+      "&:focus": {
+        width: "30ch"
+      }
+    }
+  }
+}));
 const Header = () => {
   const [searchParams, _] = useSearchParams();
   const [isSearch, setIsSearch] = useState(!!searchParams.get("keyword"));
