@@ -25,14 +25,14 @@ const useValidator = (inputs: ObjType) => {
   let message: ObjType = {};
 
   const validateLogin = () => {
-    if (inputs.identifier) {
-      if (!RegExp.email.test(inputs.identifier)) {
+    if (inputs.email) {
+      if (!RegExp.email.test(inputs.email)) {
         isError = true;
-        message["identifier"] = "이메일을 형식으로 입력해주세요";
+        message["email"] = "이메일을 형식으로 입력해주세요";
       }
     } else {
       isError = true;
-      message["identifier"] = "이메일을 입력해주세요.";
+      message["email"] = "이메일을 입력해주세요.";
     }
     if (!inputs.password) {
       isError = true;
@@ -92,7 +92,7 @@ const useValidator = (inputs: ObjType) => {
   };
 
   const validateEmail = () => {
-    const { email } = inputs;
+    const { email, questionAnswer } = inputs;
     if (email) {
       if (!RegExp.email.test(email)) {
         isError = true;
@@ -101,6 +101,10 @@ const useValidator = (inputs: ObjType) => {
     } else {
       isError = true;
       message["email"] = "이메일을 입력해주세요.";
+    }
+    if (!questionAnswer) {
+      isError = true;
+      message["questionAnswer"] = "이메일을 입력해주세요.";
     }
     setError({ isError, message });
     return !isError;
@@ -128,7 +132,7 @@ const useValidator = (inputs: ObjType) => {
     return !isError;
   };
   const validateUserInfo = () => {
-    const { email, username } = inputs;
+    const { email, username, password } = inputs;
     if (email) {
       if (!RegExp.email.test(email)) {
         isError = true;
@@ -145,6 +149,17 @@ const useValidator = (inputs: ObjType) => {
     if (username && (username.length < 4 || username.length > 10)) {
       isError = true;
       message["username"] = "4-10자 이내로 작성해주세요.";
+    }
+    //password
+    if (!password) {
+      isError = true;
+      message["password"] = "비밀번호를 입력해주세요.";
+    }
+    if (password) {
+      if (!RegExp.password.test(password)) {
+        isError = true;
+        message["password"] = "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
+      }
     }
     setError({ isError, message });
     return !isError;
@@ -178,12 +193,38 @@ const useValidator = (inputs: ObjType) => {
     setError({ isError, message });
     return !isError;
   };
+  const validateResetPassword = () => {
+    const { password, passwordConfirmation } = inputs;
+    //password
+
+    if (!password) {
+      isError = true;
+      message["password"] = "비밀번호를 입력해주세요.";
+    }
+    if (password) {
+      if (!RegExp.password.test(password)) {
+        isError = true;
+        message["password"] = "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
+      }
+    }
+    //passwordCheck
+    if (!passwordConfirmation) {
+      isError = true;
+      message["passwordConfirmation"] = "비밀번호를 다시 한번 입력해주세요.";
+    }
+    if (password !== passwordConfirmation) {
+      isError = true;
+      message["passwordConfirmation"] = "비밀번호가 일치하지 않습니다.";
+    }
+    setError({ isError, message });
+    return !isError;
+  };
   useEffect(() => {
     return () => {
       setError(initValues);
     };
   }, []);
 
-  return { error, setError, validateLogin, validateSignup, validateEmail, validateAddPost, validateUserInfo, validateChangePw };
+  return { error, setError, validateResetPassword, validateLogin, validateSignup, validateEmail, validateAddPost, validateUserInfo, validateChangePw };
 };
 export default useValidator;
