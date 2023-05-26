@@ -12,6 +12,7 @@ const usersSchema = gql`
     email: String!
     username: String!
     password: String!
+    jwt: ID!
   }
   extend type Query {
     user(jwt: ID!): User

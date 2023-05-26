@@ -25,6 +25,7 @@ export const USER = gql`
       image
       password
       username
+      jwt
     }
   }
 `;

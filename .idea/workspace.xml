@@ -5,67 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/_common/mainLayout/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/account/login/LoginForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/modal/LogoutModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/constants/sessionKeys.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/bottombar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/bottombar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/header.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/userToggle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/UserToggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/loading/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/loading/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/modal/_common/modalLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modal/_common/ModalLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/modal/logoutModal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/modal/modal.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modal/modal.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/noResult/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/noResult/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/postItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/accountLayout/accountLayout.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/accountLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/_common/AccountLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/emailInput/emailInput.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/emailInput/emailInput.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/emailInput/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/_common/EmailInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/changePassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/resetPassword/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/forgotPassword/SendSuccess.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/forgotPassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/forgotPassword/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/login/loginForm/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/profileForm/ProfileImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/_common/ProfileImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/profileForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/profile/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/signup/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/signup/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/signup/signupForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/signup/SignupForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/addPostForm.style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/kakaoMap/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/kakaoMap/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/main/_common/mainLayout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/main/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/main/mainInfiniteScroll/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/constants/querykeys.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/querykeys.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/graphql/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useAddPost.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useChangePassword.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useLogin.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/usePosts.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUpdateUserInfo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/checkImage.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/fetcher.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/storage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/schema/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,23 +25,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/react-query/food-street",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "D:\\react-query\\food-street\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\react-query\\food-street\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/react-query/food-street&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\react-query\\food-street\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\react-query\\food-street\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\react-query\food-street" />

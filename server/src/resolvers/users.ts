@@ -13,6 +13,7 @@ const usersResolver: ResolverType = {
         email: target.email,
         username: target.username,
         password: target.password,
+        jwt,
       };
     },
   },
