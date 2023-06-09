@@ -32,13 +32,11 @@ const Header = () => {
   const [search, setSearch] = useState(searchParams.get("keyword") ?? "");
   const navigator = useNavigate();
   const { pathname } = useLocation();
-  const { user } = useUser();
-
+  const { data } = useUser();
   const currentLinkStyle = {
     fontWeight: 700,
     textDecoration: "underline"
   };
-
   const onToggleSearch = () => {
     setIsSearch((prev) => !prev);
     setSearch("");
@@ -82,8 +80,8 @@ const Header = () => {
               {isSearch ? <CloseIcon fontSize={"medium"} /> : <SearchIcon fontSize={"medium"} />}
             </IconButton>
           </Box>
-          {user ? (
-            <UserToggle user={user} />
+          {data?.user ? (
+            <UserToggle user={data.user} />
           ) : (
             <Button onClick={handleLogin} variant={"outlined"} size={"large"} sx={{ ml: 2, display: { xs: "none", sm: "inline-flex" } }} color={"inherit"} startIcon={<AccountCircleIcon />}>
               로그인

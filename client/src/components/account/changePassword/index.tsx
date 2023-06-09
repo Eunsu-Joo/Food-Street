@@ -15,7 +15,7 @@ const defaultValues = {
   passwordConfirmation: ""
 };
 
-const ResetPassword = () => {
+const ChangePassword = () => {
   const { inputs, onChange } = useInputs({ defaultValues });
   const { error: validateError, setError, validateResetPassword } = useValidator(inputs);
   const { isOpen, controller } = useModal();
@@ -28,9 +28,9 @@ const ResetPassword = () => {
   };
 
   return (
-    <AccountLayout title={"RESET PASSWORD"}>
+    <AccountLayout title={"CHANGE PASSWORD"}>
       <Box component={"form"} onSubmit={handleSubmit}>
-        {/*<TextField error={!!validateError.message["currentPassword"]} helperText={validateError.message["currentPassword"] ?? null} margin={"normal"} variant={"outlined"} fullWidth={true} value={inputs.currentPassword} onChange={onChange} label={"현재 비밀번호"} name={"currentPassword"} type={"password"} />*/}
+        <TextField error={!!validateError.message["currentPassword"]} helperText={validateError.message["currentPassword"] ?? null} margin={"normal"} variant={"outlined"} fullWidth={true} value={inputs.currentPassword} onChange={onChange} label={"현재 비밀번호"} name={"currentPassword"} type={"password"} />
         <TextField error={!!validateError.message["password"]} helperText={validateError.message["password"] ?? null} margin={"normal"} variant={"outlined"} fullWidth={true} value={inputs.password} onChange={onChange} label={"새로운 비밀번호"} name={"password"} type={"password"} />
         <TextField error={!!validateError.message["passwordConfirmation"]} helperText={validateError.message["passwordConfirmation"] ?? null} margin={"normal"} variant={"outlined"} fullWidth={true} value={inputs.passwordConfirmation} onChange={onChange} label={"새로운 비밀번호 확인"} name={"passwordConfirmation"} type={"password"} />
         <Button variant={"contained"} fullWidth={true} size={"large"} sx={{ mt: 4 }} type={"submit"}>
@@ -41,4 +41,4 @@ const ResetPassword = () => {
     </AccountLayout>
   );
 };
-export default ResetPassword;
+export default ChangePassword;

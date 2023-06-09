@@ -49,10 +49,6 @@ const useValidator = (inputs: ObjType) => {
       isError = true;
       message["username"] = "닉네임을 입력해주세요.";
     }
-    if (username && (username.length < 4 || username.length > 10)) {
-      isError = true;
-      message["username"] = "4-10자 이내로 작성해주세요.";
-    }
     //email
     if (email) {
       if (!RegExp.email.test(email)) {
@@ -132,7 +128,7 @@ const useValidator = (inputs: ObjType) => {
     return !isError;
   };
   const validateUserInfo = () => {
-    const { email, username, password } = inputs;
+    const { email, username, questionAnswer } = inputs;
     if (email) {
       if (!RegExp.email.test(email)) {
         isError = true;
@@ -146,21 +142,21 @@ const useValidator = (inputs: ObjType) => {
       isError = true;
       message["username"] = "닉네임을 입력해주세요.";
     }
-    if (username && (username.length < 4 || username.length > 10)) {
+    if (!questionAnswer) {
       isError = true;
-      message["username"] = "4-10자 이내로 작성해주세요.";
+      message["questionAnswer"] = "질문의 답을 적어주세요.";
     }
-    //password
-    if (!password) {
-      isError = true;
-      message["password"] = "비밀번호를 입력해주세요.";
-    }
-    if (password) {
-      if (!RegExp.password.test(password)) {
-        isError = true;
-        message["password"] = "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
-      }
-    }
+    // //password
+    // if (!password) {
+    //   isError = true;
+    //   message["password"] = "비밀번호를 입력해주세요.";
+    // }
+    // if (password) {
+    //   if (!RegExp.password.test(password)) {
+    //     isError = true;
+    //     message["password"] = "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성하세요.";
+    //   }
+    // }
     setError({ isError, message });
     return !isError;
   };

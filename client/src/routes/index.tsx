@@ -5,13 +5,13 @@ import Signup from "../components/account/signup";
 import React from "react";
 import Error from "../components/_common/error";
 import Profile from "../components/account/profile";
-import ChangePassword from "../components/account/resetPassword";
+import ChangePassword from "../components/account/changePassword";
 import Main from "../components/main";
 import PATH from "../constants/path";
 import Search from "../components/search";
 import MyList from "../components/account/my_list";
 import ForgotPassword from "../components/account/forgotPassword";
-import ResetPassword from "../components/account/resetPassword";
+import ResetPassword from "../components/account/changePassword";
 
 const Routes = () => {
   return (
@@ -25,7 +25,6 @@ const Routes = () => {
       <Route path={PATH.PROFILE} element={<Profile />} />
       <Route path={PATH.SEARCH} element={<Search />} />
       <Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />
-      <Route path={PATH.RESET_PW} element={<ResetPassword />} />
       {/*<Route path={PATH.MY_LIST} element={<MyList />} />*/}
     </ReactRoutes>
   );

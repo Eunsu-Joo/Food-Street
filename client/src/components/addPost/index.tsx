@@ -4,8 +4,8 @@ import useUser from "../../hooks/useUser";
 import { Navigate } from "react-router-dom";
 import PATH from "../../constants/path";
 const AddPost = () => {
-  const { user } = useUser();
-  if (!user) return <Navigate to={PATH.LOGIN} />;
+  const { data } = useUser();
+  if (!data?.user) return <Navigate to={PATH.LOGIN} />;
   return (
     <>
       <Box pb={{ xs: 10 }}>

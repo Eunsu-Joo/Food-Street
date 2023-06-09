@@ -1,24 +1,20 @@
 import { gql } from "apollo-server-express";
 
 const usersSchema = gql`
-  type Result {
-    email: String!
-    username: String!
-    jwt: ID!
-    image: String
-  }
   type User {
     image: String
     email: String!
     username: String!
-    password: String!
     jwt: ID!
+    questionIndex: Int!
+    questionAnswer: String!
+  }
+  type Update {
+    count: Int!
   }
   extend type Query {
     user(jwt: ID!): User
-  }
-  extend type Mutation {
-    login(email: String!, password: String!): Result!
+    login(email: String!, password: String!): User!
   }
   extend type Mutation {
     signup(
@@ -28,7 +24,16 @@ const usersSchema = gql`
       questionIndex: Int!
       questionAnswer: String!
       image: String
-    ): Result!
+    ): User!
+    update(
+      jwt: ID!
+      email: String!
+      username: String!
+      questionIndex: Int!
+      questionAnswer: String!
+      image: String
+    ): User!
+    resetPassword(jwt: ID!, password: String!): Update
   }
 `;
 export default usersSchema;

@@ -12,7 +12,6 @@ import { LoginInputType } from "./index";
 import useModal from "../../../hooks/useModal";
 import Modal from "../../modal";
 import { clearSessionAuth, getSessionAuth, updateSessionAuth, updateSessionUser } from "../../../utils/storage";
-import SESSION_KEYS from "../../../constants/sessionKeys";
 
 type LoginFormProps = {
   defaultValues: LoginInputType;
@@ -42,7 +41,8 @@ const LoginForm = ({ defaultValues: inputs, setDefaultValues }: LoginFormProps) 
     {
       onSuccess: (data: { login: UserType }) => {
         updateSessionUser(data.login);
-        queryClient.setQueryData(QUERY_KEYS.USER, data.login);
+        //1. 로그인 후 쿼리 설정
+        queryClient.setQueryData(QUERY_KEYS.USER, { user: data.login });
         navigate("/");
       },
       onError: (error: any) => {

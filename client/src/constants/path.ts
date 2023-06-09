@@ -6,9 +6,8 @@ const PATH = {
   SIGNUP: "/account/sign_up",
   FORGOT_PW: "/account/forgot_password",
   PROFILE: "/account/profile",
-  RESET_PW: "/account/reset_password",
-  ERROR: "/error",
   CHANGE_PW: "/account/change_password",
+  ERROR: "/error",
   MY_LIST: "/account/my_list",
   SEARCH: "/search",
   PREFETCH: "/prefetch"
