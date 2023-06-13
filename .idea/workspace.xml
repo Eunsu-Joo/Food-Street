@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/login/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/login/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/profile/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/resetPassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/changePassword/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/constants/path.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/path.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/users.ts" afterDir="false" />
-    </list>
+    <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,27 +17,28 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OrcMnQ17IhJIoQBcFTZg9nh4vQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/graphql/shopping-mall",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "D:\\react-query\\food-street\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\react-query\\food-street\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/graphql/shopping-mall&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\react-query\\food-street\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\react-query\\food-street\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\react-query\food-street" />
