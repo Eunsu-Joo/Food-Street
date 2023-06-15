@@ -19,9 +19,6 @@ const Profile = () => {
   return (
     <AccountLayout title={"PROFILE"}>
       <ProfileForm user={data.user} />
-      <Button variant={"outlined"} size={"large"} sx={{ mt: 2 }} type={"submit"}>
-        회원 탈퇴
-      </Button>
     </AccountLayout>
   );
 };

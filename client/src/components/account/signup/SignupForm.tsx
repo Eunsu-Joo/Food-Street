@@ -40,10 +40,9 @@ const SignupForm = () => {
     controller();
   };
   const { mutate, isSuccess } = useMutation(
-    (forms: any) => {
-      return fetcher(SIGNUP, {
-        ...forms
-      });
+    () => {
+      const { passwordCheck, ...rest } = inputs;
+      return fetcher(SIGNUP, { image, ...rest });
     },
     {
       onSuccess: (data: { signup: UserType }) => {
@@ -71,8 +70,7 @@ const SignupForm = () => {
     event.preventDefault();
     const isValid = validateSignup();
     if (isValid) {
-      const { passwordCheck, ...rest } = inputs;
-      mutate({ image, ...rest });
+      mutate();
     }
   };
 

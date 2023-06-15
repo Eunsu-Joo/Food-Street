@@ -13,6 +13,9 @@ const updateSessionUser = (user: UserType) => {
 const clearSessionUser = () => {
   sessionStorage.removeItem(SESSION_KEYS.USER);
 };
+const clearSaveUser = () => {
+  sessionStorage.removeItem(SESSION_KEYS.AUTH);
+};
 const getSessionAuth = () => {
   const authData = sessionStorage.getItem(SESSION_KEYS.AUTH);
   return authData ? JSON.parse(authData) : null;
@@ -23,4 +26,4 @@ const updateSessionAuth = (auth: AuthType) => {
 const clearSessionAuth = () => {
   sessionStorage.removeItem(SESSION_KEYS.AUTH);
 };
-export { getSessionUser, updateSessionUser, clearSessionUser, getSessionAuth, updateSessionAuth, clearSessionAuth };
+export { getSessionUser, clearSaveUser, updateSessionUser, clearSessionUser, getSessionAuth, updateSessionAuth, clearSessionAuth };

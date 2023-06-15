@@ -21,7 +21,7 @@ const usersSchema = gql`
       email: String!
       username: String!
       password: String!
-      questionIndex: Int!
+      questionIndex: Int
       questionAnswer: String!
       image: String
     ): User!
@@ -34,6 +34,7 @@ const usersSchema = gql`
       image: String
     ): User!
     resetPassword(jwt: ID!, password: String!): Update
+    remove(jwt: ID!): Update
   }
 `;
 export default usersSchema;
