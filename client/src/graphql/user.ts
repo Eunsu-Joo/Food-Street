@@ -37,18 +37,6 @@ export const USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation Mutation($jwt: ID!, $email: String!, $username: String!, $questionIndex: Int, $questionAnswer: String!, $image: String) {
-    update(jwt: $jwt, email: $email, username: $username, questionIndex: $questionIndex, questionAnswer: $questionAnswer, image: $image) {
-      email
-      image
-      jwt
-      questionAnswer
-      questionIndex
-      username
-    }
-  }
-`;
-export const CHANGE_PASSWORD = gql`
   mutation Mutation($jwt: ID!, $email: String!, $username: String!, $questionIndex: Int!, $questionAnswer: String!, $image: String) {
     update(jwt: $jwt, email: $email, username: $username, questionIndex: $questionIndex, questionAnswer: $questionAnswer, image: $image) {
       email
@@ -60,10 +48,25 @@ export const CHANGE_PASSWORD = gql`
     }
   }
 `;
+export const CHANGE_PASSWORD = gql`
+  mutation ChangePw($jwt: ID!, $newPassword: String!, $password: String!) {
+    changePw(jwt: $jwt, newPassword: $newPassword, password: $password) {
+      count
+    }
+  }
+`;
 export const REMOVE_USER = gql`
   mutation Mutation($jwt: ID!) {
     remove(jwt: $jwt) {
       count
+    }
+  }
+`;
+
+export const FORGOT_PASSWORD = gql`
+  mutation Mutation($email: String!, $questionIndex: Int!, $questionAnswer: String!) {
+    forgotPw(email: $email, questionIndex: $questionIndex, questionAnswer: $questionAnswer) {
+      password
     }
   }
 `;

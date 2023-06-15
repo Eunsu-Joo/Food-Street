@@ -6,16 +6,19 @@ type TextFieldBoxProps = {
   children: React.ReactNode;
   label: string;
   sx?: any;
+  required?: boolean;
 };
 
-const TextFieldBox = ({ children, label, sx }: TextFieldBoxProps) => {
+const TextFieldBox = ({ children, label, sx, required = false }: TextFieldBoxProps) => {
   return (
     <Box sx={{ mb: 4, ...sx }}>
       <Typography component="p" fontSize={16} mb={1} color={"rgba(0, 0, 0, 0.6)"} fontWeight={500}>
         {label}
-        <Typography component={"span"} color={"primary"} fontWeight={700} fontSize={18}>
-          *
-        </Typography>
+        {required && (
+          <Typography component={"span"} color={"primary"} fontWeight={700} fontSize={18}>
+            *
+          </Typography>
+        )}
       </Typography>
       {children}
     </Box>

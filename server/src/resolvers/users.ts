@@ -77,14 +77,29 @@ const usersResolver: ResolverType = {
       setJSON(db.users);
       return newItem;
     },
-    resetPassword: (_, { jwt, password }, { db }) => {
+    changePw: (_, { jwt, newPassword, password }, { db }) => {
       const target = db.users.find((data) => data.jwt === jwt);
       if (!target) throw new GraphQLError("해당 유저를 찾을 수 없습니다.");
-      const newItem = { ...target, password },
+      if (password !== target.password)
+        throw new GraphQLError("비밀번호가 일치하지 않습니다.");
+      if (password === newPassword)
+        throw new GraphQLError("현재 비밀번호와 다르게 입력해주세요.");
+      const newItem = { ...target, password: newPassword },
         targetIndex = db.users.indexOf(target);
       db.users.splice(targetIndex, 1, newItem);
       setJSON(db.users);
       return { count: 1 };
+    },
+    forgotPw: (_, { email, questionIndex, questionAnswer }, { db }) => {
+      const target = db.users.find((data) => data.email === email);
+      if (!target) throw new GraphQLError("등록되지 않은 유저입니다.");
+      if (target.questionIndex !== questionIndex)
+        throw new GraphQLError("해당 질문이 일치하지 않습니다.");
+      if (target.questionAnswer !== questionAnswer)
+        throw new GraphQLError("해당 답변이 일치하지 않습니다.");
+      return {
+        password: target.password,
+      };
     },
     remove: (_, { jwt }, { db }) => {
       const target = db.users.find((data) => data.jwt === jwt);

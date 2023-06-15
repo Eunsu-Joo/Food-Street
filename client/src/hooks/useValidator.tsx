@@ -100,7 +100,7 @@ const useValidator = (inputs: ObjType) => {
     }
     if (!questionAnswer) {
       isError = true;
-      message["questionAnswer"] = "이메일을 입력해주세요.";
+      message["questionAnswer"] = "답변을 입력해주세요.";
     }
     setError({ isError, message });
     return !isError;

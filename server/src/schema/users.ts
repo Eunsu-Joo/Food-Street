@@ -12,6 +12,9 @@ const usersSchema = gql`
   type Update {
     count: Int!
   }
+  type Password {
+    password: String!
+  }
   extend type Query {
     user(jwt: ID!): User
     login(email: String!, password: String!): User!
@@ -33,8 +36,13 @@ const usersSchema = gql`
       questionAnswer: String!
       image: String
     ): User!
-    resetPassword(jwt: ID!, password: String!): Update
+    changePw(jwt: ID!, newPassword: String!, password: String!): Update
     remove(jwt: ID!): Update
+    forgotPw(
+      email: String!
+      questionIndex: Int!
+      questionAnswer: String!
+    ): Password
   }
 `;
 export default usersSchema;

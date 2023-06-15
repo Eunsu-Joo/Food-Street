@@ -69,7 +69,7 @@ const AddPostForm = () => {
 
   return (
     <>
-      <TextFieldBox label={"상호명"}>
+      <TextFieldBox label={"상호명"} required={true}>
         <TextField autoComplete={"off"} variant="outlined" fullWidth={true} name={"name"} placeholder={"상호명을 작성해주세요"} value={inputs.name} onChange={onChangeInputs} />
         {!!validateError.message["name"] && <FormHelperText error={true}>{validateError.message["name"]}</FormHelperText>}
       </TextFieldBox>
@@ -105,7 +105,7 @@ const AddPostForm = () => {
           />
         </Stack>
       </LocalizationProvider>
-      <TextFieldBox label={"상세내용"}>
+      <TextFieldBox label={"상세내용"} required={true}>
         <StyledTextarea aria-label="empty textarea" placeholder="맛집에 자세한 내용을 적어주세요" style={{ width: "100%" }} minRows={10} tabIndex={1} name={"contents"} value={inputs.contents} onChange={onChangeInputs} />
         {!!validateError.message["contents"] && <FormHelperText error={true}>{validateError.message["contents"]}</FormHelperText>}
       </TextFieldBox>
@@ -113,6 +113,7 @@ const AddPostForm = () => {
         <TextFieldBox label={"이미지"} sx={{ width: { xs: "100%", md: "50%" }, mb: 0 }}>
           <ImageUpload setImage={onChangeImage} />
         </TextFieldBox>
+        {!!validateError.message["image"] && <FormHelperText error={true}>{validateError.message["image"]}</FormHelperText>}
         <TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>
           <Typography>주소명 : {inputs.address}</Typography>
           <KakaoMap onChangeAddress={onChangeAddress} />

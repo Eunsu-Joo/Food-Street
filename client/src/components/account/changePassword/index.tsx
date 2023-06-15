@@ -8,6 +8,11 @@ import { Navigate } from "react-router-dom";
 import PATH from "../../../constants/path";
 import useModal from "../../../hooks/useModal";
 import Modal from "../../modal";
+import { useMutation } from "react-query";
+import fetcher from "../../../graphql/fetcher";
+import { CHANGE_PASSWORD } from "../../../graphql/user";
+import useUser from "../../../hooks/useUser";
+import { getSessionAuth, updateSessionAuth } from "../../../utils/storage";
 
 const defaultValues = {
   currentPassword: "",
@@ -17,13 +22,37 @@ const defaultValues = {
 
 const ChangePassword = () => {
   const { inputs, onChange } = useInputs({ defaultValues });
+  const [message, setMessage] = useState("");
   const { error: validateError, setError, validateResetPassword } = useValidator(inputs);
   const { isOpen, controller } = useModal();
+  const { data } = useUser();
+  const { mutate, isSuccess } = useMutation(
+    () => {
+      return fetcher(CHANGE_PASSWORD, { jwt: data.user.jwt, password: inputs.currentPassword, newPassword: inputs.password });
+    },
+    {
+      onSuccess: () => {
+        if (getSessionAuth()) {
+          updateSessionAuth({
+            email: data.user.email,
+            password: inputs.password
+          });
+        }
+        setMessage("비밀번호가 성공적으로 변경되었습니다.");
+        controller();
+      },
+      onError: (error: any) => {
+        const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
+        setMessage(message);
+        controller();
+      }
+    }
+  );
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValidate = validateResetPassword();
     if (isValidate) {
-      controller();
+      mutate();
     }
   };
 
@@ -37,7 +66,7 @@ const ChangePassword = () => {
           비밀번호 변경
         </Button>
       </Box>
-      {isOpen && <Modal onToggle={controller} isOpen={isOpen} message={"비밀번호가 성공적으로 변경되었습니다."} />}
+      {isOpen && <Modal onToggle={controller} isOpen={isOpen} message={message} home={!!isSuccess} />}
     </AccountLayout>
   );
 };
