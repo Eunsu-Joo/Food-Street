@@ -51,7 +51,7 @@ const Header = () => {
     if (!search) return;
     navigator(`${PATH.SEARCH}?keyword=${search}`, { preventScrollReset: true });
   };
-
+  console.log(data?.user);
   return (
     <AppBar position={"static"}>
       <Container maxWidth={"lg"}>

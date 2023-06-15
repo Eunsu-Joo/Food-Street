@@ -29,12 +29,11 @@ const defaultValues = {
 const SignupForm = () => {
   const [image, setImage] = useState<File | null>(null);
   const [message, setMessage] = useState("");
-
   const { inputs, setInputs, onChange } = useInputs({ defaultValues });
   const { error: validateError, validateSignup } = useValidator(inputs);
   const { isOpen, controller } = useModal();
   const navigate = useNavigate();
-
+  const queryClient = useQueryClient();
   const back = () => {
     navigate("/");
     controller();
@@ -48,6 +47,7 @@ const SignupForm = () => {
       onSuccess: (data: { signup: UserType }) => {
         // //    TODO 리팩토링 할 때 http-cookie로 전환하기
         updateSessionUser(data.signup);
+        queryClient.setQueryData([QUERY_KEYS.USER], { user: data.signup });
         setMessage(`방갑습니다 ${data.signup.username}님 😻😻`);
         controller();
       },

@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 
 export const SIGNUP = gql`
-  mutation Signup($email: String!, $username: String!, $password: String!, $questionIndex: Int!, $questionAnswer: String!, $image: String!) {
+  mutation Signup($email: String!, $username: String!, $password: String!, $questionIndex: Int!, $questionAnswer: String!, $image: String) {
     signup(email: $email, username: $username, password: $password, questionIndex: $questionIndex, questionAnswer: $questionAnswer, image: $image) {
       image
       email

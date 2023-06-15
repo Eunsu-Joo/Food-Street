@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/account/forgotPassword/ForgotPasswordConfirm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/account/forgotPassword/ForgotPasswordForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/changePassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/changePassword/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/forgotPassword/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/forgotPassword/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/_common/TextFieldBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/_common/TextFieldBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/signup/SignupForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/signup/SignupForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/graphql/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/getJWTHeader.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +86,7 @@
       <workItem from="1686276285270" duration="11800000" />
       <workItem from="1686633062470" duration="2799000" />
       <workItem from="1686637371348" duration="4158000" />
-      <workItem from="1686815300477" duration="612000" />
+      <workItem from="1686815300477" duration="1373000" />
     </task>
     <servers />
   </component>

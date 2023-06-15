@@ -14,7 +14,7 @@ const useUser = () => {
     QUERY_KEYS.USER,
     () => {
       // cacheTime 이 끝나면 호출
-      if (!data?.user) return null;
+      if (!data?.user) return { user: null };
       const { user } = data;
       return fetcher(USER, { jwt: user.jwt });
     },
