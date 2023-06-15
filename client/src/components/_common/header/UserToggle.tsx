@@ -6,9 +6,11 @@ import { Avatar, Button, Menu, MenuItem, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
 import type { UserType } from "../../../types/user";
 import LogoutModal from "../../modal/LogoutModal";
+import RemoveUserModal from "../../modal/removeUserModal";
 
 const UserToggle = ({ user }: { user: UserType }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [currentModal, setCurrentModal] = useState<"LOGOUT" | "REMOVE" | "">("");
   const open = !!anchorEl;
   const navigator = useNavigate();
   const { isOpen, controller } = useModal();
@@ -30,6 +32,13 @@ const UserToggle = ({ user }: { user: UserType }) => {
 
   const handleLogout = () => {
     handleClose();
+    setCurrentModal("LOGOUT");
+    controller();
+  };
+
+  const handleRemove = () => {
+    handleClose();
+    setCurrentModal("REMOVE");
     controller();
   };
 
@@ -68,8 +77,10 @@ const UserToggle = ({ user }: { user: UserType }) => {
         {/*<MenuItem onClick={handleList}>내가 쓴 글✨</MenuItem>*/}
         <MenuItem onClick={handleProfile}>프로필💕</MenuItem>
         <MenuItem onClick={handleLogout}>로그아웃💨</MenuItem>
+        <MenuItem onClick={handleRemove}>회원탈퇴👀</MenuItem>
       </Menu>
-      {isOpen && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+      {isOpen && currentModal === "LOGOUT" && <LogoutModal onToggle={controller} isOpen={isOpen} />}
+      {isOpen && currentModal === "REMOVE" && <RemoveUserModal onToggle={controller} isOpen={isOpen} />}
     </div>
   );
 };

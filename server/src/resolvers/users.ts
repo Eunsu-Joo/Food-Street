@@ -50,20 +50,23 @@ const usersResolver: ResolverType = {
       };
       db.users.push(newUser);
       setJSON(db.users);
-      return { email, username, jwt, image };
+      const { password: pw, ...rest } = newUser;
+      return rest;
     },
     update: (_, { jwt, ...rest }, { db }) => {
       const target = db.users.find((data) => data.jwt === jwt);
       if (!target) throw new GraphQLError("해당 유저를 찾을 수 없습니다.");
       const { username, email } = rest;
-      const duplicatedUsername = db.users.find(
-        (item) => item.username === username
-      );
+      const duplicatedUsername = db.users
+        .filter((user) => user.jwt !== jwt)
+        .find((item) => item.username === username);
       if (!!duplicatedUsername)
         throw new GraphQLError("중복된 닉네임 입니다.", {
           extensions: { code: "BAD_REQUEST" },
         });
-      const duplicatedEmail = db.users.find((item) => item.email === email);
+      const duplicatedEmail = db.users
+        .filter((user) => user.jwt !== jwt)
+        .find((item) => item.email === email);
       if (!!duplicatedEmail)
         throw new GraphQLError("중복된 이메일 입니다.", {
           extensions: { code: "BAD_REQUEST" },
@@ -80,6 +83,14 @@ const usersResolver: ResolverType = {
       const newItem = { ...target, password },
         targetIndex = db.users.indexOf(target);
       db.users.splice(targetIndex, 1, newItem);
+      setJSON(db.users);
+      return { count: 1 };
+    },
+    remove: (_, { jwt }, { db }) => {
+      const target = db.users.find((data) => data.jwt === jwt);
+      if (!target) throw new GraphQLError("해당 유저를 찾을 수 없습니다.");
+      const targetIndex = db.users.indexOf(target);
+      db.users.splice(targetIndex, 1);
       setJSON(db.users);
       return { count: 1 };
     },

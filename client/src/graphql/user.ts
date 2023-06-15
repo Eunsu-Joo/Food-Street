@@ -37,7 +37,7 @@ export const USER = gql`
   }
 `;
 export const UPDATE_USER = gql`
-  mutation Mutation($jwt: ID!, $email: String!, $username: String!, $questionIndex: Int!, $questionAnswer: String!, $image: String) {
+  mutation Mutation($jwt: ID!, $email: String!, $username: String!, $questionIndex: Int, $questionAnswer: String!, $image: String) {
     update(jwt: $jwt, email: $email, username: $username, questionIndex: $questionIndex, questionAnswer: $questionAnswer, image: $image) {
       email
       image
@@ -57,6 +57,13 @@ export const CHANGE_PASSWORD = gql`
       questionAnswer
       questionIndex
       username
+    }
+  }
+`;
+export const REMOVE_USER = gql`
+  mutation Mutation($jwt: ID!) {
+    remove(jwt: $jwt) {
+      count
     }
   }
 `;
