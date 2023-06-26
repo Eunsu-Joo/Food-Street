@@ -17,7 +17,16 @@ const postsResolver: ResolverType = {
       { image, address, contents, start_time, end_time, name },
       { db }
     ) => {
-      return { image, address, contents, start_time, end_time, name };
+      const createdAt = new Date().toISOString();
+      return {
+        image,
+        address,
+        contents,
+        start_time,
+        end_time,
+        name,
+        createdAt,
+      };
     },
   },
 };
