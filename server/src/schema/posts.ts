@@ -9,6 +9,9 @@ const postsSchema = gql`
     end_time: String
     name: String!
     createdAt: String!
+    username: String!
+    user_profile: String
+    id: ID!
   }
   extend type Query {
     getPosts(cursor: String): [Post!]
@@ -22,6 +25,8 @@ const postsSchema = gql`
       start_time: String
       end_time: String
       name: String!
+      username: String!
+      user_profile: String
     ): Post!
   }
 `;

@@ -1,8 +1,8 @@
 import { gql } from "graphql-request";
 
 export const ADD_POST = gql`
-  mutation AddPost($contents: String!, $name: String!, $image: String, $address: String, $startTime: String, $endTime: String) {
-    addPost(contents: $contents, name: $name, image: $image, address: $address, start_time: $startTime, end_time: $endTime) {
+  mutation AddPost($contents: String!, $name: String!, $image: String, $address: String, $startTime: String, $endTime: String, $username: String!, $user_profile: String) {
+    addPost(contents: $contents, name: $name, image: $image, address: $address, start_time: $start_time, end_time: $end_time, username: $username, user_profile: $user_profile) {
       address
       contents
       createdAt
@@ -10,6 +10,9 @@ export const ADD_POST = gql`
       image
       name
       start_time
+      username
+      user_profile
+      id
     }
   }
 `;

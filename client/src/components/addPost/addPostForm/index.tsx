@@ -14,6 +14,10 @@ import PATH from "../../../constants/path";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { UserType } from "../../../types/user";
+import { useMutation } from "react-query";
+import fetcher from "../../../graphql/fetcher";
+import { ADD_POST } from "../../../graphql/posts";
 
 const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
   border: `1px solid ${theme.palette.grey[300]}`,
@@ -33,7 +37,7 @@ const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
     borderColor: "#000"
   }
 }));
-const AddPostForm = () => {
+const AddPostForm = ({ user }: { user: UserType }) => {
   const [inputs, setInputs] = useState({
     name: "",
     start_time: "10:30",
@@ -41,10 +45,23 @@ const AddPostForm = () => {
     contents: "",
     address: ""
   });
+
   const [image, setImage] = useState<null | File>(null);
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
-  const { error: validateError, setError, validateAddPost } = useValidator(inputs);
+  const { error: validateError, validateAddPost } = useValidator(inputs);
+  const { mutate } = useMutation(
+    () => {
+      const data = { ...inputs, image, username: user.username, user_profile: user.image };
+      return fetcher(ADD_POST, { ...data });
+    },
+    {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+      onError: () => {}
+    }
+  );
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setInputs({
@@ -64,14 +81,14 @@ const AddPostForm = () => {
   const handleSubmit = () => {
     const isValidate = validateAddPost();
     if (isValidate) {
-      console.log({...inputs,image})
+      mutate();
     }
   };
 
   return (
     <>
       <TextFieldBox label={"상호명"} required={true}>
-        <TextField autoComplete={"off"} variant="outlined" fullWidth={true} name={"name"} placeholder={"상호명을 작성해주세요"} value={inputs.name} onChange={onChangeInputs} />
+        <TextField autoComplete={"off"} error={!!validateError.message["name"]} variant="outlined" fullWidth={true} name={"name"} placeholder={"상호명을 작성해주세요"} value={inputs.name} onChange={onChangeInputs} />
         {!!validateError.message["name"] && <FormHelperText error={true}>{validateError.message["name"]}</FormHelperText>}
       </TextFieldBox>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -107,7 +124,7 @@ const AddPostForm = () => {
         </Stack>
       </LocalizationProvider>
       <TextFieldBox label={"상세내용"} required={true}>
-        <StyledTextarea aria-label="empty textarea" placeholder="맛집에 자세한 내용을 적어주세요" style={{ width: "100%" }} minRows={10} tabIndex={1} name={"contents"} value={inputs.contents} onChange={onChangeInputs} />
+        <StyledTextarea aria-label="empty textarea" placeholder="맛집에 자세한 내용을 적어주세요" style={{ width: "100%", border: !!validateError.message["contents"] ? "1px solid #d32f2f" : "1px solid rgba(0, 0, 0, 0.23)" }} minRows={10} tabIndex={1} name={"contents"} value={inputs.contents} onChange={onChangeInputs} />
         {!!validateError.message["contents"] && <FormHelperText error={true}>{validateError.message["contents"]}</FormHelperText>}
       </TextFieldBox>
       <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 1, sm: 2, md: 4 }} alignItems={"center"} divider={<Divider orientation="vertical" flexItem />}>

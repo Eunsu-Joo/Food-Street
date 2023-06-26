@@ -14,19 +14,40 @@ const postsResolver: ResolverType = {
   Mutation: {
     addPost: (
       _,
-      { image, address, contents, start_time, end_time, name },
-      { db }
-    ) => {
-      const createdAt = new Date().toISOString();
-      return {
+      {
         image,
         address,
         contents,
         start_time,
         end_time,
         name,
-        createdAt,
+        username,
+        user_profile,
+      },
+      { db }
+    ) => {
+      const postData = {
+        image: image ?? null,
+        address: address ?? null,
+        contents,
+        start_time: start_time ?? null,
+        end_time: end_time ?? null,
+        name,
+        username,
+        user_profile,
+        createdAt: new Date().toISOString(),
       };
+      let id = 0;
+      if (db.posts.length === 0) {
+        db.posts.push({ ...postData, id });
+        setJSON(db.posts);
+        return { ...postData, id };
+      } else {
+        id = db.posts[db.posts.length - 1].id;
+        db.posts.push({ ...postData, id: id + 1 });
+        setJSON(db.posts);
+        return { ...postData, id };
+      }
     },
   },
 };
