@@ -41,6 +41,6 @@ const formatError = (err: GraphQLError) => {
     },
   });
   const port = process.env.PORT || 4000;
-  await app.listen({ port: 4000 });
+  await app.listen({ port });
   console.log("server listening on ", `port is ${port}`);
 })();

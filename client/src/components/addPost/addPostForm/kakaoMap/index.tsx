@@ -116,9 +116,9 @@ const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
   if (!center) return <Skeleton variant={"rectangular"} width={"100%"} height={"300px"} />;
   return (
     <Stack flexDirection={{ xs: "column", lg: "row" }} width={"100%"}>
-      <Stack width={{ xs: "100%", md: "100%" }} height={{ xs: 200, md: 150 }} sx={{ overflowY: "scroll" }} id={"MarkersList"} order={{ xs: 3, md: 1 }}>
-        <Box display={"flex"} flexDirection={"row"} alignItems={"center"} component={"form"} mb={2} onSubmit={handleSubmit}>
-          <TextField autoComplete={"off"} placeholder={"지역 + 상호명을 검색해주세요"} value={search} onChange={(event) => setSearch(event.target.value)} variant={"standard"} color={"primary"} size={"small"} />
+      <Stack width={{ xs: "100%", md: "100%" }} height={{ xs: 200, md: 300 }} sx={{ overflowY: "scroll" }} id={"MarkersList"} order={{ xs: 3, md: 1 }}>
+        <Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-between"} component={"form"} mb={2} onSubmit={handleSubmit}>
+          <TextField autoComplete={"off"} sx={{width:"calc(100% - 64px)"}} placeholder={"지역 + 상호명을 검색해주세요"} value={search} onChange={(event) => setSearch(event.target.value)} variant={"standard"} color={"primary"} size={"small"} />
           <Button size={"small"}>검색</Button>
         </Box>
         {markers.map((marker: CustomMarkerItemType) => (

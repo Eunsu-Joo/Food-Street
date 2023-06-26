@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/signup/SignupForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/signup/SignupForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/ImageUpload/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/ImageUpload/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/kakaoMap/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/kakaoMap/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,15 +47,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/projects/kia/kia-cpo-partner-web",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Food-Street",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "D:\\react-query\\food-street\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "D:\\Food-Street\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\react-query\\food-street\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\Food-Street\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,6 +98,12 @@
       <workItem from="1686633062470" duration="2799000" />
       <workItem from="1686637371348" duration="4158000" />
       <workItem from="1686815300477" duration="1373000" />
+      <workItem from="1687227330719" duration="1405000" />
+      <workItem from="1687230775860" duration="35000" />
+      <workItem from="1687741336969" duration="2776000" />
+      <workItem from="1687744835515" duration="2681000" />
+      <workItem from="1687762232638" duration="1383000" />
+      <workItem from="1687763625522" duration="2473000" />
     </task>
     <servers />
   </component>

@@ -64,6 +64,7 @@ const AddPostForm = () => {
   const handleSubmit = () => {
     const isValidate = validateAddPost();
     if (isValidate) {
+      console.log({...inputs,image})
     }
   };
 

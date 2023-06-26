@@ -5,13 +5,15 @@
   "repository": "https://github.com/Eunsu-Joo/Coupons.git",
   "author": "Eunsu-Joo <julie@1024corp.com>",
   "license": "MIT",
-  "private": "true",
-  "workspaces": ["client","server"],
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "client": "yarn workspace client start",
     "server": "yarn workspace server dev"
   },
-  "engines" : {
+  "engines": {
     "node": "18.12.1",
     "npm": "9.6.5"
   }
