@@ -45,23 +45,34 @@ const AddPostForm = ({ user }: { user: UserType }) => {
     contents: "",
     address: ""
   });
-
   const [image, setImage] = useState<null | File>(null);
+  const [message, setMessage] = useState("");
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
   const { error: validateError, validateAddPost } = useValidator(inputs);
-  const { mutate } = useMutation(
+  const { mutate, isSuccess } = useMutation(
     () => {
       const data = { ...inputs, image, username: user.username, user_profile: user.image };
       return fetcher(ADD_POST, { ...data });
     },
     {
       onSuccess: (data) => {
-        console.log(data);
+        setMessage("성공적으로 포스팅 되었습니다.");
       },
-      onError: () => {}
+      onError: (error: any) => {
+        const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
+        setMessage(message);
+      },
+      onSettled: () => {
+        controller();
+      }
     }
   );
+
+  const goHome = () => {
+    navigator(PATH.HOME);
+    controller();
+  };
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setInputs({
@@ -145,7 +156,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
           등록
         </Button>
       </Box>
-      {isOpen && <Modal onToggle={controller} isOpen={isOpen} message={"성공적으로 포스팅 되었습니다. 홈으로 이동할까요?"} />}
+      {isOpen && <Modal onToggle={isSuccess ? goHome : controller} isOpen={isOpen} message={message} home={isSuccess} />}
     </>
   );
 };
