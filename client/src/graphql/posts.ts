@@ -18,13 +18,14 @@ export const ADD_POST = gql`
 `;
 
 export const GET_POSTS = gql`
-  query Query($cursor: String) {
-    getPosts(cursor: $cursor) {
+  query Query($pageParam: Int) {
+    getPosts(pageParam: $pageParam) {
       createdAt
-      image
       name
-      start_time
-      end_time
+      username
+      id
+      user_profile
+      image
     }
   }
 `;

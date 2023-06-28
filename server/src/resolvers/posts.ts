@@ -4,8 +4,10 @@ const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
 
 const postsResolver: ResolverType = {
   Query: {
-    getPosts: (parent, { cursor = "" }, { db }) => {
-      return [];
+    getPosts: (parent, { pageParam }, { db }) => {
+      const fromIndex = (pageParam - 1) * 10,
+        endIndex = pageParam * 10;
+      return db.posts.slice(fromIndex, endIndex) || [];
     },
     getPost: (parent, { id = 1 }, { db }) => {
       return null;
