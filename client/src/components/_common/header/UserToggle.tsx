@@ -74,7 +74,7 @@ const UserToggle = ({ user }: { user: UserType }) => {
           horizontal: "center"
         }}
       >
-        {/*<MenuItem onClick={handleList}>내가 쓴 글✨</MenuItem>*/}
+        <MenuItem onClick={handleList}>내가 쓴 글✨</MenuItem>
         <MenuItem onClick={handleProfile}>프로필💕</MenuItem>
         <MenuItem onClick={handleLogout}>로그아웃💨</MenuItem>
         <MenuItem onClick={handleRemove}>회원탈퇴👀</MenuItem>

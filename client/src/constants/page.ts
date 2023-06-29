@@ -1,4 +1,4 @@
 const PAGE = {
-  LIMIT: 10
+  LIMIT: 9
 };
 export default PAGE;

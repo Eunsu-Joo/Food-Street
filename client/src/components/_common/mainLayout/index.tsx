@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Container sx={{ pt: 3 }} maxWidth={"lg"}>
+    <Container sx={{ pt: 10, pb: { xs: 6 } }} maxWidth={"lg"}>
       {children}
     </Container>
   );

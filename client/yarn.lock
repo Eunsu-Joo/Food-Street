@@ -3305,13 +3305,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "@types/cookie@npm:0.3.3"
-  checksum: 450c930d792a4fd5a93645b4123f02596368f904dbb1fe6fbb5043bce8f6ecf877a08511c6ba11c8e28168f62bc278e68d214f002fab927c9056c0bc69f21370
-  languageName: node
-  linkType: hard
-
 "@types/eslint-scope@npm:^3.7.3":
   version: 3.7.4
   resolution: "@types/eslint-scope@npm:3.7.4"
@@ -3382,16 +3375,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: d076bb61f45d0fc42dee496ef8b1c2f8742e15d5e47e90e20d0243386e426c04d4efd408a48875ab432f7960b4ce3414db20ed0fbbfc7bcc89d84e574f6e045a
-  languageName: node
-  linkType: hard
-
-"@types/hoist-non-react-statics@npm:^3.0.1":
-  version: 3.3.1
-  resolution: "@types/hoist-non-react-statics@npm:3.3.1"
-  dependencies:
-    "@types/react": "*"
-    hoist-non-react-statics: ^3.3.0
-  checksum: 2c0778570d9a01d05afabc781b32163f28409bb98f7245c38d5eaf082416fdb73034003f5825eb5e21313044e8d2d9e1f3fe2831e345d3d1b1d20bcd12270719
   languageName: node
   linkType: hard
 
@@ -5075,17 +5058,14 @@ __metadata:
     "@types/react-dom": ^18.0.8
     "@types/react-infinite-scroller": ^1.2.3
     axios: ^1.4.0
-    dayjs: ^1.11.6
+    dayjs: ^1.11.8
     graphql-request: ^6.0.0
     graphql-tag: ^2.12.6
     kakao.maps.d.ts: ^0.1.33
-    moment: ^2.29.4
     prettier: ^2.7.1
     react: ^18.2.0
-    react-cookie: ^4.1.1
     react-daum-postcode: ^3.1.1
     react-dom: ^18.2.0
-    react-infinite-scroller: ^1.2.6
     react-kakao-maps-sdk: ^1.1.5
     react-query: ^3.39.2
     react-router-dom: ^6.4.3
@@ -5330,13 +5310,6 @@ __metadata:
   version: 0.5.0
   resolution: "cookie@npm:0.5.0"
   checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
-  languageName: node
-  linkType: hard
-
-"cookie@npm:^0.4.0":
-  version: 0.4.2
-  resolution: "cookie@npm:0.4.2"
-  checksum: a00833c998bedf8e787b4c342defe5fa419abd96b32f4464f718b91022586b8f1bafbddd499288e75c037642493c83083da426c6a9080d309e3bd90fd11baa9b
   languageName: node
   linkType: hard
 
@@ -5719,10 +5692,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.11.6":
-  version: 1.11.6
-  resolution: "dayjs@npm:1.11.6"
-  checksum: 18bdfd927009b68eab08dca578e421d4a581cefcbe9337f54c5d9e0d941ffb6b221c4b2c1cab15cdd9d419940e768ac4c984531461a90bbe1c158b75fe160580
+"dayjs@npm:^1.11.8":
+  version: 1.11.8
+  resolution: "dayjs@npm:1.11.8"
+  checksum: 4fe04b6df98ba6e5f89b49d80bba603cbf01e21a1b4a24ecb163c94c0ba5324a32ac234a139cee654f89d5277a2bcebca5347e6676c28a0a6d1a90f1d34a42b8
   languageName: node
   linkType: hard
 
@@ -7550,7 +7523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hoist-non-react-statics@npm:^3.0.0, hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1":
+"hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
   dependencies:
@@ -9718,13 +9691,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.29.4":
-  version: 2.29.4
-  resolution: "moment@npm:2.29.4"
-  checksum: 0ec3f9c2bcba38dc2451b1daed5daded747f17610b92427bebe1d08d48d8b7bdd8d9197500b072d14e326dd0ccf3e326b9e3d07c5895d3d49e39b6803b76e80e
-  languageName: node
-  linkType: hard
-
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -11334,7 +11300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -11464,19 +11430,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-cookie@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "react-cookie@npm:4.1.1"
-  dependencies:
-    "@types/hoist-non-react-statics": ^3.0.1
-    hoist-non-react-statics: ^3.0.0
-    universal-cookie: ^4.0.0
-  peerDependencies:
-    react: ">= 16.3.0"
-  checksum: b734dcad35d790ced8c8fc3b19e3eb1f546e0923c637bad888c7c0096dbe2c996668416a49b48827ec7ad2d81522f1b57567694c791e1a5fb89ca41b39158a74
-  languageName: node
-  linkType: hard
-
 "react-daum-postcode@npm:^3.1.1":
   version: 3.1.1
   resolution: "react-daum-postcode@npm:3.1.1"
@@ -11534,17 +11487,6 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
-  languageName: node
-  linkType: hard
-
-"react-infinite-scroller@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "react-infinite-scroller@npm:1.2.6"
-  dependencies:
-    prop-types: ^15.5.8
-  peerDependencies:
-    react: ^0.14.9 || ^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 5f5aae76c484b4039bada87070d5f8c54d2786697ae600be19a68f4e85158ff550122f15dccc5997d8b01fa487da47b9ffbc3e9d9a29f2cf71c77275f72551fd
   languageName: node
   linkType: hard
 
@@ -13367,16 +13309,6 @@ __metadata:
   dependencies:
     crypto-random-string: ^2.0.0
   checksum: ef68f639136bcfe040cf7e3cd7a8dff076a665288122855148a6f7134092e6ed33bf83a7f3a9185e46c98dddc445a0da6ac25612afa1a7c38b8b654d6c02498e
-  languageName: node
-  linkType: hard
-
-"universal-cookie@npm:^4.0.0":
-  version: 4.0.4
-  resolution: "universal-cookie@npm:4.0.4"
-  dependencies:
-    "@types/cookie": ^0.3.3
-    cookie: ^0.4.0
-  checksum: bb2bafa7eb7e213e5448924329572dd1a913be00e23906189be2a0dc889b0eea1750f9c33462fc1c911d89092dbd82f6e220c2d61c4057bb3f69e7665d9d8ddf
   languageName: node
   linkType: hard
 

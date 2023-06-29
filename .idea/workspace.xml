@@ -5,17 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/bottombar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/bottombar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/UserToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/UserToggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/mainLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/mainLayout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/main/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/main/postList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/main/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/postItem/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/constants/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useInfiniteScroll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useInfiniteScroll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/types/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Shopping-mall",
+    "last_opened_file_path": "D:/projects/smilegate-talesrunner-webpage/month6/summer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,7 +113,8 @@
       <workItem from="1687842773994" duration="2410000" />
       <workItem from="1687851295416" duration="61000" />
       <workItem from="1687921762720" duration="2659000" />
-      <workItem from="1687932815844" duration="8000000" />
+      <workItem from="1687932815844" duration="8186000" />
+      <workItem from="1688004331856" duration="12823000" />
     </task>
     <servers />
   </component>

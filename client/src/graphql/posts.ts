@@ -20,12 +20,16 @@ export const ADD_POST = gql`
 export const GET_POSTS = gql`
   query Query($pageParam: Int) {
     getPosts(pageParam: $pageParam) {
-      createdAt
-      name
-      username
-      id
-      user_profile
-      image
+      data {
+        contents
+        createdAt
+        name
+        username
+        image
+        id
+        user_profile
+      }
+      pageCount
     }
   }
 `;

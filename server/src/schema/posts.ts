@@ -13,8 +13,12 @@ const postsSchema = gql`
     user_profile: String
     id: ID!
   }
+  type PostData {
+    data: [Post!]
+    pageCount: Int!
+  }
   extend type Query {
-    getPosts(pageParam: Int): [Post!]
+    getPosts(pageParam: Int): PostData
     getPost(id: ID!): Post!
   }
   extend type Mutation {

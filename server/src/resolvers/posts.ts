@@ -1,13 +1,18 @@
 import { ResolverType } from "./types";
 import { DBFile, writeDB } from "../dbController";
 const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
-
+const PAGE_LIMIT = 9;
 const postsResolver: ResolverType = {
   Query: {
     getPosts: (parent, { pageParam }, { db }) => {
-      const fromIndex = (pageParam - 1) * 10,
-        endIndex = pageParam * 10;
-      return db.posts.slice(fromIndex, endIndex) || [];
+      const data = db.posts;
+      return {
+        data:
+          data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
+          [],
+        pageCount:
+          data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
+      };
     },
     getPost: (parent, { id = 1 }, { db }) => {
       return null;

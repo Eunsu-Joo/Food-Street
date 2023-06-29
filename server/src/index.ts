@@ -32,6 +32,7 @@ const formatError = (err: GraphQLError) => {
   const app = express();
   await server.start();
   //server 에게 express로 구동이 된다 라고  알려주는 거임.
+
   server.applyMiddleware({
     app,
     path: "/graphql",

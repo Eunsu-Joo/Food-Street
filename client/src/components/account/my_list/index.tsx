@@ -1,10 +1,10 @@
-import AccountLayout from "../_common/AccountLayout";
+import MainLayout from "../../_common/mainLayout";
 
 const MyList = () => {
   return (
-    <AccountLayout title={"MY LIST"}>
+    <MainLayout>
       <p>마이 리스트 준비중</p>
-    </AccountLayout>
+    </MainLayout>
   );
 };
 export default MyList;

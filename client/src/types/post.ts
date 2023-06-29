@@ -14,5 +14,8 @@ export type PostType = {
 export type PostsType = PostType[];
 
 export type PostDataType = {
-  getPosts: PostsType;
+  getPosts: {
+    data: PostsType;
+    pageCount: number;
+  };
 };

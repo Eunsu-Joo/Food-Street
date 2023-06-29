@@ -25,7 +25,7 @@ const Routes = () => {
       <Route path={PATH.PROFILE} element={<Profile />} />
       <Route path={PATH.SEARCH} element={<Search />} />
       <Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />
-      {/*<Route path={PATH.MY_LIST} element={<MyList />} />*/}
+      <Route path={PATH.MY_LIST} element={<MyList />} />
     </ReactRoutes>
   );
 };
