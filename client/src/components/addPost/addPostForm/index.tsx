@@ -145,7 +145,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
         {!!validateError.message["image"] && <FormHelperText error={true}>{validateError.message["image"]}</FormHelperText>}
         <TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>
           <Typography>주소명 : {inputs.address}</Typography>
-          <KakaoMap onChangeAddress={onChangeAddress} />
+          {/*<KakaoMap onChangeAddress={onChangeAddress} />*/}
         </TextFieldBox>
       </Stack>
       <Box display={"flex"} justifyContent={"center"} mt={6}>
