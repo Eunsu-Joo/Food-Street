@@ -1,6 +1,7 @@
 {
   "name": "food-street",
   "version": "1.0.0",
+  "private": true,
   "main": "module",
   "repository": "https://github.com/Eunsu-Joo/Coupons.git",
   "author": "Eunsu-Joo <julie@1024corp.com>",
