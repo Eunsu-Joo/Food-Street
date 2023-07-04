@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/graphql/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/fetcher.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +99,9 @@
       <workItem from="1688032936056" duration="858000" />
       <workItem from="1688089949332" duration="2718000" />
       <workItem from="1688102671466" duration="190000" />
-      <workItem from="1688104023629" duration="5865000" />
+      <workItem from="1688104023629" duration="7427000" />
+      <workItem from="1688342079779" duration="2971000" />
+      <workItem from="1688476265458" duration="91000" />
     </task>
     <servers />
   </component>

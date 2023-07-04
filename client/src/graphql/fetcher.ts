@@ -1,5 +1,5 @@
 import { request, RequestDocument } from "graphql-request";
-const BASE_URL = "http://ec2-52-78-80-40.ap-northeast-2.compute.amazonaws.com:4000"
+const BASE_URL = process.env.NODE_ENV ==="development"?process.env.REACT_APP_DEV_API_URL : process.env.REACT_APP_PRODUCTION_API_URL
 
 const fetcher = (query: RequestDocument, data = {}) =>
   request(`${BASE_URL}/graphql`, query, data, {
