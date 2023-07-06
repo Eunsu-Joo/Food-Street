@@ -1,5 +1,6 @@
 import { ResolverType } from "./types";
 import { DBFile, writeDB } from "../dbController";
+import { GraphQLError } from "graphql/error";
 const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
 const PAGE_LIMIT = 9;
 const postsResolver: ResolverType = {
@@ -49,6 +50,18 @@ const postsResolver: ResolverType = {
       db.posts.push({ ...postData, id });
       setJSON(db.posts);
       return { ...postData, id };
+    },
+    likePost: (_, { id, isLike }, { db }) => {
+      const target = db.posts.find((item) => item.id === +id),
+        targetIndex = db.posts.indexOf(target);
+      if (!target) throw new GraphQLError("해당유저를 찾을 수 없습니다.");
+      let newItem = { ...target };
+      if (isLike) newItem = { ...newItem, like: newItem.like + 1 };
+      else
+        newItem = { ...newItem, like: target.like === 0 ? 0 : target.like - 1 };
+      db.posts.splice(targetIndex, 1, newItem);
+      setJSON(db.posts);
+      return { count: newItem.like };
     },
   },
 };

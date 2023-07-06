@@ -4,7 +4,7 @@ import resolvers from "./resolvers";
 import "dotenv/config";
 import { GraphQLError } from "graphql/error";
 import { DBFile, readDB } from "./dbController";
-
+import cors from "cors";
 const express = require("express");
 const formatError = (err: GraphQLError) => {
   console.error("--- GraphQL Error ---");

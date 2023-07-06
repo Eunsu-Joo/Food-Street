@@ -12,10 +12,14 @@ const postsSchema = gql`
     username: String!
     user_profile: String
     id: ID!
+    like: Int!
   }
   type PostData {
     data: [Post!]
     pageCount: Int!
+  }
+  type Like {
+    count: Int!
   }
   extend type Query {
     getPosts(pageParam: Int): PostData
@@ -32,6 +36,7 @@ const postsSchema = gql`
       username: String!
       user_profile: String
     ): Post!
+    likePost(id: ID!, isLike: Boolean!): Like!
   }
 `;
 export default postsSchema;
