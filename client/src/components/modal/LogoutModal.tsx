@@ -14,7 +14,7 @@ const LogoutModal = (props: ModalDefaultProps) => {
     queryClient.removeQueries([QUERY_KEYS.USER]);
     clearSessionUser();
     props.onToggle();
-    navigator("/");
+    navigator(0);
   };
   return (
     <ModalLayout {...props}>

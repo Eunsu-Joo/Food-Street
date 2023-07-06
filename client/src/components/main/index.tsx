@@ -1,13 +1,14 @@
 import MainLayout from "../_common/mainLayout";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useInfiniteQuery } from "react-query";
 import QUERY_KEYS from "../../constants/querykeys";
 import fetcher from "../../graphql/fetcher";
 import { GET_POSTS } from "../../graphql/posts";
 import { PostDataType } from "../../types/post";
-import { Typography } from "@mui/material";
+import { Box, InputLabel, NativeSelect, Typography } from "@mui/material";
 import PostList from "./postList";
+import FormControl from "@mui/material/FormControl";
 
 const Main = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,6 +27,11 @@ const Main = () => {
       cacheTime: 1000 * 60 * 3
     }
   );
+  const [filter, setFilter] = useState("latest");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value as string);
+  };
 
   useEffect(() => {
     (async () => {
@@ -40,6 +46,20 @@ const Main = () => {
         <Typography letterSpacing={3} my={2} fontSize={24} fontFamily={"Montserrat"} fontWeight={600} align={"center"} textTransform={"uppercase"}>
           fetching...
         </Typography>
+      )}
+      {!isLoading && !isFetching && (
+        <Box width={{ sx: "100%", md: 300 }} sx={{ marginLeft: "auto" }}>
+          <FormControl fullWidth={true}>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+              Filter
+            </InputLabel>
+            <NativeSelect defaultValue={"latest"} sx={{ paddingLeft: "8px" }}>
+              <option value={"latest"}>최신순</option>
+              <option value={"popular"}>인기순</option>
+              <option value={"order"}>가나다순</option>
+            </NativeSelect>
+          </FormControl>
+        </Box>
       )}
       {data?.pages.map((data: PostDataType, index) => {
         return <PostList data={data} key={index} />;

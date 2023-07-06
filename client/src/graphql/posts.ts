@@ -28,6 +28,7 @@ export const GET_POSTS = gql`
         image
         id
         user_profile
+        like
       }
       pageCount
     }
@@ -44,6 +45,15 @@ export const GET_POST = gql`
       image
       name
       start_time
+      like
+    }
+  }
+`;
+
+export const LIKE_POST = gql`
+  mutation Mutation($id: ID!, $isLike: Boolean!) {
+    likePost(id: $id, isLike: $isLike) {
+      count
     }
   }
 `;

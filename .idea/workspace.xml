@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/fetcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/fetcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +40,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "D:\\Food-Street\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "D:\\Food-Street\\client\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "D:\\Food-Street\\server\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -101,7 +100,8 @@
       <workItem from="1688102671466" duration="190000" />
       <workItem from="1688104023629" duration="7427000" />
       <workItem from="1688342079779" duration="2971000" />
-      <workItem from="1688476265458" duration="91000" />
+      <workItem from="1688476265458" duration="680000" />
+      <workItem from="1688535308486" duration="13385000" />
     </task>
     <servers />
   </component>

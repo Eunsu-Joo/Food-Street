@@ -9,6 +9,7 @@ export type PostType = {
   name: string;
   username: string;
   user_profile: string | null;
+  like:number
 };
 
 export type PostsType = PostType[];
