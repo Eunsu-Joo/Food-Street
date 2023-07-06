@@ -19,13 +19,13 @@ type PostItemProps = {
 };
 
 const PostItem = ({ item, user }: PostItemProps) => {
-  const { username, user_profile, id, image, like, name, contents, createdAt } = item;
-  const [isLike, setIsLike] = useState(false);
+  const { username, user_profile, id, likeUsers, image, like, name, contents, createdAt } = item;
+  const [isLike, setIsLike] = useState(likeUsers.includes(user?.jwt));
   const [message, setMessage] = useState("");
   const [count, setCount] = useState(like);
   const { mutate: likePost } = useMutation(
     () => {
-      return fetcher(LIKE_POST, { id, isLike: !isLike });
+      return fetcher(LIKE_POST, { id, isLike: !isLike, jwt: user?.jwt });
     },
     {
       onSuccess: (data: any) => {

@@ -13,13 +13,15 @@ export const ADD_POST = gql`
       username
       user_profile
       id
+      like
+      likeUsers
     }
   }
 `;
 
 export const GET_POSTS = gql`
-  query Query($pageParam: Int) {
-    getPosts(pageParam: $pageParam) {
+  query Query($pageParam: Int, $username: String) {
+    getPosts(pageParam: $pageParam, username: $username) {
       data {
         contents
         createdAt
@@ -29,6 +31,7 @@ export const GET_POSTS = gql`
         id
         user_profile
         like
+        likeUsers
       }
       pageCount
     }
@@ -51,8 +54,8 @@ export const GET_POST = gql`
 `;
 
 export const LIKE_POST = gql`
-  mutation Mutation($id: ID!, $isLike: Boolean!) {
-    likePost(id: $id, isLike: $isLike) {
+  mutation Mutation($id: ID!, $isLike: Boolean!, $jwt: ID!) {
+    likePost(id: $id, isLike: $isLike, jwt: $jwt) {
       count
     }
   }

@@ -21,7 +21,7 @@ const formatError = (err: GraphQLError) => {
     context: {
       //전역으로 사용할 db
       db: {
-        posts: readDB(DBFile.POSTS).reverse(),
+        posts: readDB(DBFile.POSTS),
         users: readDB(DBFile.USERS),
       },
     },
@@ -37,7 +37,11 @@ const formatError = (err: GraphQLError) => {
     app,
     path: "/graphql",
     cors: {
-      origin: ["http://localhost:3000", "https://studio.apollographql.com"],
+      origin: [
+        "http://localhost:3000",
+        "https://studio.apollographql.com",
+        "https://food-street-client.vercel.app",
+      ],
       credentials: true,
     },
   });

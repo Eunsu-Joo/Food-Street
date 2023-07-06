@@ -5,8 +5,12 @@ const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
 const PAGE_LIMIT = 9;
 const postsResolver: ResolverType = {
   Query: {
-    getPosts: (parent, { pageParam }, { db }) => {
-      const data = db.posts;
+    getPosts: (parent, { pageParam, username }, { db }) => {
+      let data = db.posts.sort((a, b) => b.id - a.id);
+      if (username)
+        data = db.posts
+          .sort((a, b) => b.id - a.id)
+          .filter((post) => post.username === username);
       return {
         data:
           data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
@@ -44,6 +48,8 @@ const postsResolver: ResolverType = {
         username,
         user_profile,
         createdAt: new Date().toISOString(),
+        like: 0,
+        likeUsers: [],
       };
       let id = 0;
       if (db.posts.length > 0) id = db.posts[db.posts.length - 1].id + 1;
@@ -51,14 +57,23 @@ const postsResolver: ResolverType = {
       setJSON(db.posts);
       return { ...postData, id };
     },
-    likePost: (_, { id, isLike }, { db }) => {
+    likePost: (_, { id, isLike, jwt }, { db }) => {
       const target = db.posts.find((item) => item.id === +id),
         targetIndex = db.posts.indexOf(target);
       if (!target) throw new GraphQLError("해당유저를 찾을 수 없습니다.");
       let newItem = { ...target };
-      if (isLike) newItem = { ...newItem, like: newItem.like + 1 };
+      if (isLike)
+        newItem = {
+          ...newItem,
+          like: newItem.like + 1,
+          likeUsers: [...target.likeUsers, jwt],
+        };
       else
-        newItem = { ...newItem, like: target.like === 0 ? 0 : target.like - 1 };
+        newItem = {
+          ...newItem,
+          like: target.like === 0 ? 0 : target.like - 1,
+          likeUsers: target.likeUsers.filter((user: string) => user !== jwt),
+        };
       db.posts.splice(targetIndex, 1, newItem);
       setJSON(db.posts);
       return { count: newItem.like };

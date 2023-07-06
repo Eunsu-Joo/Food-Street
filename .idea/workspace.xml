@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/main/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/main/postList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/main/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/postList/postItem/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/types/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Food-Street",
+    "last_opened_file_path": "D:/Shopping-mall",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,6 +110,7 @@
       <workItem from="1688342079779" duration="2971000" />
       <workItem from="1688476265458" duration="680000" />
       <workItem from="1688535308486" duration="13385000" />
+      <workItem from="1688622699955" duration="10184000" />
     </task>
     <servers />
   </component>
