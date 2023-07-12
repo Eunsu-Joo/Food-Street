@@ -15,9 +15,10 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { UserType } from "../../../types/user";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import fetcher from "../../../graphql/fetcher";
 import { ADD_POST } from "../../../graphql/posts";
+import QUERY_KEYS from "../../../constants/querykeys";
 
 const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
   border: `1px solid ${theme.palette.grey[300]}`,
@@ -50,14 +51,16 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
   const { error: validateError, validateAddPost } = useValidator(inputs);
+  const queryClient = useQueryClient();
   const { mutate, isSuccess } = useMutation(
     () => {
       const data = { ...inputs, image, username: user.username, user_profile: user.image };
       return fetcher(ADD_POST, { ...data });
     },
     {
-      onSuccess: (data) => {
+      onSuccess: async (data) => {
         setMessage("성공적으로 포스팅 되었습니다.");
+        await queryClient.refetchQueries([QUERY_KEYS.POSTS, "latest"]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -70,9 +73,10 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   );
 
   const goHome = () => {
-    navigator(PATH.HOME);
+    navigator(PATH.HOME, { preventScrollReset: true });
     controller();
   };
+
   const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setInputs({
