@@ -20,10 +20,9 @@ export const ADD_POST = gql`
 `;
 
 export const GET_POSTS = gql`
-  query Query($pageParam: Int, $username: String) {
-    getPosts(pageParam: $pageParam, username: $username) {
+  query Query($pageParam: Int, $username: String, $filter: String) {
+    getPosts(pageParam: $pageParam, username: $username, filter: $filter) {
       data {
-        contents
         createdAt
         name
         username

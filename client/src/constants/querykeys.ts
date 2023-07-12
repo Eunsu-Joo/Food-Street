@@ -6,6 +6,7 @@ const QUERY_KEYS = {
   TOKEN: "user_token",
   IMAGE: "image",
   DETAIL_POST: "detail_posts",
-  KEYWORD: "keyword"
+  KEYWORD: "keyword",
+  MY_LIST: "my_list"
 };
 export default QUERY_KEYS;

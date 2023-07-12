@@ -10,11 +10,14 @@ const useUser = () => {
      3. 설정해놓은 cacheTime 이 끝나면, fetcher로 가져온 값이 다시 QUERY_KEYS.USER의 값이 됨.
   *
   * */
+  const queryClient = useQueryClient();
+  // @ts-ignore
   const { data, isLoading, isError } = useQuery<any>(
     QUERY_KEYS.USER,
     () => {
       // cacheTime 이 끝나면 호출
       if (!data?.user) return { user: null };
+      // @ts-ignore
       const { user } = data;
       return fetcher(USER, { jwt: user.jwt });
     },
@@ -23,12 +26,13 @@ const useUser = () => {
       // 길면 길어질수록 query 함수를 불러오는 텀이 길어짐.
       // 여기서는 변경이 거의 없으므로 유저가 페이지에 머무는 시간이라고 가정할꺼임.
       staleTime: 0,
-      cacheTime: 1000 * 60 * 5,
+      cacheTime: 1000 * 10,
       initialData: () => {
         return {
           user: sessionStorage.getItem(SESSION_KEYS.USER) ? JSON.parse(sessionStorage.getItem(SESSION_KEYS.USER) as string) : null
         };
-      }
+      },
+      enabled: false
     }
   );
 

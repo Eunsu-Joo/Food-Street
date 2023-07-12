@@ -15,14 +15,12 @@ const Login = () => {
     email: "",
     password: ""
   });
-  const { user } = useUser();
 
   useEffect(() => {
     setDefaultValues((prev) => {
       return sessionStorage.getItem(SESSION_KEYS.AUTH) ? JSON.parse(sessionStorage.getItem(SESSION_KEYS.AUTH) as string) : prev;
     });
   }, []);
-  if (user) return <Navigate to={PATH.HOME} />;
   return (
     <AccountLayout title={"Login"}>
       <Typography variant="body2" align="center" mb={4}>

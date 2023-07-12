@@ -16,6 +16,7 @@ import React from "react";
 const Profile = () => {
   const { data, isLoading } = useUser();
   if (isLoading) return <Loading />;
+  if (!data?.user) return <Navigate to={PATH.LOGIN} />;
   return (
     <AccountLayout title={"PROFILE"}>
       <ProfileForm user={data.user} />

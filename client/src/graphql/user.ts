@@ -70,3 +70,10 @@ export const FORGOT_PASSWORD = gql`
     }
   }
 `;
+export const DELETE_POST = gql`
+  mutation Mutation($id: ID!) {
+    deletePost(id: $id) {
+      count
+    }
+  }
+`;

@@ -26,6 +26,7 @@ const ChangePassword = () => {
   const { error: validateError, setError, validateResetPassword } = useValidator(inputs);
   const { isOpen, controller } = useModal();
   const { data } = useUser();
+
   const { mutate, isSuccess } = useMutation(
     () => {
       return fetcher(CHANGE_PASSWORD, { jwt: data.user.jwt, password: inputs.currentPassword, newPassword: inputs.password });
@@ -55,7 +56,7 @@ const ChangePassword = () => {
       mutate();
     }
   };
-
+  if (!data?.user) return <Navigate to={PATH.LOGIN} />;
   return (
     <AccountLayout title={"CHANGE PASSWORD"}>
       <Box component={"form"} onSubmit={handleSubmit}>
