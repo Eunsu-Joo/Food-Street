@@ -41,17 +41,11 @@ const Main = () => {
       await fetchNextPage();
     })();
   }, [inView]);
-
+  if (isError) return <Error />;
   return (
     <>
-      {isError ? (
-        <Error />
-      ) : (
-        <>
-          <PostList defaultFilter={searchParams.get("filter") as string} handleChange={handleChange} data={data as InfiniteData<PostDataType>} isLoading={isLoading} isFetching={isFetching} />
-          <div ref={ref} style={{ display: hasNextPage ? "block" : "none" }} />
-        </>
-      )}
+      <PostList defaultFilter={searchParams.get("filter") as string} handleChange={handleChange} data={data as InfiniteData<PostDataType>} isLoading={isLoading} isFetching={isFetching} />
+      <div ref={ref} style={{ display: hasNextPage ? "block" : "none" }} />
     </>
   );
 };
