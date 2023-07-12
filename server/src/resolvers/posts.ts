@@ -1,16 +1,23 @@
 import { ResolverType } from "./types";
 import { DBFile, writeDB } from "../dbController";
 import { GraphQLError } from "graphql/error";
+
 const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
 const PAGE_LIMIT = 9;
 const postsResolver: ResolverType = {
   Query: {
-    getPosts: (parent, { pageParam, username }, { db }) => {
-      let data = db.posts.sort((a, b) => b.id - a.id);
-      if (username)
-        data = db.posts
-          .sort((a, b) => b.id - a.id)
-          .filter((post) => post.username === username);
+    getPosts: (parent, { pageParam, username, filter }, { db }) => {
+      let data = db.posts;
+      if (username) data = data.filter((post) => post.username === username);
+      if (filter === "latest") data = data.sort((a, b) => b.id - a.id);
+      if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
+      if (filter === "order")
+        data = data.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1; // 내림차순 정렬
+          return 0;
+        });
+
       return {
         data:
           data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
@@ -51,11 +58,15 @@ const postsResolver: ResolverType = {
         like: 0,
         likeUsers: [],
       };
-      let id = 0;
-      if (db.posts.length > 0) id = db.posts[db.posts.length - 1].id + 1;
-      db.posts.push({ ...postData, id });
+
+      const newItem = {
+        ...postData,
+        id: db.posts.length > 0 ? +db.posts[0].id + 1 : 0,
+      };
+
+      db.posts.unshift(newItem);
       setJSON(db.posts);
-      return { ...postData, id };
+      return newItem;
     },
     likePost: (_, { id, isLike, jwt }, { db }) => {
       const target = db.posts.find((item) => item.id === +id),
@@ -77,6 +88,13 @@ const postsResolver: ResolverType = {
       db.posts.splice(targetIndex, 1, newItem);
       setJSON(db.posts);
       return { count: newItem.like };
+    },
+    deletePost: (_, { id }, { db }) => {
+      const existIndex = db.posts.findIndex((item) => item.id === +id);
+      if (existIndex < 0)
+        throw new GraphQLError("존재하지 않는 게시물 입니다.");
+      db.posts.splice(existIndex, 1);
+      return { count: 1 };
     },
   },
 };

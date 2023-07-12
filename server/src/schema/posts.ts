@@ -19,11 +19,11 @@ const postsSchema = gql`
     data: [Post!]
     pageCount: Int!
   }
-  type Like {
+  type Count {
     count: Int!
   }
   extend type Query {
-    getPosts(pageParam: Int, username: String): PostData
+    getPosts(pageParam: Int, username: String, filter: String): PostData
     getPost(id: ID!): Post!
   }
   extend type Mutation {
@@ -37,7 +37,8 @@ const postsSchema = gql`
       username: String!
       user_profile: String
     ): Post!
-    likePost(id: ID!, isLike: Boolean!, jwt: ID!): Like!
+    likePost(id: ID!, isLike: Boolean!, jwt: ID!): Count!
+    deletePost(id: ID!): Count
   }
 `;
 export default postsSchema;

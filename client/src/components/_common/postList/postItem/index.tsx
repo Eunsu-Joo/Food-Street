@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -13,6 +13,7 @@ import Modal from "../../../modal";
 import useModal from "../../../../hooks/useModal";
 import useUser from "../../../../hooks/useUser";
 import { UserType } from "../../../../types/user";
+import { useSearchParams } from "react-router-dom";
 type PostItemProps = {
   item: PostType;
   user: UserType;
@@ -22,7 +23,8 @@ const PostItem = ({ item, user }: PostItemProps) => {
   const { username, user_profile, id, likeUsers, image, like, name, contents, createdAt } = item;
   const [isLike, setIsLike] = useState(likeUsers.includes(user?.jwt));
   const [message, setMessage] = useState("");
-  const [count, setCount] = useState(like);
+  const [count, setCount] = useState(0);
+  const [searchParams, _] = useSearchParams();
   const { mutate: likePost } = useMutation(
     () => {
       return fetcher(LIKE_POST, { id, isLike: !isLike, jwt: user?.jwt });
@@ -38,12 +40,16 @@ const PostItem = ({ item, user }: PostItemProps) => {
       }
     }
   );
+
   const onClickFavorite = () => {
     setIsLike((prev) => !prev);
     likePost();
   };
-
+  useEffect(() => {
+    setCount(like);
+  }, [searchParams.get("filter")]);
   const { isOpen, controller } = useModal();
+
   return (
     <Grid item xs={20} sm={8} md={4}>
       <Card sx={{ mb: 2 }}>
