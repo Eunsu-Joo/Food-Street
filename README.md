@@ -5,7 +5,7 @@
 - FrontEnd : React, Mui, React-query, typescript
 - Backend : JSONDB, Graphql, Apollo-server, express
 - Upload : Cloudinary
-
+- Build : AWS EC2, 가비아(도메인)
 ## ◾ Function
 
 - 👩🏻‍💻  **Account** 
