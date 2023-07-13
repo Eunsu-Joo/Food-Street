@@ -56,6 +56,7 @@ export const LIKE_POST = gql`
   mutation Mutation($id: ID!, $isLike: Boolean!, $jwt: ID!) {
     likePost(id: $id, isLike: $isLike, jwt: $jwt) {
       count
+      likeUsers
     }
   }
 `;

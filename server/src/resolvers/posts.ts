@@ -87,7 +87,7 @@ const postsResolver: ResolverType = {
         };
       db.posts.splice(targetIndex, 1, newItem);
       setJSON(db.posts);
-      return { count: newItem.like };
+      return { count: newItem.like, likeUsers: newItem.likeUsers };
     },
     deletePost: (_, { id }, { db }) => {
       const existIndex = db.posts.findIndex((item) => item.id === +id);

@@ -60,7 +60,6 @@ const AddPostForm = ({ user }: { user: UserType }) => {
     {
       onSuccess: async (data) => {
         setMessage("성공적으로 포스팅 되었습니다.");
-        await queryClient.refetchQueries([QUERY_KEYS.POSTS, "latest"]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";

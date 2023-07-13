@@ -26,7 +26,7 @@ const useUser = () => {
       // 길면 길어질수록 query 함수를 불러오는 텀이 길어짐.
       // 여기서는 변경이 거의 없으므로 유저가 페이지에 머무는 시간이라고 가정할꺼임.
       staleTime: 0,
-      cacheTime: 1000 * 10,
+      cacheTime: 1000 * 60 * 5,
       initialData: () => {
         return {
           user: sessionStorage.getItem(SESSION_KEYS.USER) ? JSON.parse(sessionStorage.getItem(SESSION_KEYS.USER) as string) : null

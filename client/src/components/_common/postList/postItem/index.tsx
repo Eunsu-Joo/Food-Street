@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Box, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, Stack, Typography } from "@mui/material";
+import { Avatar, Card, CardContent, CardHeader, CardMedia, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { red } from "@mui/material/colors";
 import noImage from "../../../../images/noImage.png";
-import { PostsType, PostType } from "../../../../types/post";
+import { PostType } from "../../../../types/post";
 import dayjs from "dayjs";
 import { useMutation } from "react-query";
 import fetcher from "../../../../graphql/fetcher";
 import { LIKE_POST } from "../../../../graphql/posts";
-import Modal from "../../../modal";
 import useModal from "../../../../hooks/useModal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UserType } from "../../../../types/user";
@@ -33,8 +32,9 @@ const PostItem = ({ item, user }: PostItemProps) => {
       return fetcher(LIKE_POST, { id, isLike: !isLike, jwt: user?.jwt });
     },
     {
-      onSuccess: (data: any) => {
+      onSuccess: async (data: any) => {
         setCount(data.likePost.count);
+        setIsLike(data.likePost.likeUsers.includes(user?.jwt));
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -47,10 +47,12 @@ const PostItem = ({ item, user }: PostItemProps) => {
     setIsLike((prev) => !prev);
     likePost();
   };
+
   useEffect(() => {
     setCount(like);
     setIsLike(likeUsers.includes(user?.jwt));
   }, [searchParams.get("filter")]);
+
   const { isOpen, controller } = useModal();
   return (
     <Grid item xs={20} sm={8} md={4}>

@@ -29,11 +29,11 @@ const Main = () => {
         return pages.length + 1;
       },
       staleTime: 0,
-      cacheTime: 1000 * 60 * 3,
+      cacheTime: 1000 * 60 * 3
       // 기존 캐싱되어 있는 데이터는 캐싱되어있는 데이터로 가져다 쓰기
       //  연결되 있는 모든것들을 업데이트를 일일이 하나씩 다 해줘야함. 우선 주석처리.
       // enabled: !queryClient.getQueryData([QUERY_KEYS.POSTS, searchParams.get("filter")])
-      enabled: true
+      // enabled: true
     }
   );
 
