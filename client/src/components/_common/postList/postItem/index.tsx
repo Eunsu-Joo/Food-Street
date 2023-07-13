@@ -64,7 +64,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
             </Avatar>
           }
           title={username}
-          subheader={dayjs(createdAt).format("YYYY년 MM월DD일 HH시MM분")}
+          subheader={dayjs(createdAt).add(9, "hour").format("YYYY년 MM월DD일 HH시mm분")}
           action={
             data?.user && data?.user.username === username ? (
               <IconButton sx={{ ml: 1 }} onClick={controller}>

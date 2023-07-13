@@ -94,6 +94,7 @@ const postsResolver: ResolverType = {
       if (existIndex < 0)
         throw new GraphQLError("존재하지 않는 게시물 입니다.");
       db.posts.splice(existIndex, 1);
+      setJSON(db.posts);
       return { count: 1 };
     },
   },
