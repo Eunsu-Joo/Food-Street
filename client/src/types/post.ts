@@ -21,3 +21,9 @@ export type PostDataType = {
     pageCount: number;
   };
 };
+export type SearchDataType = {
+  getSearchPosts: {
+    data: PostsType;
+    pageCount: number;
+  };
+};

@@ -28,7 +28,7 @@ const postsSchema = gql`
   }
   extend type Query {
     getPosts(pageParam: Int, username: String, filter: String): PostData
-    getPost(id: ID!): Post!
+    getSearchPosts(pageParam: Int, keyword: String, filter: String): PostData
   }
   extend type Mutation {
     addPost(

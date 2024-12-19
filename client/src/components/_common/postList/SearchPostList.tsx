@@ -9,19 +9,18 @@ import { InfiniteData } from "react-query";
 import Loading from "../loading";
 
 type PostListProps = {
-  data: InfiniteData<PostDataType>;
+  data: InfiniteData<SearchDataType>;
   handleChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   defaultFilter: string;
   isFetching: boolean;
 };
 
-const PostList = ({ data, handleChange, defaultFilter, isFetching }: PostListProps) => {
+const SearchPostList = ({ data, handleChange, defaultFilter, isFetching }: PostListProps) => {
   const { data: user } = useUser();
-  console.log({ data });
-  if (data?.pages[0].getPosts.data.length === 0) return <NoResult />;
+  if (data?.pages[0].getSearchPosts.data.length === 0) return <NoResult />;
   return (
     <>
-      {data?.pages[0].getPosts.data.length > 0 && (
+      {data?.pages[0].getSearchPosts.data.length > 0 && (
         <Box width={{ sx: "100%", md: 300 }} sx={{ marginLeft: "auto" }}>
           <FormControl fullWidth={true}>
             <InputLabel variant="standard" htmlFor="uncontrolled-native">
@@ -35,10 +34,10 @@ const PostList = ({ data, handleChange, defaultFilter, isFetching }: PostListPro
           </FormControl>
         </Box>
       )}
-      {data?.pages.map((data: PostDataType, index) => {
+      {data?.pages.map((data: SearchDataType, index) => {
         return (
           <Grid key={index} container={true} justifyContent={{ xs: "center", md: "flex-start" }} my={{ xs: 2, sm: 4 }} spacing={2}>
-            {data.getPosts!.data.map((item, i) => {
+            {data.getSearchPosts!.data.map((item, i) => {
               return <PostItem item={item} user={user?.user} key={i} />;
             })}
           </Grid>
@@ -47,4 +46,4 @@ const PostList = ({ data, handleChange, defaultFilter, isFetching }: PostListPro
     </>
   );
 };
-export default PostList;
+export default SearchPostList;

@@ -26,8 +26,33 @@ const postsResolver: ResolverType = {
           data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
       };
     },
-    getPost: (parent, { id = 1 }, { db }) => {
-      return null;
+    getSearchPosts: (parent, { pageParam, keyword, filter }, { db }) => {
+      let data = db.posts.filter((post) => {
+        return post.name.includes(keyword);
+      });
+
+      if (filter === "latest") data = data.sort((a, b) => b.id - a.id);
+      if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
+      if (filter === "order")
+        data = data.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1; // 내림차순 정렬
+          return 0;
+        });
+      console.log({
+        data:
+          data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
+          [],
+        pageCount:
+          data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
+      });
+      return {
+        data:
+          data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
+          [],
+        pageCount:
+          data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
+      };
     },
   },
   Mutation: {

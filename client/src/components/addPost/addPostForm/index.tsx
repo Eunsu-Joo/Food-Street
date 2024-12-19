@@ -146,10 +146,10 @@ const AddPostForm = ({ user }: { user: UserType }) => {
           <ImageUpload setImage={onChangeImage} />
         </TextFieldBox>
         {!!validateError.message["image"] && <FormHelperText error={true}>{validateError.message["image"]}</FormHelperText>}
-        <TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>
-          <Typography>주소명 : {inputs.address}</Typography>
-          <KakaoMap onChangeAddress={onChangeAddress} />
-        </TextFieldBox>
+        {/*<TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>*/}
+        {/*  <Typography>주소명 : {inputs.address}</Typography>*/}
+        {/*  <KakaoMap onChangeAddress={onChangeAddress} />*/}
+        {/*</TextFieldBox>*/}
       </Stack>
       <Box display={"flex"} justifyContent={"center"} mt={6}>
         <Button sx={{ mr: 2, px: 6 }} variant={"outlined"} size={"large"} onClick={() => navigator(PATH.HOME)}>

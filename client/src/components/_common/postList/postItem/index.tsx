@@ -21,7 +21,7 @@ type PostItemProps = {
 };
 
 const PostItem = ({ item, user }: PostItemProps) => {
-  const { username, user_profile, id, likeUsers, image, like, name, createdAt } = item;
+  const { username, start_time, end_time, address, user_profile, contents, id, likeUsers, image, like, name, createdAt } = item;
   const [isLike, setIsLike] = useState(likeUsers.includes(user?.jwt));
   const [count, setCount] = useState(like);
   const [searchParams, _] = useSearchParams();
@@ -74,17 +74,28 @@ const PostItem = ({ item, user }: PostItemProps) => {
           }
         />
         <CardMedia component={"img"} src={image ?? noImage} height={220} alt={"이미지"} />
-        <CardContent sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100px" }}>
-          <div>
+        <CardContent sx={{ height: "auto", minHeight: "130px" }}>
+          {start_time && end_time && (
+            <Typography component={"p"}>
+              🕒{start_time} - {end_time}
+            </Typography>
+          )}
+          {/*{address && <Typography component={"p"}>📍{address}</Typography>}*/}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <Typography variant={"h6"} fontWeight={700} color={"text.secondary"}>
               {name}
             </Typography>
+            <div>
+              <IconButton disabled={!user} onClick={onClickFavorite}>
+                {isLike ? <FavoriteIcon color={"error"} /> : <FavoriteBorderIcon />}
+              </IconButton>
+              <Typography component={"span"}>{count}</Typography>
+            </div>
           </div>
           <div>
-            <IconButton disabled={!user} onClick={onClickFavorite}>
-              {isLike ? <FavoriteIcon color={"error"} /> : <FavoriteBorderIcon />}
-            </IconButton>
-            <Typography component={"span"}>{count}</Typography>
+            <Typography variant={"body1"} color={"text.secondary"}>
+              {contents}
+            </Typography>
           </div>
         </CardContent>
       </Card>

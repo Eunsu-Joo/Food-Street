@@ -49,7 +49,7 @@ const Header = () => {
   const handleSearch = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!search) return;
-    navigator(`${PATH.SEARCH}?keyword=${search}`, { preventScrollReset: true });
+    navigator(`${PATH.SEARCH}?keyword=${search}&filter=latest`, { preventScrollReset: true });
   };
 
   return (
