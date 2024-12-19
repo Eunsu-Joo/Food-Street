@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/_common/postList/SearchPostList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/search/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +107,7 @@
       <workItem from="1697635770896" duration="634000" />
       <workItem from="1731986356920" duration="148000" />
       <workItem from="1731987312093" duration="1628000" />
-      <workItem from="1734573515883" duration="8610000" />
+      <workItem from="1734573515883" duration="10200000" />
     </task>
     <servers />
   </component>
