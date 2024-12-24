@@ -1,28 +1,15 @@
-import { Avatar, Stack, Typography } from "@mui/material";
+import { Avatar, CircularProgress, Stack, Typography } from "@mui/material";
 import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import axios from "axios";
 interface ProfileImageProps {
   onChange: Dispatch<SetStateAction<File | null>>;
   error: boolean;
-  defaultImage: any;
+  image: any;
 }
 
-const ProfileImage = ({ onChange, error, defaultImage }: ProfileImageProps) => {
-  const [preview, setPreview] = useState<any>(defaultImage);
+const ProfileImage = ({ onChange, error, image }: ProfileImageProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  // const selectImage = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const files: FileList | null = event.target.files;
-  //   if (!files || files.length === 0) return;
-  //   const file = files[0];
-  //   const isValid = checkImage(file.name);
-  //   if (!isValid) return;
-  //   onChange(file);
-  //   const reader = new FileReader();
-  //   reader.onloadend = function (this) {
-  //     if (this.result) setPreview(this.result.toString());
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
 
   const onChangeImage = async (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return alert("파일을 찾을 수 없습니다.");
@@ -30,25 +17,39 @@ const ProfileImage = ({ onChange, error, defaultImage }: ProfileImageProps) => {
     if (!/([^\s]+(?=\.(jpg|png|jpeg|PNG|JPG))\.\2)/.test(file.name)) return alert("PNG,JPG 이미지만 업로드 가능합니다.");
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreview(reader.result);
-    };
+    // reader.onloadend = () => {
+    //   setPreview(reader.result);
+    // };
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "ml_default");
+    setIsLoading(true);
     const { data, status } = await axios.post(`https://api.cloudinary.com/v1_1/diuiwn91v/image/upload`, formData);
+
     if (status === 200) {
       onChange(data.url);
+      setIsLoading(false);
     } else {
       return alert("이미지 로드 애러가 났습니다.");
     }
   };
+  console.log({ isLoading });
+  if (isLoading) {
+    return (
+      <Stack height={"100vh"} zIndex={11000} overflow={"hidden"} bgcolor={"rgba(0,0,0,0.4)"} color={"#ffffff"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} left={0} top={0} right={0} bottom={0} position={"fixed"} sx={{ touchAction: "none" }}>
+        <CircularProgress color={"inherit"} size={50} />
+        <Typography component={"p"} letterSpacing={4} ml={3.5} pt={4} fontSize={24} fontFamily={"Montserrat"} color={"inherit"}>
+          Loading...
+        </Typography>
+      </Stack>
+    );
+  }
   return (
     <>
       <input type="file" id={"profileImage"} ref={fileInputRef} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" onChange={onChangeImage} style={{ display: "none" }} />
       <label htmlFor="profileImage">
         <Stack direction={"column"} alignItems={"center"}>
-          <Avatar sx={{ width: 100, height: 100, cursor: "pointer" }} src={preview} />
+          <Avatar sx={{ width: 100, height: 100, cursor: "pointer" }} src={image} />
           <Typography fontSize={18} mt={1} color={error ? "error" : "inherit"}>
             프로필 설정
           </Typography>

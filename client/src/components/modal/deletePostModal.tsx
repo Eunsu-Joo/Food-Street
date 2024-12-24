@@ -15,6 +15,7 @@ type DeletePostModalProps = {
 
 const DeletePostModal = (props: DeletePostModalProps) => {
   const queryClient = useQueryClient();
+
   const [searchParams, _] = useSearchParams({ filter: "latest" });
   const { mutate, isSuccess, isError } = useMutation(
     () => {
@@ -24,6 +25,10 @@ const DeletePostModal = (props: DeletePostModalProps) => {
       onSuccess: async () => {
         props.onToggle();
         await queryClient.refetchQueries([QUERY_KEYS.POSTS, searchParams.get("filter")]);
+        await queryClient.refetchQueries([QUERY_KEYS.POSTS, searchParams.get("keyword"), searchParams.get("filter")]);
+        await queryClient.refetchQueries([QUERY_KEYS.MY_LIST, searchParams.get("keyword"), searchParams.get("filter")]);
+        await queryClient.refetchQueries([QUERY_KEYS.MY_LIST, searchParams.get("filter")]);
+        // window.location.reload();
       }
     }
   );

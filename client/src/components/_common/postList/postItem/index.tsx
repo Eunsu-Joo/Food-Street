@@ -6,15 +6,20 @@ import { red } from "@mui/material/colors";
 import noImage from "../../../../images/noImage.png";
 import { PostType } from "../../../../types/post";
 import dayjs from "dayjs";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import fetcher from "../../../../graphql/fetcher";
 import { LIKE_POST } from "../../../../graphql/posts";
 import useModal from "../../../../hooks/useModal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UserType } from "../../../../types/user";
-import { useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useUser from "../../../../hooks/useUser";
 import DeletePostModal from "../../../modal/deletePostModal";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import QUERY_KEYS from "../../../../constants/querykeys";
+dayjs.extend(utc);
+dayjs.extend(timezone);
 type PostItemProps = {
   item: PostType;
   user: UserType;
@@ -25,8 +30,9 @@ const PostItem = ({ item, user }: PostItemProps) => {
   const [isLike, setIsLike] = useState(likeUsers.includes(user?.jwt));
   const [count, setCount] = useState(like);
   const [searchParams, _] = useSearchParams();
-
   const { data } = useUser();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { mutate: likePost } = useMutation(
     () => {
       return fetcher(LIKE_POST, { id, isLike: !isLike, jwt: user?.jwt });
@@ -35,6 +41,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
       onSuccess: async (data: any) => {
         setCount(data.likePost.count);
         setIsLike(data.likePost.likeUsers.includes(user?.jwt));
+        await queryClient.invalidateQueries([QUERY_KEYS.POSTS, searchParams.get("filter")]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -43,7 +50,8 @@ const PostItem = ({ item, user }: PostItemProps) => {
     }
   );
 
-  const onClickFavorite = () => {
+  const onClickFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsLike((prev) => !prev);
     likePost();
   };
@@ -54,9 +62,10 @@ const PostItem = ({ item, user }: PostItemProps) => {
   }, [searchParams.get("filter")]);
 
   const { isOpen, controller } = useModal();
+  const onClickLink = () => navigate(`/post/${id}`);
   return (
     <Grid item xs={20} sm={8} md={4}>
-      <Card sx={{ mb: 2 }}>
+      <Card onClick={onClickLink} sx={{ cursor: "pointer", mb: 2 }}>
         <CardHeader
           avatar={
             <Avatar src={user_profile ?? undefined} sx={{ bgcolor: red[500] }}>
@@ -64,7 +73,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
             </Avatar>
           }
           title={username}
-          subheader={dayjs(createdAt).add(9, "hour").format("YYYY년 MM월DD일 HH시mm분")}
+          subheader={dayjs.utc(createdAt).tz("Asia/Seoul").format("YYYY년 MM월DD일 HH시mm분")}
           action={
             data?.user && data?.user.username === username ? (
               <IconButton sx={{ ml: 1 }} onClick={controller}>
@@ -80,7 +89,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
               🕒{start_time} - {end_time}
             </Typography>
           )}
-          {/*{address && <Typography component={"p"}>📍{address}</Typography>}*/}
+          {address && <Typography component={"p"}>📍{address}</Typography>}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <Typography variant={"h6"} fontWeight={700} color={"text.secondary"}>
               {name}

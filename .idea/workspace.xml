@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/post/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/_common/ProfileImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/_common/ProfileImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/account/profile/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/profile/ProfileForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/ImageUpload/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/ImageUpload/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/modal/deletePostModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modal/deletePostModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/path.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/path.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/types/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +126,7 @@
       <workItem from="1731986356920" duration="148000" />
       <workItem from="1731987312093" duration="1628000" />
       <workItem from="1734573515883" duration="10200000" />
+      <workItem from="1735006859031" duration="9942000" />
     </task>
     <servers />
   </component>

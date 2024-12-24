@@ -1,8 +1,8 @@
 import { gql } from "graphql-request";
 
 export const ADD_POST = gql`
-  mutation AddPost($contents: String!, $name: String!, $image: String, $address: String, $start_time: String, $end_time: String, $username: String!, $user_profile: String) {
-    addPost(contents: $contents, name: $name, image: $image, address: $address, start_time: $start_time, end_time: $end_time, username: $username, user_profile: $user_profile) {
+  mutation AddPost($contents: String!, $name: String!, $image: String, $address: String, $start_time: String, $end_time: String, $username: String!, $user_profile: String, $user_id: String) {
+    addPost(contents: $contents, name: $name, image: $image, address: $address, start_time: $start_time, end_time: $end_time, username: $username, user_profile: $user_profile, user_id: $user_id) {
       address
       contents
       createdAt
@@ -35,6 +35,7 @@ export const GET_POSTS = gql`
         contents
         end_time
         start_time
+        user_id
       }
       pageCount
     }
@@ -56,6 +57,7 @@ export const GET_SEARCH_POSTS = gql`
         contents
         end_time
         start_time
+        user_id
       }
       pageCount
     }

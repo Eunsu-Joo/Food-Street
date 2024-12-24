@@ -25,7 +25,7 @@ const MyList = () => {
   const { data, isLoading, isFetchingNextPage, isFetching, isError, fetchNextPage, hasNextPage } = useInfiniteQuery(
     [QUERY_KEYS.MY_LIST, searchParams.get("filter")],
     ({ pageParam = 1 }) => {
-      return fetcher(GET_POSTS, { pageParam, filter: searchParams.get("filter"), username: userData?.user.username });
+      return fetcher(GET_POSTS, { pageParam, username: userData?.user.email, filter: searchParams.get("filter") });
     },
     {
       getNextPageParam: (_lastPage: PostDataType, pages) => {

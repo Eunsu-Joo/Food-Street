@@ -37,7 +37,8 @@ const ProfileForm = ({ user }: { user: UserType }) => {
     {
       onSuccess: async (data: { update: UserType }) => {
         //쿼리 무효화 (이 쿼리 다시 읽음)
-        await queryClient.invalidateQueries([QUERY_KEYS.USER]);
+        await queryClient.invalidateQueries(QUERY_KEYS.USER);
+        // await queryClient.invalidateQueries([QUERY_KEYS.POSTS]);
         updateSessionUser(data.update);
         setMessage("정보가 수정되었습니다.");
         controller();
@@ -71,7 +72,7 @@ const ProfileForm = ({ user }: { user: UserType }) => {
   if (isLoading) return <Loading />;
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
-      <ProfileImage onChange={setImage} defaultImage={user.image} error={!!validateError.message["image"]} />
+      <ProfileImage onChange={setImage} image={image} error={!!validateError.message["image"]} />
       <Stack sx={{ mt: 2 }}>
         <TextField placeholder={"이메일을 입력해주세요."} name={"email"} onChange={onChange} value={inputs.email} sx={{ mb: 2 }} error={!!validateError.message["email"]} helperText={validateError?.message["email"] ?? null} />
         <TextField placeholder={"닉네임을 입력해주세요."} name={"username"} onChange={onChange} value={inputs.username} sx={{ mb: 2 }} error={!!validateError.message["username"]} helperText={validateError?.message["username"] ?? null} />

@@ -31,8 +31,8 @@ const useUser = () => {
         return {
           user: sessionStorage.getItem(SESSION_KEYS.USER) ? JSON.parse(sessionStorage.getItem(SESSION_KEYS.USER) as string) : null
         };
-      },
-      enabled: false
+      }
+      // enabled: !!data
     }
   );
 

@@ -46,7 +46,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
     contents: "",
     address: ""
   });
-  const [image, setImage] = useState<null | File>(null);
+  const [image, setImage] = useState<null | string>(null);
   const [message, setMessage] = useState("");
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
@@ -54,7 +54,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const queryClient = useQueryClient();
   const { mutate, isSuccess } = useMutation(
     () => {
-      const data = { ...inputs, image, username: user.username, user_profile: user.image };
+      const data = { ...inputs, image, username: user.username, user_profile: user.image, user_id: user.email };
       return fetcher(ADD_POST, { ...data });
     },
     {
@@ -83,7 +83,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
       [name]: value
     });
   };
-  const onChangeImage = (image: File) => {
+  const onChangeImage = (image: string) => {
     setImage(image);
   };
   const onChangeAddress = (address: string) => {
@@ -143,13 +143,13 @@ const AddPostForm = ({ user }: { user: UserType }) => {
       </TextFieldBox>
       <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 1, sm: 2, md: 4 }} alignItems={"center"} divider={<Divider orientation="vertical" flexItem />}>
         <TextFieldBox label={"이미지"} sx={{ width: { xs: "100%", md: "50%" }, mb: 0 }}>
-          <ImageUpload setImage={onChangeImage} />
+          <ImageUpload setImage={onChangeImage} image={image} />
         </TextFieldBox>
         {!!validateError.message["image"] && <FormHelperText error={true}>{validateError.message["image"]}</FormHelperText>}
-        {/*<TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>*/}
-        {/*  <Typography>주소명 : {inputs.address}</Typography>*/}
-        {/*  <KakaoMap onChangeAddress={onChangeAddress} />*/}
-        {/*</TextFieldBox>*/}
+        <TextFieldBox label={"주소 찾기"} sx={{ width: "100%" }}>
+          <Typography>주소명 : {inputs.address}</Typography>
+          <KakaoMap onChangeAddress={onChangeAddress} />
+        </TextFieldBox>
       </Stack>
       <Box display={"flex"} justifyContent={"center"} mt={6}>
         <Button sx={{ mr: 2, px: 6 }} variant={"outlined"} size={"large"} onClick={() => navigator(PATH.HOME)}>

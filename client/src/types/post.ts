@@ -11,6 +11,7 @@ export type PostType = {
   user_profile: string | null;
   like: number;
   likeUsers: string[];
+  user_id: string;
 };
 
 export type PostsType = PostType[];
