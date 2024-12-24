@@ -8,7 +8,7 @@ const postsResolver: ResolverType = {
   Query: {
     getPosts: (parent, { pageParam, username, filter }, { db }) => {
       let data = db.posts;
-      if (username) data = data.filter((post) => post.username === username);
+      if (username) data = data.filter((post) => post.user_id === username);
       if (filter === "latest") data = data.sort((a, b) => b.id - a.id);
       if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
       if (filter === "order")
@@ -67,6 +67,7 @@ const postsResolver: ResolverType = {
         name,
         username,
         user_profile,
+        user_id,
       },
       { db }
     ) => {
@@ -80,6 +81,7 @@ const postsResolver: ResolverType = {
         username,
         user_profile,
         createdAt: new Date().toISOString(),
+        user_id,
         like: 0,
         likeUsers: [],
       };
