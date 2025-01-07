@@ -19,13 +19,12 @@ const MyList = () => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({ filter: event.target.value as string });
   };
-  const queryClient = useQueryClient();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInfiniteScroll({ ref });
   const { data, isLoading, isFetchingNextPage, isFetching, isError, fetchNextPage, hasNextPage } = useInfiniteQuery(
     [QUERY_KEYS.MY_LIST, searchParams.get("filter")],
     ({ pageParam = 1 }) => {
-      return fetcher(GET_POSTS, { pageParam, username: userData?.user.email, filter: searchParams.get("filter") });
+      return fetcher(GET_POSTS, { pageParam, user_id: userData?.user.jwt, filter: searchParams.get("filter") });
     },
     {
       getNextPageParam: (_lastPage: PostDataType, pages) => {
@@ -48,7 +47,7 @@ const MyList = () => {
   if (!userData?.user) return <Navigate to={PATH.LOGIN} />;
   return (
     <>
-      {isFetching && !isLoading && !hasNextPage && <Loading />}
+      {isLoading && <Loading />}
       <PostList defaultFilter={searchParams.get("filter") as string} handleChange={handleChange} data={data as InfiniteData<PostDataType>} isFetching={isFetchingNextPage} />
       <div ref={ref} style={{ display: !isError || !userData?.user ? "block" : "none" }} />
     </>

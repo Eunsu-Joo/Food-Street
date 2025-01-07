@@ -7,7 +7,7 @@ const postsSchema = gql`
     contents: String!
     start_time: String
     end_time: String
-    name: String!
+    title: String!
     createdAt: String!
     username: String!
     user_profile: String
@@ -28,8 +28,9 @@ const postsSchema = gql`
     count: Int!
   }
   extend type Query {
-    getPosts(pageParam: Int, username: String, filter: String): PostData
+    getPosts(pageParam: Int, user_id: String, filter: String): PostData
     getSearchPosts(pageParam: Int, keyword: String, filter: String): PostData
+    getPost(id: ID!): Post
   }
   extend type Mutation {
     addPost(
@@ -38,7 +39,7 @@ const postsSchema = gql`
       contents: String!
       start_time: String
       end_time: String
-      name: String!
+      title: String!
       username: String!
       user_profile: String
       user_id: String

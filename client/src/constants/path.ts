@@ -11,6 +11,7 @@ const PATH = {
   MY_LIST: "/account/my_list",
   SEARCH: "/search",
   PREFETCH: "/prefetch",
-  POST: "/post/:id"
+  POST: "/post/:id",
+  EDIT: "/edit/:id"
 };
 export default PATH;

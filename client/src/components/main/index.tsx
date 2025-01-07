@@ -15,7 +15,6 @@ const Main = () => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({ filter: event.target.value as string });
   };
-  const queryClient = useQueryClient();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInfiniteScroll({ ref });
   const { data, isLoading, isFetchingNextPage, isFetching, isError, fetchNextPage, hasNextPage } = useInfiniteQuery(
@@ -46,7 +45,7 @@ const Main = () => {
   if (isError) return <Error />;
   return (
     <>
-      {isFetching && !isLoading && !hasNextPage && <Loading />}
+      {isLoading && <Loading />}
       <PostList defaultFilter={searchParams.get("filter") as string} handleChange={handleChange} data={data as InfiniteData<PostDataType>} isFetching={isFetchingNextPage} />
       <div ref={ref} style={{ display: !isError ? "block" : "none" }} />
     </>

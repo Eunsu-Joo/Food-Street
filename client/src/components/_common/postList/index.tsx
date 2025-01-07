@@ -17,7 +17,6 @@ type PostListProps = {
 
 const PostList = ({ data, handleChange, defaultFilter, isFetching }: PostListProps) => {
   const { data: user } = useUser();
-  console.log({ data });
   if (data?.pages[0].getPosts.data.length === 0) return <NoResult />;
   return (
     <>

@@ -106,15 +106,15 @@ const useValidator = (inputs: ObjType) => {
     return !isError;
   };
   const validateAddPost = () => {
-    const { name, contents, ...rest } = inputs;
+    const { title, contents, ...rest } = inputs;
 
-    if (!name) {
+    if (!title) {
       isError = true;
-      message["name"] = "상호명은 필수 입력 항목입니다.";
+      message["title"] = "상호명은 필수 입력 항목입니다.";
     }
-    if (name && name.length > 20) {
+    if (title && title.length > 20) {
       isError = true;
-      message["name"] = "상호명을 20자 이내로 작성해주세요.";
+      message["title"] = "상호명을 20자 이내로 작성해주세요.";
     }
     if (!contents) {
       isError = true;

@@ -40,7 +40,7 @@ const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
 }));
 const AddPostForm = ({ user }: { user: UserType }) => {
   const [inputs, setInputs] = useState({
-    name: "",
+    title: "",
     start_time: "10:30",
     end_time: "20:30",
     contents: "",
@@ -54,7 +54,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const queryClient = useQueryClient();
   const { mutate, isSuccess } = useMutation(
     () => {
-      const data = { ...inputs, image, username: user.username, user_profile: user.image, user_id: user.email };
+      const data = { ...inputs, image, username: user.username, user_profile: user.image, user_id: user.jwt };
       return fetcher(ADD_POST, { ...data });
     },
     {
@@ -62,7 +62,7 @@ const AddPostForm = ({ user }: { user: UserType }) => {
         setMessage("성공적으로 포스팅 되었습니다.");
       },
       onError: (error: any) => {
-        const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
+        const message = "알수없는 애러가 발생했습니다.";
         setMessage(message);
       },
       onSettled: () => {
@@ -102,8 +102,8 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   return (
     <>
       <TextFieldBox label={"상호명"} required={true}>
-        <TextField autoComplete={"off"} error={!!validateError.message["name"]} variant="outlined" fullWidth={true} name={"name"} placeholder={"상호명을 작성해주세요"} value={inputs.name} onChange={onChangeInputs} />
-        {!!validateError.message["name"] && <FormHelperText error={true}>{validateError.message["name"]}</FormHelperText>}
+        <TextField autoComplete={"off"} error={!!validateError.message["title"]} variant="outlined" fullWidth={true} name={"title"} placeholder={"상호명을 작성해주세요"} value={inputs.title} onChange={onChangeInputs} />
+        {!!validateError.message["name"] && <FormHelperText error={true}>{validateError.message["title"]}</FormHelperText>}
       </TextFieldBox>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack direction={"row"} mb={4} spacing={2}>

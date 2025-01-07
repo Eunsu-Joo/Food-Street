@@ -1,14 +1,14 @@
 import { gql } from "graphql-request";
 
 export const ADD_POST = gql`
-  mutation AddPost($contents: String!, $name: String!, $image: String, $address: String, $start_time: String, $end_time: String, $username: String!, $user_profile: String, $user_id: String) {
-    addPost(contents: $contents, name: $name, image: $image, address: $address, start_time: $start_time, end_time: $end_time, username: $username, user_profile: $user_profile, user_id: $user_id) {
+  mutation AddPost($contents: String!, $title: String!, $image: String, $address: String, $start_time: String, $end_time: String, $username: String!, $user_profile: String, $user_id: String) {
+    addPost(contents: $contents, title: $title, image: $image, address: $address, start_time: $start_time, end_time: $end_time, username: $username, user_profile: $user_profile, user_id: $user_id) {
       address
       contents
       createdAt
       end_time
       image
-      name
+      title
       start_time
       username
       user_profile
@@ -20,11 +20,11 @@ export const ADD_POST = gql`
 `;
 
 export const GET_POSTS = gql`
-  query Query($pageParam: Int, $username: String, $filter: String) {
-    getPosts(pageParam: $pageParam, username: $username, filter: $filter) {
+  query Query($pageParam: Int, $user_id: String, $filter: String) {
+    getPosts(pageParam: $pageParam, user_id: $user_id, filter: $filter) {
       data {
         createdAt
-        name
+        title
         username
         image
         id
@@ -38,6 +38,26 @@ export const GET_POSTS = gql`
         user_id
       }
       pageCount
+    }
+  }
+`;
+
+export const GET_POST = gql`
+  query Query($id: ID!) {
+    getPost(id: $id) {
+      address
+      contents
+      createdAt
+      end_time
+      image
+      title
+      start_time
+      username
+      user_profile
+      id
+      like
+      user_id
+      likeUsers
     }
   }
 `;

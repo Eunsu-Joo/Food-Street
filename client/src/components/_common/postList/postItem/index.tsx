@@ -26,11 +26,10 @@ type PostItemProps = {
 };
 
 const PostItem = ({ item, user }: PostItemProps) => {
-  const { username, start_time, end_time, address, user_profile, contents, id, likeUsers, image, like, name, createdAt } = item;
+  const { username, start_time, end_time, address, user_profile, contents, id, likeUsers, image, like, title, createdAt, user_id } = item;
   const [isLike, setIsLike] = useState(likeUsers.includes(user?.jwt));
   const [count, setCount] = useState(like);
   const [searchParams, _] = useSearchParams();
-  const { data } = useUser();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { mutate: likePost } = useMutation(
@@ -41,7 +40,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
       onSuccess: async (data: any) => {
         setCount(data.likePost.count);
         setIsLike(data.likePost.likeUsers.includes(user?.jwt));
-        await queryClient.invalidateQueries([QUERY_KEYS.POSTS, searchParams.get("filter")]);
+        await queryClient.invalidateQueries([QUERY_KEYS.POSTS, searchParams.get("filter") ?? "latest"]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -75,8 +74,14 @@ const PostItem = ({ item, user }: PostItemProps) => {
           title={username}
           subheader={dayjs.utc(createdAt).tz("Asia/Seoul").format("YYYY년 MM월DD일 HH시mm분")}
           action={
-            data?.user && data?.user.username === username ? (
-              <IconButton sx={{ ml: 1 }} onClick={controller}>
+            user && user.jwt === user_id ? (
+              <IconButton
+                sx={{ ml: 1 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  controller();
+                }}
+              >
                 <DeleteIcon />
               </IconButton>
             ) : undefined
@@ -92,7 +97,7 @@ const PostItem = ({ item, user }: PostItemProps) => {
           {address && <Typography component={"p"}>📍{address}</Typography>}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <Typography variant={"h6"} fontWeight={700} color={"text.secondary"}>
-              {name}
+              {title}
             </Typography>
             <div>
               <IconButton disabled={!user} onClick={onClickFavorite}>

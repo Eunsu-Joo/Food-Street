@@ -6,7 +6,7 @@ export type PostType = {
   end_time: string | null;
   id: number;
   image: string | null;
-  name: string;
+  title: string;
   username: string;
   user_profile: string | null;
   like: number;

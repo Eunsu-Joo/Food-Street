@@ -13,6 +13,8 @@ import MyList from "../components/account/my_list";
 import ForgotPassword from "../components/account/forgotPassword";
 import ResetPassword from "../components/account/changePassword";
 import Post from "../components/post";
+import NotFound from "../components/_common/notFound";
+import Edit from "../components/edit";
 
 const Routes = () => {
   return (
@@ -21,6 +23,7 @@ const Routes = () => {
       <Route path={PATH.HOME} element={<Main />} />
       <Route path={PATH.ADD_POST} element={<AddPost />} />
       <Route path={PATH.POST} element={<Post />} />
+      <Route path={PATH.EDIT} element={<Edit />} />
       <Route path={PATH.LOGIN} element={<Login />} />
       <Route path={PATH.SIGNUP} element={<Signup />} />
       <Route path={PATH.CHANGE_PW} element={<ChangePassword />} />
@@ -28,6 +31,7 @@ const Routes = () => {
       <Route path={PATH.SEARCH} element={<Search />} />
       <Route path={PATH.FORGOT_PW} element={<ForgotPassword />} />
       <Route path={PATH.MY_LIST} element={<MyList />} />
+      <Route path={"*"} element={<NotFound />} />
     </ReactRoutes>
   );
 };

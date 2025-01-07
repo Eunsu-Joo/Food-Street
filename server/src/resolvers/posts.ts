@@ -6,9 +6,9 @@ const setJSON = (data: any[]) => writeDB(DBFile.POSTS, data);
 const PAGE_LIMIT = 9;
 const postsResolver: ResolverType = {
   Query: {
-    getPosts: (parent, { pageParam, username, filter }, { db }) => {
+    getPosts: (parent, { pageParam, user_id, filter }, { db }) => {
       let data = db.posts;
-      if (username) data = data.filter((post) => post.user_id === username);
+      if (user_id) data = data.filter((post) => post.user_id === user_id);
       if (filter === "latest") data = data.sort((a, b) => b.id - a.id);
       if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
       if (filter === "order")
@@ -39,13 +39,6 @@ const postsResolver: ResolverType = {
           if (a.name > b.name) return 1; // 내림차순 정렬
           return 0;
         });
-      console.log({
-        data:
-          data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
-          [],
-        pageCount:
-          data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
-      });
       return {
         data:
           data.slice((pageParam - 1) * PAGE_LIMIT, pageParam * PAGE_LIMIT) ||
@@ -53,6 +46,12 @@ const postsResolver: ResolverType = {
         pageCount:
           data.length < PAGE_LIMIT ? 1 : Math.ceil(data.length / PAGE_LIMIT),
       };
+    },
+    getPost: (parent, { id }, { db }) => {
+      const data = db.posts.find((post) => post.id === +id);
+      if (!data) throw new GraphQLError("해당유저를 찾을 수 없습니다.");
+      console.log({ data });
+      return data;
     },
   },
   Mutation: {
@@ -64,7 +63,7 @@ const postsResolver: ResolverType = {
         contents,
         start_time,
         end_time,
-        name,
+        title,
         username,
         user_profile,
         user_id,
@@ -77,7 +76,7 @@ const postsResolver: ResolverType = {
         contents,
         start_time: start_time ?? null,
         end_time: end_time ?? null,
-        name,
+        title,
         username,
         user_profile,
         createdAt: new Date().toISOString(),

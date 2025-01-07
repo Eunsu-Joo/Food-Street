@@ -75,12 +75,11 @@ const usersResolver: ResolverType = {
         targetIndex = db.users.indexOf(target);
       db.users.splice(targetIndex, 1, newItem);
 
-      const my_list = db.posts.filter((post) => post.user_id === rest.email);
+      const my_list = db.posts.filter((post) => post.user_id === jwt);
       if (my_list.length > 0) {
         my_list.forEach((list, index) => {
           db.posts.splice(db.posts.indexOf(list), 1, {
             ...list,
-            user_id: newItem.email,
             username: newItem.username,
             user_profile: newItem.image,
           });
