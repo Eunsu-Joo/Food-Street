@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/_common/edit/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/_common/notFound/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/post/LikeButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/loading/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/loading/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/account/my_list/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/addPost/addPostForm/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/main/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/main/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/post/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/post/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/constants/path.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/path.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useValidator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types/post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types/post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema/posts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +53,11 @@
       <recent name="D:\react-query\food-street\server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Food-Street\client\src\components" />
       <recent name="D:\react-query\food-street\server\src" />
       <recent name="D:\react-query\food-street\client\src\components\_common\header" />
       <recent name="D:\react-query\food-street\client\src\components" />
       <recent name="D:\react-query\food-street\client\src\components\main" />
-      <recent name="D:\react-query\food-street\client\src\components\addPost\_common" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -129,7 +111,7 @@
       <workItem from="1734573515883" duration="10200000" />
       <workItem from="1735006859031" duration="10208000" />
       <workItem from="1736126603630" duration="579000" />
-      <workItem from="1736143097901" duration="9527000" />
+      <workItem from="1736143097901" duration="10367000" />
     </task>
     <servers />
   </component>
