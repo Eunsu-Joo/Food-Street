@@ -66,7 +66,7 @@ export const GET_SEARCH_POSTS = gql`
     getSearchPosts(pageParam: $pageParam, keyword: $keyword, filter: $filter) {
       data {
         createdAt
-        name
+        title
         username
         image
         id

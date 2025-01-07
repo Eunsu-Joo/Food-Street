@@ -28,7 +28,7 @@ const postsResolver: ResolverType = {
     },
     getSearchPosts: (parent, { pageParam, keyword, filter }, { db }) => {
       let data = db.posts.filter((post) => {
-        return post.name.includes(keyword);
+        return post.title.includes(keyword);
       });
 
       if (filter === "latest") data = data.sort((a, b) => b.id - a.id);

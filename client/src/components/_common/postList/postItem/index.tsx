@@ -40,7 +40,8 @@ const PostItem = ({ item, user }: PostItemProps) => {
       onSuccess: async (data: any) => {
         setCount(data.likePost.count);
         setIsLike(data.likePost.likeUsers.includes(user?.jwt));
-        await queryClient.invalidateQueries([QUERY_KEYS.POSTS, searchParams.get("filter") ?? "latest"]);
+        await queryClient.refetchQueries([QUERY_KEYS.POSTS]);
+        await queryClient.refetchQueries([QUERY_KEYS.POST, id]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -55,10 +56,10 @@ const PostItem = ({ item, user }: PostItemProps) => {
     likePost();
   };
 
-  useEffect(() => {
-    setCount(like);
-    setIsLike(likeUsers.includes(user?.jwt));
-  }, [searchParams.get("filter")]);
+  // useEffect(() => {
+  //   setCount(like);
+  //   setIsLike(likeUsers.includes(user?.jwt));
+  // }, [searchParams.get("filter")]);
 
   const { isOpen, controller } = useModal();
   const onClickLink = () => navigate(`/post/${id}`);

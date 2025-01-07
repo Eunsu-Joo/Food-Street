@@ -30,9 +30,8 @@ const LikeButton = ({ like, likeUsers, user, id }: LikeButtonProps) => {
       onSuccess: async (data: any) => {
         setCount(data.likePost.count);
         setIsLike(data.likePost.likeUsers.includes(user?.jwt));
-        await queryClient.invalidateQueries([QUERY_KEYS.POSTS], {
-          exact: false
-        });
+        await queryClient.invalidateQueries([QUERY_KEYS.POSTS]);
+        await queryClient.invalidateQueries([QUERY_KEYS.POST, id]);
       },
       onError: (error: any) => {
         const message = error.response?.errors[0].message ?? "알수없는 애러가 발생했습니다.";
@@ -55,9 +54,9 @@ const LikeButton = ({ like, likeUsers, user, id }: LikeButtonProps) => {
           {count}
         </Typography>
       </Stack>
-      <Button onClick={() => navigate(`/edit/${id}`)} variant="contained" startIcon={<EditIcon />} sx={{ marginLeft: "auto" }}>
-        수정하기
-      </Button>
+      {/*<Button onClick={() => navigate(`/edit/${id}`)} variant="contained" startIcon={<EditIcon />} sx={{ marginLeft: "auto" }}>*/}
+      {/*  수정하기*/}
+      {/*</Button>*/}
     </CardActions>
   );
 };
