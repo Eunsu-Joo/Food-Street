@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8ab50745-7e54-47c6-a57f-ae52e5927d82" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/post/LikeButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/post/LikeButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/graphql/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/graphql/posts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/posts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers/posts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers/posts.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +33,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/zerocho_next14/real-s-com",
+    "last_opened_file_path": "D:/new_portfolio",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,7 +41,7 @@
     "nodejs_package_manager_path": "yarn",
     "prettierjs.PrettierConfiguration.Package": "D:\\Food-Street\\client\\node_modules\\prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\Food-Street\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\Food-Street\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -57,11 +51,11 @@
       <recent name="D:\react-query\food-street\server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Food-Street\client\src\components\_common" />
       <recent name="D:\Food-Street\client\src\components" />
       <recent name="D:\react-query\food-street\server\src" />
       <recent name="D:\react-query\food-street\client\src\components\_common\header" />
       <recent name="D:\react-query\food-street\client\src\components" />
-      <recent name="D:\react-query\food-street\client\src\components\main" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -115,7 +109,10 @@
       <workItem from="1734573515883" duration="10200000" />
       <workItem from="1735006859031" duration="10208000" />
       <workItem from="1736126603630" duration="579000" />
-      <workItem from="1736143097901" duration="12002000" />
+      <workItem from="1736143097901" duration="12805000" />
+      <workItem from="1736229398235" duration="94000" />
+      <workItem from="1736229516984" duration="601000" />
+      <workItem from="1736472462682" duration="12544000" />
     </task>
     <servers />
   </component>
@@ -146,15 +143,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/components/_common/postList/postItem/index.tsx</url>
-          <line>46</line>
-          <properties lambdaOrdinal="-1" />
+          <line>44</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/components/post/LikeButton.tsx</url>
           <line>7</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/node_modules/kakao.maps.d.ts/@types/services.Geocoder.d.ts</url>
+          <line>16</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/components/account/_common/ProfileImage.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

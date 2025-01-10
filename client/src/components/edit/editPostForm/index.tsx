@@ -1,52 +1,54 @@
+import { ChangeEvent, useState } from "react";
+import useModal from "../../../hooks/useModal";
+import { useNavigate } from "react-router-dom";
+import useValidator from "../../../hooks/useValidator";
+import { useMutation, useQueryClient } from "react-query";
+import fetcher from "../../../graphql/fetcher";
+import { ADD_POST, EDIT_POST } from "../../../graphql/posts";
+import PATH from "../../../constants/path";
 import TextFieldBox from "../../_common/textFieldBox";
 import { Button, FormHelperText, Stack, TextField, Typography } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Divider from "@mui/material/Divider";
 import ImageUpload from "../../_common/ImageUpload";
-import Box from "@mui/material/Box";
-import { ChangeEvent, useState } from "react";
 import KakaoMap from "../../_common/kakaoMap";
-import useModal from "../../../hooks/useModal";
+import Box from "@mui/material/Box";
 import Modal from "../../modal";
-import useValidator from "../../../hooks/useValidator";
-import PATH from "../../../constants/path";
-import { useNavigate } from "react-router-dom";
-import { UserType } from "../../../types/user";
-import { useMutation, useQueryClient } from "react-query";
-import fetcher from "../../../graphql/fetcher";
-import { ADD_POST } from "../../../graphql/posts";
 import Textarea from "../../_common/textarea";
-
-const AddPostForm = ({ user }: { user: UserType }) => {
+import { UserType } from "../../../types/user";
+import { PostType } from "../../../types/post";
+interface EditPostFormProps {
+  user: UserType;
+  post: PostType;
+}
+const EditPostForm = ({ user, post }: EditPostFormProps) => {
   const [inputs, setInputs] = useState({
-    title: "",
-    start_time: "10:30",
-    end_time: "20:30",
-    contents: "",
-    address: "",
-    place_name: ""
+    title: post.title,
+    start_time: post.start_time,
+    end_time: post.end_time,
+    contents: post.contents,
+    address: post.address ?? "",
+    place_name: post.place_name ?? ""
   });
-  const [image, setImage] = useState<null | string>(null);
+  const [image, setImage] = useState<null | string>(post.image);
   const [message, setMessage] = useState("");
   const { isOpen, controller } = useModal();
   const navigator = useNavigate();
   const { error: validateError, validateAddPost } = useValidator(inputs);
+
   const { mutate, isSuccess } = useMutation(
     () => {
-      const data = { ...inputs, image, username: user.username, user_profile: user.image, user_id: user.jwt };
-      return fetcher(ADD_POST, { ...data });
+      return fetcher(EDIT_POST, { ...inputs, image, id: post.id });
     },
     {
-      onSuccess: async (data) => {
-        setMessage("성공적으로 포스팅 되었습니다.");
+      onSuccess: async () => {
+        setMessage("성공적으로 수정되었습니다.");
+        controller();
       },
       onError: (error: any) => {
         const message = "알수없는 애러가 발생했습니다.";
         setMessage(message);
-      },
-      onSettled: () => {
-        controller();
       }
     }
   );
@@ -137,11 +139,11 @@ const AddPostForm = ({ user }: { user: UserType }) => {
           취소
         </Button>
         <Button sx={{ mr: 2, px: 6 }} variant={"contained"} size={"large"} onClick={handleSubmit}>
-          등록
+          수정
         </Button>
       </Box>
       {isOpen && <Modal onToggle={isSuccess ? goHome : controller} isOpen={isOpen} message={message} home={isSuccess} />}
     </>
   );
 };
-export default AddPostForm;
+export default EditPostForm;

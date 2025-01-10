@@ -15,6 +15,7 @@ const postsSchema = gql`
     like: Int!
     likeUsers: [String]
     user_id: String
+    place_name: String
   }
   type PostData {
     data: [Post!]
@@ -43,7 +44,18 @@ const postsSchema = gql`
       username: String!
       user_profile: String
       user_id: String
-    ): Post!
+      place_name: String
+    ): Count!
+    editPost(
+      image: String
+      address: String
+      contents: String!
+      start_time: String
+      end_time: String
+      title: String!
+      place_name: String
+      id: ID!
+    ): Count!
     likePost(id: ID!, isLike: Boolean!, jwt: ID!): LikePost!
     deletePost(id: ID!): Count!
   }

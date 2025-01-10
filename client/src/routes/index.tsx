@@ -11,8 +11,6 @@ import PATH from "../constants/path";
 import Search from "../components/search";
 import MyList from "../components/account/my_list";
 import ForgotPassword from "../components/account/forgotPassword";
-import ResetPassword from "../components/account/changePassword";
-import Post from "../components/post";
 import NotFound from "../components/_common/notFound";
 import Edit from "../components/edit";
 
@@ -22,7 +20,6 @@ const Routes = () => {
       <Route path={PATH.ERROR} element={<Error />} />
       <Route path={PATH.HOME} element={<Main />} />
       <Route path={PATH.ADD_POST} element={<AddPost />} />
-      <Route path={PATH.POST} element={<Post />} />
       <Route path={PATH.EDIT} element={<Edit />} />
       <Route path={PATH.LOGIN} element={<Login />} />
       <Route path={PATH.SIGNUP} element={<Signup />} />

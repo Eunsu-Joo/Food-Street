@@ -29,16 +29,7 @@ const ImageUpload = ({ setImage, image }: ImageUploadProps) => {
     }
   };
   if (isError) return <Typography>애러가 발생했습니다.</Typography>;
-  if (isLoading) {
-    return (
-      <Stack height={"100vh"} zIndex={11000} overflow={"hidden"} bgcolor={"rgba(0,0,0,0.4)"} color={"#ffffff"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} left={0} top={0} right={0} bottom={0} position={"fixed"} sx={{ touchAction: "none" }}>
-        <CircularProgress color={"inherit"} size={50} />
-        <Typography component={"p"} letterSpacing={4} ml={3.5} pt={4} fontSize={24} fontFamily={"Montserrat"} color={"inherit"}>
-          Loading...
-        </Typography>
-      </Stack>
-    );
-  }
+
   return (
     <Box>
       <label htmlFor="fileUpload">
@@ -65,7 +56,15 @@ const ImageUpload = ({ setImage, image }: ImageUploadProps) => {
           <UploadBox />
         )}
       </label>
-      <input type="file" style={{ display: "none" }} name={"image"} id={"fileUpload"} onChange={onChangeImage} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" />
+      <input type="file" hidden={true} name={"image"} id={"fileUpload"} onChange={onChangeImage} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" />
+      {isLoading && (
+        <Stack height={"100vh"} zIndex={11000} overflow={"hidden"} bgcolor={"rgba(0,0,0,0.4)"} color={"#ffffff"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} left={0} top={0} right={0} bottom={0} position={"fixed"} sx={{ touchAction: "none" }}>
+          <CircularProgress color={"inherit"} size={50} />
+          <Typography component={"p"} letterSpacing={4} ml={3.5} pt={4} fontSize={24} fontFamily={"Montserrat"} color={"inherit"}>
+            Loading...
+          </Typography>
+        </Stack>
+      )}
     </Box>
   );
 };

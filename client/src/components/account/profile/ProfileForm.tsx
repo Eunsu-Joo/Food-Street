@@ -69,7 +69,6 @@ const ProfileForm = ({ user }: { user: UserType }) => {
   const onChangeSelect = (event: SelectChangeEvent) => {
     setInputs({ ...inputs, questionIndex: +event.target.value });
   };
-  if (isLoading) return <Loading />;
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
       <ProfileImage onChange={setImage} image={image} error={!!validateError.message["image"]} />
@@ -107,6 +106,7 @@ const ProfileForm = ({ user }: { user: UserType }) => {
         </Button>
       </Stack>
       {isOpen && <Modal onToggle={isSuccess ? back : controller} isOpen={isOpen} message={message} home={isSuccess} />}
+      {isLoading && <Loading />}
     </Box>
   );
 };

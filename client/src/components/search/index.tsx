@@ -1,6 +1,4 @@
 import { useLocation, useSearchParams } from "react-router-dom";
-import { Button } from "@mui/material";
-import useDebounce from "../../hooks/useDebounce";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { InfiniteData, useInfiniteQuery, useQueryClient } from "react-query";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
@@ -10,7 +8,6 @@ import { GET_POSTS, GET_SEARCH_POSTS } from "../../graphql/posts";
 import { PostDataType, SearchDataType } from "../../types/post";
 import Error from "../_common/error";
 import Loading from "../_common/loading";
-import PostList from "../_common/postList";
 import SearchPostList from "../_common/postList/SearchPostList";
 
 const Search = () => {
@@ -18,7 +15,6 @@ const Search = () => {
     filter: "latest"
   });
   const keyword = searchParams.get("keyword") as string;
-  const { isDebounce, setIsDebounce } = useDebounce();
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({ ...searchParams, filter: event.target.value as string });

@@ -2,8 +2,8 @@ export type PostType = {
   address: string | null;
   contents: string;
   createdAt: string;
-  start_time: string | null;
-  end_time: string | null;
+  start_time: string;
+  end_time: string;
   id: number;
   image: string | null;
   title: string;
@@ -12,6 +12,7 @@ export type PostType = {
   like: number;
   likeUsers: string[];
   user_id: string;
+  place_name: string | null;
 };
 
 export type PostsType = PostType[];

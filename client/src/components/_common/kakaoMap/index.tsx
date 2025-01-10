@@ -3,15 +3,16 @@ import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
 import { Button, Divider, Skeleton, Stack, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import PlacesSearchResult = kakao.maps.services.PlacesSearchResult;
-import type { CustomMarkerItemType, MarkerListItemProps, KakaoMapProps, PositionType } from "./kakaoMap.interface";
+import type { CustomMarkerItemType, MarkerListItemProps, KakaoMapProps, PositionType, AddressSearchResultType } from "./kakaoMap.interface";
 import { lightBlue } from "@mui/material/colors";
+import Status = kakao.maps.services.Status;
 
 const defaultCenter = {
   lat: 33.450701,
   lng: 126.570667
 };
 
-const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
+const KakaoMap = ({ onChangeAddress, address, place_name }: KakaoMapProps) => {
   const [info, setInfo] = useState<null | CustomMarkerItemType>(null);
   const [markers, setMarkers] = useState<CustomMarkerItemType[]>([]);
   const [map, setMap] = useState<null | kakao.maps.Map>(null);
@@ -43,17 +44,25 @@ const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
 
   const searchPlaces = () => {
     const ps = new kakao.maps.services.Places();
-    ps.keywordSearch(search, (data, status, pagination) => {
-      if (status === kakao.maps.services.Status.OK) {
-        displayPlaces(data);
-      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-        alert("검색 결과가 존재하지 않습니다.");
-        return;
-      } else if (status === kakao.maps.services.Status.ERROR) {
-        alert("검색 결과 중 오류가 발생했습니다.");
-        return;
+    if (!center) return;
+    const location = new kakao.maps.LatLng(center.lat, center.lng);
+    ps.keywordSearch(
+      search,
+      (data, status, pagination) => {
+        if (status === kakao.maps.services.Status.OK) {
+          displayPlaces(data);
+        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+          alert("검색 결과가 존재하지 않습니다.");
+          return;
+        } else if (status === kakao.maps.services.Status.ERROR) {
+          alert("검색 결과 중 오류가 발생했습니다.");
+          return;
+        }
+      },
+      {
+        location
       }
-    });
+    );
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -64,25 +73,69 @@ const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
   };
 
   const changeInfo = (marker: CustomMarkerItemType) => {
-    setCenter(marker.position);
+    // setCenter(marker.position);
     setInfo(marker);
+    map?.panTo(new kakao.maps.LatLng(marker.position.lat, marker.position.lng));
   };
 
   useEffect(() => {
     if (window) {
       const { kakao } = window as any;
       // 현재 위치 받아옴.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            const { latitude: lat, longitude: lng } = pos.coords;
-            setCenter({ lat, lng });
-          },
-          () => {
-            return setCenter(defaultCenter);
+      if (!!address) {
+        const geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch(address, (res: AddressSearchResultType, status: Status) => {
+          if (status === kakao.maps.services.Status.OK) {
+            setCenter({
+              lat: +res[0].y,
+              lng: +res[0].x
+            });
+            changeInfo({
+              position: {
+                lat: +res[0].y,
+                lng: +res[0].x
+              },
+              address_name: address,
+              rate: 1,
+              place_name
+            });
+            setMarkers([
+              {
+                position: {
+                  lat: +res[0].y,
+                  lng: +res[0].x
+                },
+                address_name: address,
+                rate: 1,
+                place_name
+              }
+            ]);
           }
-        );
+        });
+      } else {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              const { latitude: lat, longitude: lng } = pos.coords;
+              setCenter({ lat, lng });
+            },
+            () => {
+              return setCenter(defaultCenter);
+            }
+          );
+        }
       }
+      // if (navigator.geolocation) {
+      //   navigator.geolocation.getCurrentPosition(
+      //     (pos) => {
+      //       const { latitude: lat, longitude: lng } = pos.coords;
+      //       setCenter({ lat, lng });
+      //     },
+      //     () => {
+      //       return setCenter(defaultCenter);
+      //     }
+      //   );
+      // }
     }
   }, []);
 
@@ -100,7 +153,7 @@ const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
                 {marker.place_name}
               </Box>
               {isSelected && (
-                <Button size={"small"} onClick={() => onChangeAddress(marker.address_name)}>
+                <Button size={"small"} onClick={() => onChangeAddress(marker.address_name, marker.place_name)}>
                   선택
                 </Button>
               )}
@@ -118,7 +171,9 @@ const KakaoMap = ({ onChangeAddress }: KakaoMapProps) => {
       <Stack width={{ xs: "100%", md: "100%" }} height={{ xs: 200, md: 300 }} sx={{ overflowY: "scroll" }} id={"MarkersList"} order={{ xs: 3, md: 1 }}>
         <Box display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-between"} component={"form"} mb={2} onSubmit={handleSubmit}>
           <TextField autoComplete={"off"} sx={{ width: "calc(100% - 64px)" }} placeholder={"지역 + 상호명을 검색해주세요"} value={search} onChange={(event) => setSearch(event.target.value)} variant={"standard"} color={"primary"} size={"small"} />
-          <Button size={"small"}>검색</Button>
+          <Button size={"small"} type={"submit"}>
+            검색
+          </Button>
         </Box>
         {markers.map((marker: CustomMarkerItemType) => (
           <MarkerListItem key={marker.rate} marker={marker} />

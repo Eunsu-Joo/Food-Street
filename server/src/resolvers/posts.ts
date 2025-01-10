@@ -13,8 +13,8 @@ const postsResolver: ResolverType = {
       if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
       if (filter === "order")
         data = data.sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1; // 내림차순 정렬
+          if (a.title < b.title) return -1;
+          if (a.title > b.title) return 1; // 내림차순 정렬
           return 0;
         });
 
@@ -35,8 +35,8 @@ const postsResolver: ResolverType = {
       if (filter === "popular") data = data.sort((a, b) => b.like - a.like);
       if (filter === "order")
         data = data.sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1; // 내림차순 정렬
+          if (a.title < b.title) return -1;
+          if (a.title > b.title) return 1; // 내림차순 정렬
           return 0;
         });
       return {
@@ -67,6 +67,7 @@ const postsResolver: ResolverType = {
         username,
         user_profile,
         user_id,
+        place_name,
       },
       { db }
     ) => {
@@ -76,6 +77,7 @@ const postsResolver: ResolverType = {
         contents,
         start_time: start_time ?? null,
         end_time: end_time ?? null,
+        place_name: place_name ?? null,
         title,
         username,
         user_profile,
@@ -92,7 +94,30 @@ const postsResolver: ResolverType = {
 
       db.posts.unshift(newItem);
       setJSON(db.posts);
-      return newItem;
+      return { count: 1 };
+    },
+    editPost: (
+      _,
+      { image, address, contents, start_time, end_time, title, place_name, id },
+      { db }
+    ) => {
+      const target = db.posts.find((post) => post.id === +id);
+      if (!target) throw new GraphQLError("해당포스트를 찾을 수 없습니다.");
+      const targetIndex = db.posts.indexOf(target),
+        newItem = {
+          ...target,
+          image: image ?? null,
+          address: address ?? null,
+          contents,
+          start_time: start_time ?? null,
+          end_time: end_time ?? null,
+          place_name: place_name ?? null,
+          title,
+        };
+
+      db.posts.splice(targetIndex, 1, newItem);
+      setJSON(db.posts);
+      return { count: 1 };
     },
     likePost: (_, { id, isLike, jwt }, { db }) => {
       const target = db.posts.find((item) => item.id === +id),

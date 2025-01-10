@@ -1,6 +1,7 @@
 import { Avatar, CircularProgress, Stack, Typography } from "@mui/material";
 import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import axios from "axios";
+import Loading from "../../_common/loading";
 interface ProfileImageProps {
   onChange: Dispatch<SetStateAction<File | null>>;
   error: boolean;
@@ -33,17 +34,6 @@ const ProfileImage = ({ onChange, error, image }: ProfileImageProps) => {
       return alert("이미지 로드 애러가 났습니다.");
     }
   };
-  console.log({ isLoading });
-  if (isLoading) {
-    return (
-      <Stack height={"100vh"} zIndex={11000} overflow={"hidden"} bgcolor={"rgba(0,0,0,0.4)"} color={"#ffffff"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} width={"100%"} left={0} top={0} right={0} bottom={0} position={"fixed"} sx={{ touchAction: "none" }}>
-        <CircularProgress color={"inherit"} size={50} />
-        <Typography component={"p"} letterSpacing={4} ml={3.5} pt={4} fontSize={24} fontFamily={"Montserrat"} color={"inherit"}>
-          Loading...
-        </Typography>
-      </Stack>
-    );
-  }
   return (
     <>
       <input type="file" id={"profileImage"} ref={fileInputRef} accept=".jpg, .png, .jpeg, .JPG, .JPEG, .PNG" onChange={onChangeImage} style={{ display: "none" }} />
@@ -60,6 +50,7 @@ const ProfileImage = ({ onChange, error, image }: ProfileImageProps) => {
           )}
         </Stack>
       </label>
+      {isLoading && <Loading />}
     </>
   );
 };
