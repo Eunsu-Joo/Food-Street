@@ -50,39 +50,14 @@ const postsResolver: ResolverType = {
     getPost: (parent, { id }, { db }) => {
       const data = db.posts.find((post) => post.id === +id);
       if (!data) throw new GraphQLError("해당유저를 찾을 수 없습니다.");
-      console.log({ data });
       return data;
     },
   },
   Mutation: {
-    addPost: (
-      _,
-      {
-        image,
-        address,
-        contents,
-        start_time,
-        end_time,
-        title,
-        username,
-        user_profile,
-        user_id,
-        place_name,
-      },
-      { db }
-    ) => {
+    addPost: (_, { ...data }, { db }) => {
       const postData = {
-        image: image ?? null,
-        address: address ?? null,
-        contents,
-        start_time: start_time ?? null,
-        end_time: end_time ?? null,
-        place_name: place_name ?? null,
-        title,
-        username,
-        user_profile,
+        ...data,
         createdAt: new Date().toISOString(),
-        user_id,
         like: 0,
         likeUsers: [],
       };

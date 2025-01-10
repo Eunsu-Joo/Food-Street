@@ -43,7 +43,7 @@ const postsSchema = gql`
       title: String!
       username: String!
       user_profile: String
-      user_id: String
+      user_id: String!
       place_name: String
     ): Count!
     editPost(

@@ -21,8 +21,8 @@ import Textarea from "../../_common/textarea";
 const AddPostForm = ({ user }: { user: UserType }) => {
   const [inputs, setInputs] = useState({
     title: "",
-    start_time: "10:30",
-    end_time: "20:30",
+    start_time: "",
+    end_time: "",
     contents: "",
     address: "",
     place_name: ""
@@ -34,8 +34,8 @@ const AddPostForm = ({ user }: { user: UserType }) => {
   const { error: validateError, validateAddPost } = useValidator(inputs);
   const { mutate, isSuccess } = useMutation(
     () => {
-      const data = { ...inputs, image, username: user.username, user_profile: user.image, user_id: user.jwt };
-      return fetcher(ADD_POST, { ...data });
+      const { address, contents, end_time, start_time, title, place_name } = inputs;
+      return fetcher(ADD_POST, { title, start_time: start_time ?? null, end_time: end_time ?? null, contents, address: address ?? null, place_name: place_name ?? null, image, username: user.username, user_profile: user.image, user_id: user.jwt });
     },
     {
       onSuccess: async (data) => {
