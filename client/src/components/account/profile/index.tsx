@@ -14,8 +14,7 @@ import { Button, Typography } from "@mui/material";
 import React from "react";
 
 const Profile = () => {
-  const { data, isLoading } = useUser();
-  if (isLoading) return <Loading />;
+  const { data } = useUser();
   if (!data?.user) return <Navigate to={PATH.LOGIN} />;
   return (
     <AccountLayout title={"PROFILE"}>

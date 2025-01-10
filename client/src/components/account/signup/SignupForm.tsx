@@ -76,7 +76,7 @@ const SignupForm = () => {
 
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
-      <ProfileImage onChange={setImage} error={false} defaultImage={image} />
+      <ProfileImage onChange={setImage} error={false} image={image} />
       <TextField margin={"normal"} variant="standard" fullWidth={true} value={inputs.username} label={"닉네임"} autoComplete={"off"} name={"username"} onChange={onChange} error={!!validateError.message["username"]} autoFocus={true} helperText={validateError.message["username"] ?? null} />
       <EmailInput value={inputs.email} onChange={onChangeEmail} error={!!validateError.message["email"]} message={validateError.message["email"] ?? ""} />
       <TextField margin={"normal"} value={inputs.password} variant="standard" fullWidth={true} label={"비밀번호"} name={"password"} type={"password"} helperText={!!validateError.message["password"] ? validateError.message["password"] : "비밀번호는 특수문자와 숫자를 포함하여 8-15자로 작성해주세요."} onChange={onChange} error={!!validateError.message["password"]} />

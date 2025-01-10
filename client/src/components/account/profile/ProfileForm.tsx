@@ -37,7 +37,7 @@ const ProfileForm = ({ user }: { user: UserType }) => {
     {
       onSuccess: async (data: { update: UserType }) => {
         //쿼리 무효화 (이 쿼리 다시 읽음)
-        await queryClient.invalidateQueries(QUERY_KEYS.USER);
+        await queryClient.invalidateQueries([QUERY_KEYS.USER]);
         // await queryClient.invalidateQueries([QUERY_KEYS.POSTS]);
         updateSessionUser(data.update);
         setMessage("정보가 수정되었습니다.");
